@@ -1210,4 +1210,6 @@ Children:
       ModellingRule: Optional
       Value: 2
 - File: Screens/Screens.yaml
-- File: Libraries_Network/Libraries_Network.yaml
+- File: raC_12_04_raC_Dvc_S2500_UI/raC_12_04_raC_Dvc_S2500_UI.yaml
+- File: raC_12_04_raC_Dvc_S5700_UI/raC_12_04_raC_Dvc_S5700_UI.yaml
+- File: raSDK/raSDK.yaml

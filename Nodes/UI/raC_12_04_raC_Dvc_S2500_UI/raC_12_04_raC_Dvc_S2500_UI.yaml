@@ -1,9 +1,9 @@
-Name: raC_12_04_raC_Dvc_S5700_UI
+Name: raC_12_04_raC_Dvc_S2500_UI
 Type: FolderType
-DisplayName: {"LocaleId":"en-US","Text":"raC_Dvc_S5700"}
+DisplayName: {"LocaleId":"en-US","Text":"raC_Dvc_S2500"}
 Children:
-- Name: raC_12_04_raC_Dvc_S5700_Faceplate
-  Id: g=2f39100c86c3fb9cebf22a2d8011459a
+- Name: raC_12_04_raC_Dvc_S2500_Faceplate
+  Id: g=40813093dd039afe9e16523a725da93a
   Supertype: raSDK1_DialogBoxFPBase
   ReferenceType: HasComponent
   Children:
@@ -231,7 +231,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/Libraries_Network/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Home"
+                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Home"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -251,7 +251,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/Libraries_Network/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Switch"
+                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Switch"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -271,7 +271,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/Libraries_Network/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Port"
+                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Port"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -291,7 +291,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/Libraries_Network/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Fault"
+                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Fault"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -806,7 +806,7 @@ Children:
   - Name: Cfg_HelpPanel
     Type: BaseDataVariableType
     DataType: NodeId
-    Value: "/Objects/TRCNEW_DemoWall/UI/Libraries_Network/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/raC_12_04_raC_Dvc_S5700_Help"
+    Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/raC_12_04_raC_Dvc_S2500_Help"
   - Name: HelpScreen
     Type: Screen
     Children:
@@ -1045,3 +1045,19 @@ Children:
     Value: 373.0
 - File: Graphic_Symbols/Graphic_Symbols.yaml
 - File: _Private_Elements_/_Private_Elements_.yaml
+- Name: ns=4;LibraryReference
+  Type: ObjectLibraryReference
+  DataType: ObjectLibraryReferenceDataType
+  Value: 
+   {
+    "TypeId": {
+     "Id": 72,
+     "Namespace": 4
+    },
+    "Body": {
+     "libraryGuid": "5bdbabe2f79826dc3e0d2b4618bcf899",
+     "objectGuid": "718243f4a28f67da903604ceaf0b97f3",
+     "objectVersion": 1,
+     "highestIgnoredVersion": 0
+    }
+   }

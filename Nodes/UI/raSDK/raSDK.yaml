@@ -1,0 +1,5 @@
+Name: raSDK
+Type: FolderType
+Children:
+- File: FaceplateComponents/FaceplateComponents.yaml
+- File: GraphicElements/GraphicElements.yaml

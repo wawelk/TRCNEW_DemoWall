@@ -57,16 +57,72 @@ Project:
    Uri: 'urn:FTOptix:WebUI'
    Module: FTOptix.WebUI
    Version: 1.2
+  15:
+   Uri: 'urn:FTOptix:Core:Net'
+   Module: FTOptix.Core.Net
+   Version: 2.0
+  16:
+   Uri: 'urn:FTOptix:RAEtherNetIP:Net'
+   Module: FTOptix.RAEtherNetIP.Net
+   Version: 2.2
+  17:
+   Uri: 'urn:FTOptix:CommunicationDriver:Net'
+   Module: FTOptix.CommunicationDriver.Net
+   Version: 3.0
+  18:
+   Uri: 'urn:FTOptix:CoreBase:Net'
+   Module: FTOptix.CoreBase.Net
+   Version: 1.1
+  19:
+   Uri: 'urn:FTOptix:UI:Net'
+   Module: FTOptix.UI.Net
+   Version: 14.2
+  20:
+   Uri: 'urn:FTOptix:DataLogger:Net'
+   Module: FTOptix.DataLogger.Net
+   Version: 1.0
+  21:
+   Uri: 'urn:FTOptix:Store:Net'
+   Module: FTOptix.Store.Net
+   Version: 1.0
+  22:
+   Uri: 'urn:FTOptix:Retentivity:Net'
+   Module: FTOptix.Retentivity.Net
+   Version: 1.0
+  23:
+   Uri: 'urn:FTOptix:HMIProject:Net'
+   Module: FTOptix.HMIProject.Net
+   Version: 4.8
+  24:
+   Uri: 'urn:FTOptix:WebUI:Net'
+   Module: FTOptix.WebUI.Net
+   Version: 1.2
+  25:
+   Uri: 'urn:FTOptix:NativeUI:Net'
+   Module: FTOptix.NativeUI.Net
+   Version: 1.0
+  26:
+   Uri: 'urn:FTOptix:InfluxDBStore:Net'
+   Module: FTOptix.InfluxDBStore.Net
+   Version: 1.0
+  27:
+   Uri: 'urn:FTOptix:NetLogic'
+   Module: FTOptix.NetLogic
+   Version: 4.0
+  28:
+   Uri: 'urn:FTOptix:InfluxDBStoreLocal:Net'
+   Module: FTOptix.InfluxDBStoreLocal.Net
+   Version: 1.0
  Statistics:
-  TotalNodeCount: 18342
-  Objects: 231
-  ObjectTypes: 3
-  Variables: 17996
+  TotalNodeCount: 43361
+  Objects: 5940
+  ObjectTypes: 37
+  Variables: 37271
   VariableTypes: 56
   DataTypes: 56
-  Methods: 0
-  References: 38
+  Methods: 1
+  References: 64
   ReferenceTypes: 0
-  Files: 32
+  Files: 43
  Nodes:
  - File: Nodes/TRCNEW_DemoWall.yaml

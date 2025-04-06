@@ -1,0 +1,2778 @@
+Name: DataTypes
+Type: FolderType
+Children:
+- Class: DataType
+  Name: 'AB:1732_8IOL1:C:0'
+  Id: g=59593db94e92d5585b24cf0713818411
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:1732_8IOL1:C:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "59593db94e92d5585b24cf0713818411",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Ch0FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch0ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch1FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch1ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch2FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch2ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch3FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch3ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch4FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch4ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch5FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch5ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch6FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch6ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch7FaultMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch7ProgMode",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch0FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch0FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch1FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch1FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch2FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch2FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch3FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch3FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch4FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch4FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch5FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch5FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch6FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch6FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch7FilterOffOn",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch7FilterOnOff",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "MasterSyncEnabled",
+      "DataType": {
+       "Id": 1
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:1732_8IOL1:C:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:1732_8IOL59B13245:I:0'
+  Id: g=cc6439b3fef7d1d67547587b8e4d91b5
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:1732_8IOL59B13245:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "cc6439b3fef7d1d67547587b8e4d91b5",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Fault",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Status",
+      "DataType": {
+       "IdType": 2,
+       "Id": "cc851d51141a87dfcea57fd10f122017",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch0DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch1DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch2DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch3DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch4DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch5DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch6DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch7DiagEvent",
+      "DataType": {
+       "IdType": 2,
+       "Id": "06903df83b6aa825315e2c586c6e474e",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch0Triggered",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2Triggered1",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2Triggered2",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2Temperature",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "Ch4Triggered",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4MarginLowAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5Triggered",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5MarginStatus",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6Triggered1",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6Triggered2",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6Pressure",
+      "DataType": {
+       "Id": 4
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:1732_8IOL59B13245:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:1732_8IOL_Struct_Event:I:0'
+  Id: g=06903df83b6aa825315e2c586c6e474e
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:1732_8IOL_Struct_Event:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "06903df83b6aa825315e2c586c6e474e",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "SequenceCount",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Qualifier",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Source_0",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Source_1",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Source_2",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Location",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Type_0",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Type_1",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Mode_0",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Mode_1",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Code",
+      "DataType": {
+       "Id": 4
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:1732_8IOL_Struct_Event:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:1732_8IOL_Struct_Status:I:0'
+  Id: g=cc851d51141a87dfcea57fd10f122017
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:1732_8IOL_Struct_Status:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "cc851d51141a87dfcea57fd10f122017",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Ch0Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch0NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch1NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch2NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch3NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch4NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch5NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch6NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7ConfigurationInProgress",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7ConfigurationFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7KeyingFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7ShortCircuit",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7DataInvalid",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7PowerFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7ClampAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ch7NoIoSize",
+      "DataType": {
+       "Id": 1
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:1732_8IOL_Struct_Status:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:5000_AI8:C:0'
+  Id: g=5ee33d57a493fbaa7ae5e2a32286cfc1
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:5000_AI8:C:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "5ee33d57a493fbaa7ae5e2a32286cfc1",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Ch00",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch01",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch02",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch03",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch04",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch05",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch06",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch07",
+      "DataType": {
+       "IdType": 2,
+       "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+       "Namespace": 7
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:5000_AI8:C:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:5000_AI8:I:0'
+  Id: g=2a2c09e873d2b94f3103c54f7234caff
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:5000_AI8:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "2a2c09e873d2b94f3103c54f7234caff",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "RunMode",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "DiagnosticActive",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "DiagnosticSequenceCount",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Ch00",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch01",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch02",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch03",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch04",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch05",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch06",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch07",
+      "DataType": {
+       "IdType": 2,
+       "Id": "f2ded8fc86e0b740c218763503166dd5",
+       "Namespace": 7
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:5000_AI8:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:5000_AI8:O:0'
+  Id: g=db29fecca53236b3fed986213adda4f3
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:5000_AI8:O:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "db29fecca53236b3fed986213adda4f3",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Ch00",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch01",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch02",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch03",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch04",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch05",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch06",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ch07",
+      "DataType": {
+       "IdType": 2,
+       "Id": "c844ce60194f49a2890dc186f0443906",
+       "Namespace": 7
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:5000_AI8:O:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:5000_AI_Channel:C:0'
+  Id: g=0c8bacb1cf8f68a0658b4d02d5e00688
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:5000_AI_Channel:C:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "0c8bacb1cf8f68a0658b4d02d5e00688",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Range",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "SensorType",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "NotchFilter",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "AlarmDisable",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "ProcessAlarmLatchEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "RateAlarmLatchEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "OpenWireEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Disable",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "TenOhmOffset",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "DigitalFilter",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "LowSignal",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "HighSignal",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "LowEngineering",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "HighEngineering",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "LLAlarmLimit",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "LAlarmLimit",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "HAlarmLimit",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "HHAlarmLimit",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "RateAlarmLimit",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "AlarmDeadband",
+      "DataType": {
+       "Id": 10
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:5000_AI_Channel:C:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:5000_DI6:C:0'
+  Id: g=1314ada41216b5e7c03d8368da915ba8
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:5000_DI6:C:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "1314ada41216b5e7c03d8368da915ba8",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Pt00",
+      "DataType": {
+       "IdType": 2,
+       "Id": "2ac325a6a08f6ca8d71c35f8e9d98d4c",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt01",
+      "DataType": {
+       "IdType": 2,
+       "Id": "2ac325a6a08f6ca8d71c35f8e9d98d4c",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt02",
+      "DataType": {
+       "IdType": 2,
+       "Id": "2ac325a6a08f6ca8d71c35f8e9d98d4c",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt03",
+      "DataType": {
+       "IdType": 2,
+       "Id": "2ac325a6a08f6ca8d71c35f8e9d98d4c",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt04",
+      "DataType": {
+       "IdType": 2,
+       "Id": "2ac325a6a08f6ca8d71c35f8e9d98d4c",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt05",
+      "DataType": {
+       "IdType": 2,
+       "Id": "2ac325a6a08f6ca8d71c35f8e9d98d4c",
+       "Namespace": 7
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:5000_DI6:C:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:5000_DI6:I:0'
+  Id: g=5dcc3b0e2e862b21280d0bf37b95ed02
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:5000_DI6:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "5dcc3b0e2e862b21280d0bf37b95ed02",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "RunMode",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "ConnectionFaulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "DiagnosticActive",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "DiagnosticSequenceCount",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Pt00",
+      "DataType": {
+       "IdType": 2,
+       "Id": "afe1ba82c693326e06f1b2ab28719bca",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt01",
+      "DataType": {
+       "IdType": 2,
+       "Id": "afe1ba82c693326e06f1b2ab28719bca",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt02",
+      "DataType": {
+       "IdType": 2,
+       "Id": "afe1ba82c693326e06f1b2ab28719bca",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt03",
+      "DataType": {
+       "IdType": 2,
+       "Id": "afe1ba82c693326e06f1b2ab28719bca",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt04",
+      "DataType": {
+       "IdType": 2,
+       "Id": "afe1ba82c693326e06f1b2ab28719bca",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Pt05",
+      "DataType": {
+       "IdType": 2,
+       "Id": "afe1ba82c693326e06f1b2ab28719bca",
+       "Namespace": 7
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:5000_DI6:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:5000_DI_Channel:C:0'
+  Id: g=2ac325a6a08f6ca8d71c35f8e9d98d4c
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:5000_DI_Channel:C:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "2ac325a6a08f6ca8d71c35f8e9d98d4c",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "InputOffOnFilter",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "InputOnOffFilter",
+      "DataType": {
+       "Id": 2
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:5000_DI_Channel:C:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:STRATIX_5700_10PORT_GB_MANAGED:I:0'
+  Id: g=2f86daaae40888ad4bebd6337b377d06
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:STRATIX_5700_10PORT_GB_MANAGED:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "2f86daaae40888ad4bebd6337b377d06",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Fault",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "AnyPortConnected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortGi1_1Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortGi1_2Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AnyPortUnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortGi1_1UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortGi1_2UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AnyPortThreshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortGi1_1Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortGi1_2Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AllPortsUtilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_1Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_2Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_3Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_4Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_5Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_6Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_7Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_8Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortGi1_1Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortGi1_2Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "MajorAlarmRelay",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "MulticastGroupsActive",
+      "DataType": {
+       "Id": 6
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:STRATIX_5700_10PORT_GB_MANAGED:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:STRATIX_2500_8PORT_MANAGED:I:0'
+  Id: g=5bde23de85da77f774a29d02b57972b8
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:STRATIX_2500_8PORT_MANAGED:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "5bde23de85da77f774a29d02b57972b8",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Fault",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "AnyPortConnected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AnyPortUnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AnyPortThreshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AllPortsUtilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_1Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_2Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_3Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_4Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_5Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_6Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_7Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_8Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "MajorAlarmRelay",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "MulticastGroupActive",
+      "DataType": {
+       "Id": 6
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:STRATIX_2500_8PORT_MANAGED:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'AB:STRATIX_5700_10PORT_MANAGED:I:0'
+  Id: g=fa505715df57a96984ce7fe4803ec98c
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "AB:STRATIX_5700_10PORT_MANAGED:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "fa505715df57a96984ce7fe4803ec98c",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Fault",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "AnyPortConnected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_9Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_10Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AnyPortUnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_9UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_10UnauthorizedDevice",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AnyPortThreshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_1Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_2Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_3Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_4Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_5Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_6Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_7Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_8Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_9Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "PortFa1_10Threshold",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "AllPortsUtilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_1Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_2Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_3Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_4Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_5Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_6Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_7Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_8Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_9Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "PortFa1_10Utilization",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "MajorAlarmRelay",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "MulticastGroupsActive",
+      "DataType": {
+       "Id": 6
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"AB:STRATIX_5700_10PORT_MANAGED:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'CHANNEL_AI_DIAG:I:0'
+  Id: g=f2ded8fc86e0b740c218763503166dd5
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "CHANNEL_AI_DIAG:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "f2ded8fc86e0b740c218763503166dd5",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Uncertain",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "OpenWire",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "OverTemperature",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "FieldPowerOff",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "NotANumber",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Underrange",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Overrange",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "LLAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "LAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "HAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "HHAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "RateAlarm",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "CalFault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Calibrating",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Data",
+      "DataType": {
+       "Id": 10
+      }
+     },{
+      "Name": "RollingTimestamp",
+      "DataType": {
+       "Id": 4
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"CHANNEL_AI_DIAG:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'CHANNEL_AI:O:0'
+  Id: g=c844ce60194f49a2890dc186f0443906
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "CHANNEL_AI:O:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "c844ce60194f49a2890dc186f0443906",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "LLAlarmEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "LAlarmEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "HAlarmEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "HHAlarmEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "RateAlarmEn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "LLAlarmUnlatch",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "LAlarmUnlatch",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "HAlarmUnlatch",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "HHAlarmUnlatch",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "RateAlarmUnlatch",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "SensorOffset",
+      "DataType": {
+       "Id": 10
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"CHANNEL_AI:O:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: 'CHANNEL_DI:I:0'
+  Id: g=afe1ba82c693326e06f1b2ab28719bca
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "CHANNEL_DI:I:0",
+    "DataType": {
+     "IdType": 2,
+     "Id": "afe1ba82c693326e06f1b2ab28719bca",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Data",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Fault",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Uncertain",
+      "DataType": {
+       "Id": 1
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"CHANNEL_DI:I:0"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: MESSAGE
+  Id: g=1dada3de153760e12ed337249c941680
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "MESSAGE",
+    "DataType": {
+     "IdType": 2,
+     "Id": "1dada3de153760e12ed337249c941680",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Flags",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "EW",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "ER",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "DN",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "ST",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "EN",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "TO",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "EN_CC",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "ERR",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "EXERR",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "ERR_SRC",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "DN_LEN",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "REQ_LEN",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "DestinationLink",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "DestinationNode",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "SourceLink",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "Class",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "Attribute",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "Instance",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "LocalIndex",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Channel",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Rack",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Group",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Slot",
+      "DataType": {
+       "Id": 2
+      }
+     },{
+      "Name": "Path",
+      "DataType": {
+       "Id": 12
+      }
+     },{
+      "Name": "RemoteIndex",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "RemoteElement",
+      "DataType": {
+       "Id": 12
+      }
+     },{
+      "Name": "UnconnectedTimeout",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "ConnectionRate",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "TimeoutMultiplier",
+      "DataType": {
+       "Id": 2
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"MESSAGE"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: raC_UDT_Event
+  Id: g=cd6443b07eaaef2e656594fb911414a4
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "raC_UDT_Event",
+    "DataType": {
+     "IdType": 2,
+     "Id": "cd6443b07eaaef2e656594fb911414a4",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Type",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "ID",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Category",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Action",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Value",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Message",
+      "DataType": {
+       "Id": 12
+      }
+     },{
+      "Name": "EventTime_L",
+      "DataType": {
+       "Id": 8
+      }
+     },{
+      "Name": "EventTime_D",
+      "DataType": {
+       "Id": 6
+      },
+      "ValueRank": "OneDimension",
+      "ArrayDimensions": [7]
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"raC_UDT_Event"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: raC_UDT_ItfAD_Framework_Sts
+  Id: g=4ba776a5629d2107ba6476624946dfa4
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "raC_UDT_ItfAD_Framework_Sts",
+    "DataType": {
+     "IdType": 2,
+     "Id": "4ba776a5629d2107ba6476624946dfa4",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "eState",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "FirstWarning",
+      "DataType": {
+       "IdType": 2,
+       "Id": "cd6443b07eaaef2e656594fb911414a4",
+       "Namespace": 7
+      }
+     },{
+      "Name": "FirstFault",
+      "DataType": {
+       "IdType": 2,
+       "Id": "cd6443b07eaaef2e656594fb911414a4",
+       "Namespace": 7
+      }
+     },{
+      "Name": "eCmdFail",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "bSts",
+      "DataType": {
+       "Id": 4
+      }
+     },{
+      "Name": "Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Available",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Warning",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Faulted",
+      "DataType": {
+       "Id": 1
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"raC_UDT_ItfAD_Framework_Sts"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: raC_UDT_LookupMember_STR0082
+  Id: g=5949d440aa6d2e9c79d99cfecd480dd4
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "raC_UDT_LookupMember_STR0082",
+    "DataType": {
+     "IdType": 2,
+     "Id": "5949d440aa6d2e9c79d99cfecd480dd4",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "Code",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Desc",
+      "DataType": {
+       "Id": 12
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"raC_UDT_LookupMember_STR0082"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding
+- Class: DataType
+  Name: raC_Dvc_StratixAll
+  Id: g=6956fbf613b3aa5014cc7977cd938731
+  Supertype: Structure
+  StructDefinition: 
+   {
+    "Name": "raC_Dvc_StratixAll",
+    "DataType": {
+     "IdType": 2,
+     "Id": "6956fbf613b3aa5014cc7977cd938731",
+     "Namespace": 7
+    },
+    "Fields": [{
+      "Name": "EnableIn",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "EnableOut",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Inp_Enable",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ref_Ctrl_Sts",
+      "DataType": {
+       "IdType": 2,
+       "Id": "4ba776a5629d2107ba6476624946dfa4",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Inf_Lookup",
+      "DataType": {
+       "IdType": 2,
+       "Id": "5949d440aa6d2e9c79d99cfecd480dd4",
+       "Namespace": 7
+      },
+      "ValueRank": "OneDimension",
+      "ArrayDimensions": [32]
+     },{
+      "Name": "Sts_EN",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Sts_ER",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Sts_Connected",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Sts_Available",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Sts_Warning",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Sts_Faulted",
+      "DataType": {
+       "Id": 1
+      }
+     },{
+      "Name": "Ref_GetAllMessage",
+      "DataType": {
+       "IdType": 2,
+       "Id": "1dada3de153760e12ed337249c941680",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Ref_GetSingleMessage",
+      "DataType": {
+       "IdType": 2,
+       "Id": "1dada3de153760e12ed337249c941680",
+       "Namespace": 7
+      }
+     },{
+      "Name": "Wrk_SimulatedProductCode",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "Ref_Storage",
+      "DataType": {
+       "Id": 2
+      },
+      "ValueRank": "OneDimension",
+      "ArrayDimensions": [300]
+     },{
+      "Name": "Sts_bNotReady",
+      "DataType": {
+       "Id": 6
+      }
+     },{
+      "Name": "raC_Dvc_ADFramework_DV_LD",
+      "DataType": {
+       "Id": 1
+      }
+     }]
+   }
+  DisplayName: {"LocaleId":"","Text":"raC_Dvc_StratixAll"}
+  Children:
+  - Name: ns=0;Default Binary
+    Type: DataTypeEncodingType
+    ModellingRule: None
+    DisplayName: {"LocaleId":"","Text":"Default Binary"}
+    ReferenceType: HasEncoding

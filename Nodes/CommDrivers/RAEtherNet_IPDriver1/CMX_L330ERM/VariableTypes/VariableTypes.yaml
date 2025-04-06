@@ -8997,6 +8997,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Desc"
+    - Name: Code
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Code"
+    - Name: Desc
+      Type: RAEtherNetIPTag
+      DataType: String
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Desc"
   - Name: Sts_EN
     Type: RAEtherNetIPTag
     DataType: Boolean

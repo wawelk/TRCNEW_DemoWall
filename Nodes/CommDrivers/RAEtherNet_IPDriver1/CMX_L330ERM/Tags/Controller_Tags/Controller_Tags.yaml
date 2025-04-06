@@ -7239,6 +7239,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Access101.Inf_Lookup[31].Desc"
+    - Name: Code
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Code"
+    - Name: Desc
+      Type: RAEtherNetIPTag
+      DataType: String
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Desc"
   - Name: Sts_EN
     Type: RAEtherNetIPTag
     DataType: Boolean
@@ -8463,6 +8479,22 @@ Children:
         Type: BaseDataVariableType
         DataType: String
         Value: "Access101_FaultLookup[31].Desc"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: Access101_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE
@@ -10035,6 +10067,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Access102.Inf_Lookup[31].Desc"
+    - Name: Code
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Code"
+    - Name: Desc
+      Type: RAEtherNetIPTag
+      DataType: String
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Desc"
   - Name: Sts_EN
     Type: RAEtherNetIPTag
     DataType: Boolean
@@ -11259,6 +11307,22 @@ Children:
         Type: BaseDataVariableType
         DataType: String
         Value: "Access102_FaultLookup[31].Desc"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: Access102_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE
@@ -11958,7 +12022,6 @@ Children:
     DataType: String
     Value: "Access102_Strorage"
 - Name: Access103
-  Id: g=ec1bae0e08a0d32020415645945ab192
   Type: raC_Dvc_StratixAll
   DataType: raC_Dvc_StratixAll
   Children:
@@ -12832,6 +12895,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Access103.Inf_Lookup[31].Desc"
+    - Name: Code
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Code"
+    - Name: Desc
+      Type: RAEtherNetIPTag
+      DataType: String
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Desc"
   - Name: Sts_EN
     Type: RAEtherNetIPTag
     DataType: Boolean
@@ -14056,6 +14135,22 @@ Children:
         Type: BaseDataVariableType
         DataType: String
         Value: "Access103_FaultLookup[31].Desc"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: Access103_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE
@@ -15652,6 +15747,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "_InstanceName.Inf_Lookup[31].Desc"
+    - Name: Code
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Code"
+    - Name: Desc
+      Type: RAEtherNetIPTag
+      DataType: String
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Desc"
   - Name: Sts_EN
     Type: RAEtherNetIPTag
     DataType: Boolean
@@ -16876,6 +16987,22 @@ Children:
         Type: BaseDataVariableType
         DataType: String
         Value: "_InstanceName_FaultLookup[31].Desc"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: _InstanceName_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE

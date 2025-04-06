@@ -66,6 +66,9 @@ Children:
         - Name: RoomTemp
           Type: StoreColumn
           DataType: Float
+        - Name: SCM_AmbientTempF
+          Type: StoreColumn
+          DataType: Float
   - Name: MaxColumnNameLength
     Type: BaseDataVariableType
     DataType: UInt32

@@ -2,3 +2,4 @@ Name: RAEtherNet_IPDriver1
 Type: RAEtherNetIPDriver
 Children:
 - File: CMX_L330ERM/CMX_L330ERM.yaml
+- File: CLX_L85E/CLX_L85E.yaml

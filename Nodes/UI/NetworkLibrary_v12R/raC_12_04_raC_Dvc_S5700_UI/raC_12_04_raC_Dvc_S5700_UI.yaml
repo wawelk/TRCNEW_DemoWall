@@ -1,9 +1,9 @@
-Name: raC_12_04_raC_Dvc_S2500_UI
+Name: raC_12_04_raC_Dvc_S5700_UI
 Type: FolderType
-DisplayName: {"LocaleId":"en-US","Text":"raC_Dvc_S2500"}
+DisplayName: {"LocaleId":"en-US","Text":"raC_Dvc_S5700"}
 Children:
-- Name: raC_12_04_raC_Dvc_S2500_Faceplate
-  Id: g=40813093dd039afe9e16523a725da93a
+- Name: raC_12_04_raC_Dvc_S5700_Faceplate
+  Id: g=2f39100c86c3fb9cebf22a2d8011459a
   Supertype: raSDK1_DialogBoxFPBase
   ReferenceType: HasComponent
   Children:
@@ -206,7 +206,6 @@ Children:
           DataType: Color
           Value: "#afafaf"
         - Name: MoveTarget
-          Id: g=b7583553ffc0f05ee80af33ab3a39667
           Type: NodePointer
           DataType: NodeId
           Children:
@@ -232,7 +231,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Home"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Home"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -252,7 +251,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Switch"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Switch"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -272,7 +271,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Port"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Port"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -292,7 +291,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S2500_Fault"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Fault"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -802,13 +801,12 @@ Children:
     Target: ns=3;i=519
     Direction: Forward
   - Name: MoveTarget
-    Id: g=9409691dba0d71622720d1de770911e5
     Type: NodePointer
     DataType: NodeId
   - Name: Cfg_HelpPanel
     Type: BaseDataVariableType
     DataType: NodeId
-    Value: "/Objects/TRCNEW_DemoWall/UI/raC_12_04_raC_Dvc_S2500_UI/<Private Elements>/raC_12_04_raC_Dvc_S2500_Help"
+    Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/raC_12_04_raC_Dvc_S5700_Help"
   - Name: HelpScreen
     Type: Screen
     Children:
@@ -921,7 +919,6 @@ Children:
           DataType: Color
           Value: "#afafaf"
         - Name: MoveTarget
-          Id: g=06433a1d0d326ebbe141beb6f8f1de4e
           Type: NodePointer
           DataType: NodeId
           Children:
@@ -1059,7 +1056,7 @@ Children:
     },
     "Body": {
      "libraryGuid": "5bdbabe2f79826dc3e0d2b4618bcf899",
-     "objectGuid": "718243f4a28f67da903604ceaf0b97f3",
+     "objectGuid": "182bc286fb7a0f24ed4f74ef29b9333d",
      "objectVersion": 1,
      "highestIgnoredVersion": 0
     }

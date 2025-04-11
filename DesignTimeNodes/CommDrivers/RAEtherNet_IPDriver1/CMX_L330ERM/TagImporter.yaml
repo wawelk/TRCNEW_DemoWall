@@ -16,3 +16,7 @@ Children:
   Type: BaseDataVariableType
   DataType: AbsoluteResourceUri
   Value: "file:///C:/Users/wawelk/Desktop/Logix Projects/DemoWall_5380.ACD"
+- Name: Mode
+  Type: BaseDataVariableType
+  DataType: FetchModes
+  Value: 1

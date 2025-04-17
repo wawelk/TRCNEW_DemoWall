@@ -41,6 +41,7 @@ Children:
   - Name: CSVPath
     Type: BaseDataVariableType
     DataType: AbsoluteResourceUri
+    Value: "file:///C:/Users/labuser/Desktop/DataLogger Export.csv"
   - Name: FieldDelimiter
     Type: BaseDataVariableType
     DataType: String
@@ -48,6 +49,7 @@ Children:
   - Name: Table
     Type: NodePointer
     DataType: NodeId
+    Value: "/Objects/TRCNEW_DemoWall/DataStores/LocalInfluxDBDatabase1/Tables/DataLogger1"
     Children:
     - Name: Kind
       Type: PropertyType

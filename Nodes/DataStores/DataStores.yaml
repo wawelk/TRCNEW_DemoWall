@@ -38,6 +38,7 @@ Children:
     Type: BaseObjectType
     Children:
     - Name: DataLogger1
+      Id: g=bcd88c2e6d8f955e199545f2ded2de2f
       Type: LocalInfluxDBStoreTable
       Children:
       - Name: Tags

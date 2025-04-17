@@ -1,2 +1,9 @@
 Name: Model
 Type: ModelCategoryFolder
+Children:
+- Name: ExportStartDate
+  Type: BaseDataVariableType
+  DataType: DateTime
+- Name: ExportStopDate
+  Type: BaseDataVariableType
+  DataType: DateTime

@@ -77,7 +77,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 340.0
+      Value: 110.0
     - Name: TopMargin
       Type: BaseVariableType
       DataType: Size
@@ -140,7 +140,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 410.0
+      Value: 180.0
     - Name: TopMargin
       Type: BaseVariableType
       DataType: Size
@@ -287,7 +287,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 1200.0
+      Value: 606.0
     - Name: Height
       Type: BaseVariableType
       DataType: Size
@@ -319,6 +319,15 @@ Children:
       DataType: HorizontalAlignment
       ModellingRule: Optional
       Value: 2
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: -660.0
+    - Name: RightMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
   - Name: Label3
     Type: Label
     Children:
@@ -346,7 +355,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 394.0
+      Value: 164.0
   - Name: Label4
     Type: Label
     Children:
@@ -374,7 +383,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 317.0
+      Value: 87.0
   - Name: CircularGauge2
     Type: CircularGauge
     Children:
@@ -415,7 +424,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 810.0
+      Value: 410.0
     - Name: TopMargin
       Type: BaseVariableType
       DataType: Size
@@ -450,7 +459,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 880.0
+      Value: 480.0
     - Name: TopMargin
       Type: BaseVariableType
       DataType: Size
@@ -503,7 +512,7 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 880.0
+      Value: 480.0
   - Name: Label7
     Type: Label
     Children:
@@ -531,7 +540,437 @@ Children:
       Type: BaseVariableType
       DataType: Size
       ModellingRule: Optional
-      Value: 803.0
+      Value: 403.0
+  - Name: DataGrid1
+    Type: DataGrid
+    Children:
+    - Name: Model
+      Type: NodePointer
+      DataType: NodeId
+      Value: "/Objects/TRCNEW_DemoWall/DataStores/LocalInfluxDBDatabase1"
+      Children:
+      - Name: ItemKind
+        Type: PropertyType
+        DataType: NodeId
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+    - Name: Query
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "SELECT * FROM \"DataLogger1\""
+    - Name: Columns
+      Type: BaseObjectType
+      Children:
+      - Name: Timestamp
+        Type: DataGridColumn
+        Children:
+        - Name: Title
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+          Value: {"LocaleId":"en-US","Text":"Timestamp"}
+        - Name: Width
+          Type: BaseDataVariableType
+          DataType: Size
+          Value: -1.0
+        - Name: Visible
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+        - Name: HeaderAlignment
+          Type: BaseDataVariableType
+          DataType: TextHorizontalAlignment
+        - Name: ContentAlignment
+          Type: BaseVariableType
+          DataType: HorizontalAlignment
+        - Name: OrderBy
+          Type: BaseDataVariableType
+          DataType: NodePath
+          Value: "{Item}/Timestamp"
+        - Name: DataItemTemplate
+          Type: DataGridLabelItemTemplate
+          Children:
+          - Name: Text
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Item}/Timestamp"
+      - Name: LocalTimestamp
+        Type: DataGridColumn
+        Children:
+        - Name: Title
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+          Value: {"LocaleId":"en-US","Text":"LocalTimestamp"}
+        - Name: Width
+          Type: BaseDataVariableType
+          DataType: Size
+          Value: -1.0
+        - Name: Visible
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+        - Name: HeaderAlignment
+          Type: BaseDataVariableType
+          DataType: TextHorizontalAlignment
+        - Name: ContentAlignment
+          Type: BaseVariableType
+          DataType: HorizontalAlignment
+        - Name: OrderBy
+          Type: BaseDataVariableType
+          DataType: NodePath
+          Value: "{Item}/LocalTimestamp"
+        - Name: DataItemTemplate
+          Type: DataGridLabelItemTemplate
+          Children:
+          - Name: Text
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Item}/LocalTimestamp"
+      - Name: RoomTemp
+        Type: DataGridColumn
+        Children:
+        - Name: Title
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+          Value: {"LocaleId":"en-US","Text":"RoomTemp"}
+        - Name: Width
+          Type: BaseDataVariableType
+          DataType: Size
+          Value: -1.0
+        - Name: Visible
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+        - Name: HeaderAlignment
+          Type: BaseDataVariableType
+          DataType: TextHorizontalAlignment
+        - Name: ContentAlignment
+          Type: BaseVariableType
+          DataType: HorizontalAlignment
+        - Name: OrderBy
+          Type: BaseDataVariableType
+          DataType: NodePath
+          Value: "{Item}/RoomTemp"
+        - Name: DataItemTemplate
+          Type: DataGridLabelItemTemplate
+          Children:
+          - Name: Text
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Item}/RoomTemp"
+      - Name: SCM_AmbientTempF
+        Type: DataGridColumn
+        Children:
+        - Name: Title
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+          Value: {"LocaleId":"en-US","Text":"SCM_AmbientTempF"}
+        - Name: Width
+          Type: BaseDataVariableType
+          DataType: Size
+          Value: -1.0
+        - Name: Visible
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+        - Name: HeaderAlignment
+          Type: BaseDataVariableType
+          DataType: TextHorizontalAlignment
+        - Name: ContentAlignment
+          Type: BaseVariableType
+          DataType: HorizontalAlignment
+        - Name: OrderBy
+          Type: BaseDataVariableType
+          DataType: NodePath
+          Value: "{Item}/SCM_AmbientTempF"
+        - Name: DataItemTemplate
+          Type: DataGridLabelItemTemplate
+          Children:
+          - Name: Text
+            Type: BaseDataVariableType
+            DataType: LocalizedText
+            Children:
+            - Name: DynamicLink
+              Type: DynamicLink
+              DataType: NodePath
+              Value: "{Item}/SCM_AmbientTempF"
+    - Name: SelectedItem
+      Type: NodePointer
+      DataType: NodeId
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+    - Name: UISelectedItem
+      Type: BaseDataVariableType
+      DataType: NodeId
+      AccessLevel: Read
+    - Class: Reference
+      Target: ns=3;i=504
+      Direction: Forward
+    - Name: Width
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 640.0
+    - Name: Height
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 480.0
+    - Name: Item
+      Type: Alias
+      DataType: NodeId
+      Children:
+      - Name: Kind
+        Type: PropertyType
+        DataType: NodeId
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 710.0
+    - Name: TopMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 80.0
+    - Name: SortColumn
+      Type: BaseDataVariableType
+      DataType: NodeId
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../Columns/Timestamp@NodeId"
+    - Name: SortOrder
+      Type: BaseDataVariableType
+      DataType: SortOrderEnum
+      ModellingRule: Optional
+      Value: 1
+    - Name: AutoRefreshTime
+      Type: BaseDataVariableType
+      DataType: Duration
+      ModellingRule: Optional
+      Value: "0:00:00:10.0000000"
+  - Name: DateAndTime1
+    Type: DateTimePicker
+    Children:
+    - Name: Value
+      Type: BaseDataVariableType
+      DataType: DateTime
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "/Objects/TRCNEW_DemoWall/Model/ExportStartDate"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 780.0
+    - Name: TopMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 569.0
+    - Name: InputFormat
+      Type: BaseDataVariableType
+      DataType: DateTimePickerInputFormatEnum
+      ModellingRule: Optional
+      Value: 1
+  - Name: DateAndTime2
+    Type: DateTimePicker
+    Children:
+    - Name: Value
+      Type: BaseDataVariableType
+      DataType: DateTime
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "/Objects/TRCNEW_DemoWall/Model/ExportStopDate"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 780.0
+    - Name: TopMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 610.0
+    - Name: InputFormat
+      Type: BaseDataVariableType
+      DataType: DateTimePickerInputFormatEnum
+      ModellingRule: Optional
+      Value: 1
+  - Name: Label8
+    Type: Label
+    Children:
+    - Name: Text
+      Type: BaseDataVariableType
+      DataType: LocalizedText
+      ModellingRule: Optional
+      Value: {"LocaleId":"en-US","Text":"From"}
+    - Name: TopMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 570.0
+    - Name: FontSize
+      Type: BaseDataVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 20.0
+    - Name: FontWeight
+      Type: BaseDataVariableType
+      DataType: FontWeightEnum
+      ModellingRule: Optional
+      Value: 700
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 727.0
+  - Name: Label9
+    Type: Label
+    Children:
+    - Name: Text
+      Type: BaseDataVariableType
+      DataType: LocalizedText
+      ModellingRule: Optional
+      Value: {"LocaleId":"en-US","Text":"To"}
+    - Name: TopMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 610.0
+    - Name: FontSize
+      Type: BaseDataVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 20.0
+    - Name: FontWeight
+      Type: BaseDataVariableType
+      DataType: FontWeightEnum
+      ModellingRule: Optional
+      Value: 700
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 727.0
+  - Name: Button1
+    Type: Button
+    Children:
+    - Name: Text
+      Type: BaseDataVariableType
+      DataType: LocalizedText
+      ModellingRule: Optional
+      Value: {"LocaleId":"en-US","Text":"Export to CSV"}
+    - Name: LeftMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 937.0
+    - Name: TopMargin
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 570.0
+    - Name: FontSize
+      Type: BaseDataVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: -1.0
+    - Name: FontWeight
+      Type: BaseDataVariableType
+      DataType: FontWeightEnum
+      ModellingRule: Optional
+      Value: 700
+    - Name: Height
+      Type: BaseVariableType
+      DataType: Size
+      ModellingRule: Optional
+      Value: 70.0
+    - Name: MouseClickEventHandler1
+      Type: EventHandler
+      Children:
+      - Name: ListenEventType
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/EventTypes/BaseEventType/MouseEvent/MouseClickEvent"
+      - Name: MethodsToCall
+        Type: BaseObjectType
+        Children:
+        - Name: MethodContainer1
+          Type: BaseObjectType
+          Children:
+          - Name: ns=2;ObjectPointer
+            Type: NodePointer
+            DataType: NodeId
+            Value: "/Objects/TRCNEW_DemoWall/NetLogic/DataLoggerExporter"
+            Children:
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+              Value: "/Types/ObjectTypes/BaseObjectType"
+          - Name: ns=2;Method
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "Export"
+      - Name: EventArguments
+        Type: MouseClickEvent
+        Children:
+        - Name: EventId
+          Type: PropertyType
+          DataType: ByteString
+        - Name: EventType
+          Type: PropertyType
+          DataType: NodeId
+        - Name: SourceNode
+          Type: PropertyType
+          DataType: NodeId
+        - Name: SourceName
+          Type: PropertyType
+          DataType: String
+        - Name: Time
+          Type: PropertyType
+          DataType: UtcTime
+        - Name: ReceiveTime
+          Type: PropertyType
+          DataType: UtcTime
+        - Name: Message
+          Type: PropertyType
+          DataType: LocalizedText
+        - Name: Severity
+          Type: PropertyType
+          DataType: UInt16
 - Name: Network
   Id: g=1d6a8169933b70cc54963d321aec818f
   Supertype: Screen
@@ -3346,405 +3785,6 @@ Children:
       DataType: FontWeightEnum
       ModellingRule: Optional
       Value: 700
-  - Name: 837TGraphicalButton1
-    Type: raC_3_03_raC_Dvc_837T_GS_NavGraphical
-    Children:
-    - Name: Cfg_CloseCurrentDisplay
-      Type: BaseDataVariableType
-      DataType: Boolean
-    - Name: Cfg_DisplayType
-      Type: BaseDataVariableType
-      DataType: String
-      Value: "Faceplate"
-    - Name: Ref_Tag
-      Type: BaseDataVariableType
-      DataType: NodeId
-    - Name: Cfg_Label
-      Type: BaseDataVariableType
-      DataType: LocalizedText
-      Value: {"LocaleId":"en-US","Text":""}
-    - Name: grp_Icons
-      Type: ColumnLayout
-      Children:
-      - Name: HorizontalLayout
-        Type: RowLayout
-        Children:
-        - Name: Label
-          Type: Label
-          Children:
-          - Name: Text
-            Type: BaseDataVariableType
-            DataType: LocalizedText
-            Children:
-            - Name: ConditionalConverter1
-              Type: ConditionalConverter
-              Children:
-              - Name: Condition
-                Type: BaseDataVariableType
-                DataType: Boolean
-                ReferenceType: HasSource
-                Children:
-                - Name: ExpressionEvaluator1
-                  Type: ExpressionEvaluator
-                  Children:
-                  - Name: Source0
-                    Type: BaseDataVariableType
-                    DataType: BaseDataType
-                    ReferenceType: HasSource
-                    Children:
-                    - Name: DynamicLink
-                      Type: DynamicLink
-                      DataType: NodePath
-                      Value: "../../../../../../../../Cfg_Label"
-                  - Name: Source1
-                    Type: BaseDataVariableType
-                    DataType: BaseDataType
-                    ReferenceType: HasSource
-                    Children:
-                    - Name: StringFormatter1
-                      Type: StringFormatter
-              - Name: TrueValue
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                ReferenceType: HasParameter
-                Value: {"LocaleId":"en-US","Text":""}
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../../../Cfg_Label"
-              - Name: FalseValue
-                Type: BaseDataVariableType
-                DataType: LocalizedText
-                ReferenceType: HasParameter
-                Value: {"LocaleId":"en-US","Text":""}
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../../../Ref_Tag/Description"
-      - Name: grp_Indicators
-        Type: Panel
-        Children:
-        - Name: Img_Device
-          Type: Image
-          Children:
-          - Name: Path
-            Type: BaseDataVariableType
-            DataType: ResourceUri
-            Value: "ns=7;%PROJECTDIR%/res/raC_Dvc_837T.svg"
-          - Name: Visible
-            Type: BaseDataVariableType
-            DataType: Boolean
-            Value: true
-        - Name: img_Sts_Warning
-          Type: Image
-          Children:
-          - Name: Path
-            Type: BaseDataVariableType
-            DataType: ResourceUri
-            Value: "ns=7;%PROJECTDIR%/res/Warning_16.svg"
-          - Name: Visible
-            Type: BaseDataVariableType
-            DataType: Boolean
-            Value: true
-            Children:
-            - Name: ExpressionEvaluator1
-              Type: ExpressionEvaluator
-              Children:
-              - Name: Source0
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../../../Ref_Tag/Sts_Warning"
-              - Name: Source1
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../../../Ref_Tag/Sts_Faulted"
-        - Name: img_Sts_Faulted
-          Type: Image
-          Children:
-          - Name: Path
-            Type: BaseDataVariableType
-            DataType: ResourceUri
-            Value: "ns=7;%PROJECTDIR%/res/Faulted_16px.svg"
-          - Name: Visible
-            Type: BaseDataVariableType
-            DataType: Boolean
-            Value: true
-            Children:
-            - Name: ExpressionEvaluator1
-              Type: ExpressionEvaluator
-              Children:
-              - Name: Source0
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../../../Ref_Tag/Sts_Faulted"
-        - Name: img_Sts_CommBad
-          Type: Image
-          Children:
-          - Name: Path
-            Type: BaseDataVariableType
-            DataType: ResourceUri
-            Value: "ns=7;%PROJECTDIR%/res/Sts_CommBad_16.svg"
-          - Name: Visible
-            Type: BaseDataVariableType
-            DataType: Boolean
-            Value: true
-            Children:
-            - Name: ExpressionEvaluator1
-              Type: ExpressionEvaluator
-              Children:
-              - Name: Source0
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../../../Ref_Tag/Sts_Connected"
-        - Name: img_IOLinkIdentification
-          Type: Image
-          Children:
-          - Name: Path
-            Type: BaseDataVariableType
-            DataType: ResourceUri
-            Value: "ns=7;%PROJECTDIR%/res/raC_Dvc_IOLink.svg"
-          - Name: Visible
-            Type: BaseDataVariableType
-            DataType: Boolean
-            Value: true
-        - Name: img_Sts_NotReady
-          Type: Image
-          Children:
-          - Name: Path
-            Type: BaseDataVariableType
-            DataType: ResourceUri
-            Value: "ns=7;%PROJECTDIR%/res/Sts_NotReady_16.svg"
-          - Name: Visible
-            Type: BaseDataVariableType
-            DataType: Boolean
-            Value: true
-            Children:
-            - Name: ExpressionEvaluator1
-              Type: ExpressionEvaluator
-              Children:
-              - Name: Source0
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../../../Ref_Tag/Sts_Ready"
-      - Name: AnalogValue
-        Type: raSDK1_ND_ValUnit_Stack
-        Children:
-        - Name: Value
-          Type: Label
-          Children:
-          - Name: Text
-            Type: BaseDataVariableType
-            DataType: LocalizedText
-            Children:
-            - Name: StringFormatter1
-              Type: StringFormatter
-              Children:
-              - Name: Source0
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../Inp_Value"
-              - Name: Source1
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../Set_DecimalPlaces"
-          - Name: Style
-            Type: BaseDataVariableType
-            DataType: String
-            Value: "Live Data"
-            Children:
-            - Name: ExpressionEvaluator1
-              Type: ExpressionEvaluator
-              Children:
-              - Name: Source0
-                Type: BaseDataVariableType
-                DataType: BaseDataType
-                ReferenceType: HasSource
-                Children:
-                - Name: DynamicLink
-                  Type: DynamicLink
-                  DataType: NodePath
-                  Value: "../../../../Cfg_DisplayAsPrimary"
-        - Name: Units
-          Type: Label
-          Children:
-          - Name: Text
-            Type: BaseDataVariableType
-            DataType: LocalizedText
-            Children:
-            - Name: DynamicLink
-              Type: DynamicLink
-              DataType: NodePath
-              Value: "../../Cfg_Units"
-        - Name: Cfg_Units
-          Type: BaseDataVariableType
-          DataType: LocalizedText
-          Value: {"LocaleId":"en-US","Text":"Units"}
-          Children:
-          - Name: KeyValueConverter1
-            Type: ValueMapConverter
-            Children:
-            - Name: Source
-              Type: BaseDataVariableType
-              DataType: BaseDataType
-              ReferenceType: HasSource
-              Children:
-              - Name: DynamicLink
-                Type: DynamicLink
-                DataType: NodePath
-                Value: "../../../../../Ref_Tag/Val_MeasuringUnit"
-        - Name: Inp_Value
-          Type: BaseDataVariableType
-          DataType: Float
-          Children:
-          - Name: DynamicLink
-            Type: DynamicLink
-            DataType: NodePath
-            Value: "../../../Ref_Tag/Val_ChTemperature"
-        - Name: Set_DecimalPlaces
-          Type: BaseDataVariableType
-          DataType: Int32
-          Value: 1
-        - Name: Cfg_DisplayAsPrimary
-          Type: BaseDataVariableType
-          DataType: Boolean
-          Value: true
-    - Name: Button
-      Type: raSDK1_NavUsingTag
-      Children:
-      - Name: Cfg_CloseCurrentDisplay
-        Type: BaseDataVariableType
-        DataType: Boolean
-        Children:
-        - Name: DynamicLink
-          Type: DynamicLink
-          DataType: NodePath
-          Value: "../../Cfg_CloseCurrentDisplay"
-      - Name: Cfg_DisplayType
-        Type: BaseDataVariableType
-        DataType: String
-        Value: "Faceplate"
-        Children:
-        - Name: DynamicLink
-          Type: DynamicLink
-          DataType: NodePath
-          Value: "../../Cfg_DisplayType"
-      - Name: Ref_Tag
-        Type: BaseDataVariableType
-        DataType: NodeId
-        Children:
-        - Name: DynamicLink
-          Type: DynamicLink
-          DataType: NodePath
-          Value: "../../Ref_Tag@Pointer"
-      - Name: raSDK1_NL_NavUsingTag
-        Type: NetLogic
-        Children:
-        - Class: Reference
-          Target: g=aa276da26838ae7424472b940df5045d
-          Direction: Forward
-      - Name: MouseClickEventHandler1
-        Type: EventHandler
-        Children:
-        - Name: ListenEventType
-          Type: PropertyType
-          DataType: NodeId
-          Value: "/Types/EventTypes/BaseEventType/MouseEvent/MouseClickEvent"
-        - Name: MethodsToCall
-          Type: BaseObjectType
-          Children:
-          - Name: MethodContainer1
-            Type: BaseObjectType
-            Children:
-            - Name: ObjectPointer
-              Type: NodePointer
-              DataType: NodeId
-              Children:
-              - Name: Kind
-                Type: PropertyType
-                DataType: NodeId
-                Value: "/Types/ObjectTypes/BaseObjectType"
-              - Name: DynamicLink
-                Type: DynamicLink
-                DataType: NodePath
-                Value: "../../../../raSDK1_NL_NavUsingTag@NodeId"
-            - Name: Method
-              Type: BaseDataVariableType
-              DataType: String
-              Value: "NavTag"
-        - Name: EventArguments
-          Type: MouseClickEvent
-          Children:
-          - Name: EventId
-            Type: PropertyType
-            DataType: ByteString
-          - Name: EventType
-            Type: PropertyType
-            DataType: NodeId
-          - Name: SourceNode
-            Type: PropertyType
-            DataType: NodeId
-          - Name: SourceName
-            Type: PropertyType
-            DataType: String
-          - Name: Time
-            Type: PropertyType
-            DataType: UtcTime
-          - Name: ReceiveTime
-            Type: PropertyType
-            DataType: UtcTime
-          - Name: Message
-            Type: PropertyType
-            DataType: LocalizedText
-          - Name: Severity
-            Type: PropertyType
-            DataType: UInt16
-    - Name: LeftMargin
-      Type: BaseVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 1240.0
-    - Name: TopMargin
-      Type: BaseVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 515.0
 - Name: Location
   Id: g=89d99db6e06c07640951bb7b60a57e09
   Supertype: Screen

@@ -1,0 +1,5 @@
+Name: Control
+Type: FolderType
+Children:
+- File: Switches/Switches.yaml
+- File: CommandButtons/CommandButtons.yaml

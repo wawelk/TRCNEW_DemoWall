@@ -114,15 +114,15 @@ Project:
    Module: FTOptix.InfluxDBStoreLocal.Net
    Version: 1.0
  Statistics:
-  TotalNodeCount: 47782
-  Objects: 6095
-  ObjectTypes: 37
-  Variables: 41497
+  TotalNodeCount: 56847
+  Objects: 8044
+  ObjectTypes: 65
+  Variables: 48585
   VariableTypes: 76
   DataTypes: 76
   Methods: 1
-  References: 69
+  References: 85
   ReferenceTypes: 0
-  Files: 56
+  Files: 78
  Nodes:
  - File: Nodes/TRCNEW_DemoWall.yaml

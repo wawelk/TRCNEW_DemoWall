@@ -1,0 +1,4 @@
+Name: RockwellAutomationLibraries
+Type: FolderType
+Children:
+- File: CommonComponents/CommonComponents.yaml

@@ -1080,6 +1080,21 @@ Children:
             Type: PropertyType
             DataType: NodeId
             Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container"
+      - Name: Panel4
+        Type: NavigationPanelItem
+        Children:
+        - Name: Title
+          Type: BaseDataVariableType
+          DataType: LocalizedText
+        - Name: Panel
+          Type: NodePointer
+          DataType: NodeId
+          Value: "/Objects/TRCNEW_DemoWall/UI/Screens/Location"
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container"
     - Name: CurrentPanel
       Type: NodePointer
       DataType: NodeId
@@ -1210,5 +1225,7 @@ Children:
       ModellingRule: Optional
       Value: 2
 - File: Screens/Screens.yaml
+- File: IOLinkLibrary_v3R/IOLinkLibrary_v3R.yaml
 - File: NetworkLibrary_v12R/NetworkLibrary_v12R.yaml
 - File: raSDK/raSDK.yaml
+- File: RockwellAutomationLibraries/RockwellAutomationLibraries.yaml

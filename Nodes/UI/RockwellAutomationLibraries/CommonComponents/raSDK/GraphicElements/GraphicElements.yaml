@@ -1,0 +1,6 @@
+Name: GraphicElements
+Type: FolderType
+Children:
+- File: DataDisplay/DataDisplay.yaml
+- File: Control/Control.yaml
+- File: DataInput/DataInput.yaml

@@ -12,7 +12,7 @@ Children:
   - Name: Store
     Type: NodePointer
     DataType: NodeId
-    Value: "/Objects/TRCNEW_DemoWall/DataStores/LocalInfluxDBDatabase1"
+    Value: "/Objects/TRCNEW_DemoWall/DataStores/RemoteInfluxDBDatabase1"
     Children:
     - Name: Kind
       Type: PropertyType

@@ -2,6 +2,7 @@
 using System;
 using UAManagedCore;
 using FTOptix.NetLogic;
+using FTOptix.InfluxDBStoreRemote;
 #endregion
 
 public class VariablesSimulator : BaseNetLogic

@@ -49,7 +49,7 @@ Children:
   - Name: Table
     Type: NodePointer
     DataType: NodeId
-    Value: "/Objects/TRCNEW_DemoWall/DataStores/LocalInfluxDBDatabase1/Tables/DataLogger1"
+    Value: "/Objects/TRCNEW_DemoWall/DataStores/RemoteInfluxDBDatabase1/Tables/DataLogger1"
     Children:
     - Name: Kind
       Type: PropertyType

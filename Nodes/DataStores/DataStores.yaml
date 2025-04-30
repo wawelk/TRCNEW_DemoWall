@@ -1,45 +1,42 @@
 Name: DataStores
 Type: DataStoresCategoryFolder
 Children:
-- Name: LocalInfluxDBDatabase1
-  Id: g=6af555c4b52fd073f4724ef331ff6cc6
-  Type: InfluxDBStoreLocal
+- Name: RemoteInfluxDBDatabase1
+  Id: g=ccf73da23c4bb3f02ccb2011e267f5f3
+  Type: InfluxDBStoreRemote
   Children:
-  - Name: RetentionPeriod
-    Type: BaseDataVariableType
-    DataType: Duration
-    Value: "0:02:00:00.0000000"
-  - Name: Username
-    Type: BaseDataVariableType
-    DataType: Password
-    AccessLevel: Read
-    Value: "JHf9Zbc4"
-  - Name: Password
-    Type: BaseDataVariableType
-    DataType: Password
-    AccessLevel: Read
-    Value: "Lrb0w9rPCxwFZ50M"
-  - Name: Token
-    Type: BaseDataVariableType
-    DataType: Password
-    AccessLevel: Read
-    Value: "Sx3qIFry0kuli9HZeIHYsNz5"
-  - Name: Organization
+  - Name: Server
     Type: BaseDataVariableType
     DataType: String
-    AccessLevel: Read
-    Value: "Rockwell"
-  - Name: Bucket
+    Value: "localhost"
+  - Name: Port
     Type: BaseDataVariableType
-    DataType: String
+    DataType: UInt16
+    Value: 8086
+  - Name: UseSSL
+    Type: BaseDataVariableType
+    DataType: Boolean
+  - Name: SFEnabled
+    Type: BaseDataVariableType
+    DataType: Boolean
+  - Name: SFBufferMaxSize
+    Type: BaseDataVariableType
+    DataType: UInt32
+    Value: 1000
+  - Name: SFBufferUsage
+    Type: BaseDataVariableType
+    DataType: UInt32
     AccessLevel: Read
-    Value: "bucket"
+  - Name: SFBufferOverflow
+    Type: BaseDataVariableType
+    DataType: Boolean
+    AccessLevel: Read
   - Name: Tables
     Type: BaseObjectType
     Children:
     - Name: DataLogger1
-      Id: g=bcd88c2e6d8f955e199545f2ded2de2f
-      Type: LocalInfluxDBStoreTable
+      Id: g=6c086d41545c29f26c2960a20c68ed9f
+      Type: RemoteInfluxDBStoreTable
       Children:
       - Name: Tags
         Type: BaseObjectType
@@ -70,6 +67,18 @@ Children:
         - Name: SCM_AmbientTempF
           Type: StoreColumn
           DataType: Float
+  - Name: Token
+    Type: BaseDataVariableType
+    DataType: Password
+    Value: "3ZUgZJIQngL0QBXxL2CcwC9XHZ3uEH4lm9Uah6lN7O37WeQm70V2tWtcAaB15p9lIIucGLIRfr69RvkQRDweTg=="
+  - Name: Organization
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "Rockwell"
+  - Name: Bucket
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "FTOptix"
   - Name: MaxColumnNameLength
     Type: BaseDataVariableType
     DataType: UInt32

@@ -3448,7 +3448,7 @@ Children:
       - Name: DynamicLink
         Type: DynamicLink
         DataType: NodePath
-        Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/V3_V1_Volts"
+        Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/I3_Amps"
         Children:
         - Name: Mode
           Type: BaseVariableType
@@ -3494,7 +3494,7 @@ Children:
       - Name: DynamicLink
         Type: DynamicLink
         DataType: NodePath
-        Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/V2_V3_Volts"
+        Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/I2_Amps"
         Children:
         - Name: Mode
           Type: BaseVariableType
@@ -3577,7 +3577,7 @@ Children:
       - Name: DynamicLink
         Type: DynamicLink
         DataType: NodePath
-        Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/V1_V2_Volts"
+        Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/I1_Amps"
         Children:
         - Name: Mode
           Type: BaseVariableType
@@ -3637,7 +3637,7 @@ Children:
           - Name: DynamicLink
             Type: DynamicLink
             DataType: NodePath
-            Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/V1_V2_Volts"
+            Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/I1_Amps"
     - Name: LeftMargin
       Type: BaseVariableType
       DataType: Size
@@ -3672,7 +3672,7 @@ Children:
           - Name: DynamicLink
             Type: DynamicLink
             DataType: NodePath
-            Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/V2_V3_Volts"
+            Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/I2_Amps"
     - Name: LeftMargin
       Type: BaseVariableType
       DataType: Size
@@ -3707,7 +3707,7 @@ Children:
           - Name: DynamicLink
             Type: DynamicLink
             DataType: NodePath
-            Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/V3_V1_Volts"
+            Value: "/Objects/TRCNEW_DemoWall/CommDrivers/MicroControllerDriver1/PM5000/Tags/P53 Table/I3_Amps"
     - Name: LeftMargin
       Type: BaseVariableType
       DataType: Size

@@ -18,5 +18,5 @@ Children:
   Value: "file:///C:/Users/wawelk/Desktop/Logix Projects/DemoWall_5380.ACD"
 - Name: Mode
   Type: BaseDataVariableType
-  DataType: FetchModes
+  DataType: ns=6;FetchModes
   Value: 1

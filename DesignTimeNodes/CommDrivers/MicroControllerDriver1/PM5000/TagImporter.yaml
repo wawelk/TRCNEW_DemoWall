@@ -1,6 +1,6 @@
 Name: TagImporter
-Type: RAEtherNetIPTagImporter
-OwnerId: ns=2;g=ea75daf6aeda9560c0282a144e3dd2ea
+Type: MicroControllerTagImporter
+OwnerId: ns=2;g=38b576884627409d81865ccf8fb237e2
 Children:
 - Name: IgnoredPLCItems
   Type: BaseDataVariableType
@@ -12,11 +12,7 @@ Children:
   DataType: NodeId
   ValueRank: OneDimension
   ArrayDimensions: [0]
-- Name: FilePath
-  Type: BaseDataVariableType
-  DataType: AbsoluteResourceUri
-  Value: "file:///C:/Users/wawelk/Desktop/Logix Projects/DemoWall_L85E_2025.ACD"
 - Name: Mode
   Type: BaseDataVariableType
-  DataType: ns=6;FetchModes
+  DataType: ns=10;FetchModes
   Value: 1

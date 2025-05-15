@@ -8,6 +8,7 @@ using FTOptix.Store;
 using FTOptix.Core;
 using FTOptix.HMIProject;
 using FTOptix.InfluxDBStoreRemote;
+using FTOptix.MicroController;
 #endregion
 
 public class DataLoggerExporter : BaseNetLogic

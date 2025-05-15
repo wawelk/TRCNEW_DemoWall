@@ -1,0 +1,27 @@
+Name: P53 Table
+Type: FolderType
+Children:
+- Name: V1_V2_Volts
+  Type: MicroControllerTag
+  DataType: Float
+  Children:
+  - Name: SymbolName
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "F53:8"
+- Name: V2_V3_Volts
+  Type: MicroControllerTag
+  DataType: Float
+  Children:
+  - Name: SymbolName
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "F53:9"
+- Name: V3_V1_Volts
+  Type: MicroControllerTag
+  DataType: Float
+  Children:
+  - Name: SymbolName
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "F53:10"

@@ -18,6 +18,7 @@ using FTOptix.Core;
 using FTOptix.Alarm;
 using FTOptix.UI;
 using FTOptix.InfluxDBStoreRemote;
+using FTOptix.MicroController;
 #endregion
 
 public class raSDK1_NL_AccordionEnableTriggerDelay : BaseNetLogic

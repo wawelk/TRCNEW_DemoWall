@@ -113,16 +113,24 @@ Project:
    Uri: 'urn:FTOptix:InfluxDBStoreRemote:Net'
    Module: FTOptix.InfluxDBStoreRemote.Net
    Version: 1.0
+  31:
+   Uri: 'urn:FTOptix:MicroController'
+   Module: FTOptix.MicroController
+   Version: 3.1
+  32:
+   Uri: 'urn:FTOptix:MicroController:Net'
+   Module: FTOptix.MicroController.Net
+   Version: 3.1
  Statistics:
-  TotalNodeCount: 56921
-  Objects: 8042
+  TotalNodeCount: 56974
+  Objects: 8055
   ObjectTypes: 66
-  Variables: 48659
+  Variables: 48699
   VariableTypes: 76
   DataTypes: 76
   Methods: 2
-  References: 88
+  References: 94
   ReferenceTypes: 0
-  Files: 78
+  Files: 84
  Nodes:
  - File: Nodes/TRCNEW_DemoWall.yaml

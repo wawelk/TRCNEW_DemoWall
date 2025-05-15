@@ -35,17 +35,22 @@ Project:
    Uri: 'urn:FTOptix:NetLogic'
    Module: FTOptix.NetLogic
    Version: 4.0
+  10:
+   Uri: 'urn:FTOptix:MicroControllerTagImporter'
+   Module: FTOptix.MicroControllerTagImporter
+   Version: 1.0
  Statistics:
-  TotalNodeCount: 10
-  Objects: 2
+  TotalNodeCount: 14
+  Objects: 3
   ObjectTypes: 0
-  Variables: 8
+  Variables: 11
   VariableTypes: 0
   DataTypes: 0
   Methods: 0
   References: 0
   ReferenceTypes: 0
-  Files: 2
+  Files: 3
  Nodes:
+ - File: DesignTimeNodes/CommDrivers/MicroControllerDriver1/PM5000/TagImporter.yaml
  - File: DesignTimeNodes/CommDrivers/RAEtherNet_IPDriver1/CLX_L85E/TagImporter.yaml
  - File: DesignTimeNodes/CommDrivers/RAEtherNet_IPDriver1/CMX_L330ERM/TagImporter.yaml

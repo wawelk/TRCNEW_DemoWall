@@ -25,3 +25,27 @@ Children:
     Type: BaseDataVariableType
     DataType: String
     Value: "F53:10"
+- Name: I1_Amps
+  Type: MicroControllerTag
+  DataType: Float
+  Children:
+  - Name: SymbolName
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "F53:12"
+- Name: I2_Amps
+  Type: MicroControllerTag
+  DataType: Float
+  Children:
+  - Name: SymbolName
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "F53:13"
+- Name: I3_Amps
+  Type: MicroControllerTag
+  DataType: Float
+  Children:
+  - Name: SymbolName
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "F53:14"

@@ -16,4 +16,9 @@
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
   <Import Project="TRCNEW_DemoWall.references"/>
+<ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+         <HintPath>Newtonsoft.Json.dll</HintPath>
+    </Reference>
+</ItemGroup>
 </Project>

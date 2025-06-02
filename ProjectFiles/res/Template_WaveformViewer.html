@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waveform Viewer - {{deviceName}}</title>
+    <link rel="stylesheet" href="ISA_style.css">
+    <script src="echarts.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+
+        .dashboard-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .card:hover { box-shadow: none; }
+
+        .card-header {
+            padding: 0;
+        }
+
+        .card-header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 0 12px 12px 0;
+        }
+
+        .card-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .chart-panel {
+            background: var(--grouping-box);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--equipment-border);
+            flex: 1;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 600px; /* Adjustable height for the chart */
+        }
+
+        .chart-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--title-fg);
+        }
+
+        @media (max-width: 768px) {
+            .card-content { flex-direction: column; }
+            .chart-container { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="card">
+            <!-- <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-title">Waveform Viewer</div>
+                    <div class="card-subtitle">Viewing Waveform Data</div>
+                </div>
+            </div> -->
+            <div class="card-content">
+                <div class="chart-panel">
+                    <div class="chart-title">Waveform Viewer - {{waveformData.fileName}}</div>
+                    <div class="chart-container" id="chartContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder for injected waveform data -->
+    <!-- DATA_PLACEHOLDER -->
+
+    <script>
+        // Wait for DOM content to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate device name
+            const deviceNameElement = document.getElementById('deviceName');
+            if (deviceNameElement) {
+                deviceNameElement.textContent = waveformData.deviceName || 'Unknown Device';
+            } else {
+                console.error('Element with id "deviceName" not found');
+            }
+
+            // Update the chart title with the filename
+            const chartTitle = document.querySelector('.chart-title');
+            if (chartTitle) {
+                chartTitle.textContent = `Waveform Viewer - ${waveformData.fileName || 'Unknown File'}`;
+            } else {
+                console.error('Chart title element not found');
+            }
+
+            // Initialize the ECharts instance
+            var chartDom = document.getElementById('chartContainer');
+            if (!chartDom) {
+                console.error('Element with id "chartContainer" not found');
+                return;
+            }
+            var waveformChart = echarts.init(chartDom, null, { renderer: 'canvas', devicePixelRatio: window.devicePixelRatio });
+
+            // Prepare data for ECharts
+            const labels = waveformData.rows.map(row => row[0]); // Timestamp (assumed as first column)
+            const v1Data = waveformData.rows.map(row => parseFloat(row[1] || 0)); // V1
+            const v2Data = waveformData.rows.map(row => parseFloat(row[2] || 0)); // V2
+            const v3Data = waveformData.rows.map(row => parseFloat(row[3] || 0)); // V3
+            const v4Data = waveformData.rows.map(row => parseFloat(row[4] || 0)); // V4
+            const i1Data = waveformData.rows.map(row => parseFloat(row[5] || 0)); // I1
+            const i2Data = waveformData.rows.map(row => parseFloat(row[6] || 0)); // I2
+            const i3Data = waveformData.rows.map(row => parseFloat(row[7] || 0)); // I3
+            const i4Data = waveformData.rows.map(row => parseFloat(row[8] || 0)); // I4
+
+            // ECharts option configuration
+            var option = {
+                tooltip: { 
+                    trigger: 'axis',
+                    formatter: function(params) {
+                        // Show the full timestamp in the tooltip
+                        const timestamp = params[0].name; // Original timestamp
+                        let result = `Time: ${timestamp}<br>`;
+                        params.forEach(param => {
+                            const unit = param.seriesName.startsWith('V') ? 'V' : 'A';
+                            result += `${param.seriesName}: ${param.value.toFixed(2)} ${unit}<br>`;
+                        });
+                        return result;
+                    }
+                },
+                legend: {
+                    data: ['V1', 'V2', 'V3', 'V4', 'I1', 'I2', 'I3', 'I4'],
+                    top: '5%',
+                    textStyle: { fontSize: 10, color: '#3F3F3F' },
+                    padding: [10, 0, 0, 0]
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '15%', // Increased bottom margin to accommodate zoom slider
+                    containLabel: true
+                },
+                toolbox: { 
+                    feature: { 
+                        // Removed saveAsImage feature
+                    } 
+                },
+                dataZoom: [
+                    {
+                        type: 'inside', // Enables mouse scroll zoom
+                        xAxisIndex: 0,
+                        zoomOnMouseWheel: true, // Enable zoom on mouse wheel
+                        moveOnMouseWheel: false, // Disable panning on mouse wheel
+                        start: 0,
+                        end: 100
+                    },
+                    {
+                        type: 'slider', // Adds x-axis zoom selector bar
+                        xAxisIndex: 0,
+                        start: 0,
+                        end: 100,
+                        height: 30,
+                        bottom: 10
+                    }
+                ],
+                xAxis: {
+                    type: 'category',
+                    data: labels, // Use full labels for data mapping
+                    axisLabel: { 
+                        show: false // Disable x-axis labels
+                    }
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: 'Voltage (V)',
+                        position: 'left',
+                        axisLabel: { formatter: '{value} V', color: '#3F3F3F' }
+                    },
+                    {
+                        type: 'value',
+                        name: 'Current (A)',
+                        position: 'right',
+                        axisLabel: { formatter: '{value} A', color: '#3F3F3F' }
+                    }
+                ],
+                series: [
+                    {
+                        name: 'V1',
+                        type: 'line',
+                        yAxisIndex: 0,
+                        data: v1Data,
+                        smooth: true,
+                        lineStyle: { color: '#FF5733', width: 2 }
+                    },
+                    {
+                        name: 'V2',
+                        type: 'line',
+                        yAxisIndex: 0,
+                        data: v2Data,
+                        smooth: true,
+                        lineStyle: { color: '#33FF57', width: 2 }
+                    },
+                    {
+                        name: 'V3',
+                        type: 'line',
+                        yAxisIndex: 0,
+                        data: v3Data,
+                        smooth: true,
+                        lineStyle: { color: '#3357FF', width: 2 }
+                    },
+                    {
+                        name: 'V4',
+                        type: 'line',
+                        yAxisIndex: 0,
+                        data: v4Data,
+                        smooth: true,
+                        lineStyle: { color: '#9966FF', width: 2 }
+                    },
+                    {
+                        name: 'I1',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: i1Data,
+                        smooth: true,
+                        lineStyle: { color: '#FF5733', width: 2, type: 'dashed' }
+                    },
+                    {
+                        name: 'I2',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: i2Data,
+                        smooth: true,
+                        lineStyle: { color: '#33FF57', width: 2, type: 'dashed' }
+                    },
+                    {
+                        name: 'I3',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: i3Data,
+                        smooth: true,
+                        lineStyle: { color: '#3357FF', width: 2, type: 'dashed' }
+                    },
+                    {
+                        name: 'I4',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: i4Data,
+                        smooth: true,
+                        lineStyle: { color: '#9966FF', width: 2, type: 'dashed' }
+                    }
+                ]
+            };
+
+            // Set the chart options and render
+            waveformChart.setOption(option);
+
+            // Resize chart on window resize
+            window.addEventListener('resize', function() {
+                waveformChart.resize();
+            });
+        });
+    </script>
+</body>
+</html>

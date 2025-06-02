@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonics Dashboard - {{deviceName}}</title>
+    <link rel="stylesheet" href="ISA_style.css">
+    <script src="echarts.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+
+        .dashboard-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .card:hover { box-shadow: none; }
+
+        .card-header {
+            padding: 0;
+        }
+
+        .card-header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 12px;
+            padding-right: 12px;
+            padding-bottom: 12px;
+            padding-left: 0px;
+        }
+
+        .status {
+            font-size: 0.75rem;
+            color: var(--label-fg);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-dot.good { background: var(--state-good); }
+        .status-dot.warn { background: var(--medium-alarm); animation: none; }
+        .status-dot.error { background: var(--urgent-alarm); animation: none; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .card-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            height: 550px;
+        }
+
+        .left-panel {
+            flex: 0 0 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .stats-panel {
+            background: var(--grouping-box);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--equipment-border);
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .stats-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stats-title span {
+            color: var(--title-fg);
+            font-size: 1rem;
+        }
+
+        .harmonic-values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 16px;
+            font-size: 0.875rem;
+            color: var(--label-fg);
+        }
+
+        .harmonic-values div {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 8px;
+            border-radius: 4px;
+            background: var(--card-bg);
+            border: 1px solid var(--equipment-border);
+        }
+
+        .harmonic-values .label {
+            font-weight: 500;
+            color: var(--title-fg);
+        }
+
+        .harmonic-values .value {
+            color: var(--data-fg);
+            font-weight: 500;
+        }
+
+        .right-panel {
+            flex: 0 0 70%;
+            display: flex;
+            flex-direction: column;
+            background: var(--grouping-box);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--equipment-border);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .chart-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--title-fg);
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chart-controls button {
+            background: var(--card-bg);
+            border: 1px solid var(--equipment-border);
+            border-radius: 4px;
+            padding: 6px 12px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            color: var(--label-fg);
+        }
+
+        .chart-controls button:hover {
+            background: var(--data-fg);
+            color: white;
+            border-color: var(--data-fg);
+        }
+
+        #harmonics-chart {
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--equipment-border);
+        }
+
+        @media (max-width: 768px) {
+            .card-content {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-panel, .right-panel {
+                flex: 0 0 100%;
+            }
+            .right-panel {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-left">
+                    <div class="card-subtitle">Real-time Power Quality Monitoring</div>
+                </div>
+                <div class="status">
+                    <span id="status-dot" class="status-dot good"></span>
+                    <span id="last-updated">Last updated: --</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="left-panel">
+                    <div class="stats-panel">
+                        <div class="stats-title">
+                            <span>Harmonic Values</span>
+                        </div>
+                        <div class="harmonic-values" id="harmonic-values">
+                        </div>
+                    </div>
+                </div>
+                <div class="right-panel">
+                    <div class="chart-header">
+                        <div class="chart-title" id="chart-title">Harmonics Chart</div>
+                        <div class="chart-controls">
+                            <button id="toggle-view">Switch to Line</button>
+                            <button id="toggle-first-harmonic">Hide Fundamental</button>
+                        </div>
+                    </div>
+                    <div id="harmonics-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var deviceName = "{{deviceName}}";
+        var harmonicsInterval = null;
+        var currentMetric = "No Selection";
+        var currentChartType = "bar";
+        var hideFirstHarmonic = false;
+        var maxRetries = 5;
+        var retryDelay = 1000;
+
+        var harmonicsChart = echarts.init(document.getElementById('harmonics-chart'));
+        var statusDot = document.getElementById('status-dot');
+        var harmonicValuesDiv = document.getElementById('harmonic-values');
+        var chartTitle = document.getElementById('chart-title');
+
+        document.getElementById('toggle-view').addEventListener('click', function() {
+            currentChartType = currentChartType === 'bar' ? 'line' : 'bar';
+            this.textContent = currentChartType === 'bar' ? 'Switch to Line' : 'Switch to Bar';
+            fetchHarmonicsData();
+        });
+
+        document.getElementById('toggle-first-harmonic').addEventListener('click', function() {
+            hideFirstHarmonic = !hideFirstHarmonic;
+            this.textContent = hideFirstHarmonic ? 'Show Fundamental' : 'Hide Fundamental';
+            fetchHarmonicsData();
+        });
+
+        function getRange(metric) {
+            if (metric.includes('H1')) return 'DC_to_31';
+            if (metric.includes('H2')) return '32_to_63';
+            if (metric.includes('H3')) return '64_to_95';
+            if (metric.includes('H4')) return '96_to_127';
+            return 'Unknown';
+        }
+
+        function getOrdinalSuffix(number) {
+            if (number === 0) return 'DC';
+            const j = number % 10, k = number % 100;
+            if (j === 1 && k !== 11) return number + 'st';
+            if (j === 2 && k !== 12) return number + 'nd';
+            if (j === 3 && k !== 13) return number + 'rd';
+            return number + 'th';
+        }
+
+        function fetchHarmonicsData(retryCount = 0) {
+            const jsonFile = `${deviceName}_HarmonicsData.json`;
+            fetch(jsonFile)
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    currentMetric = data.metric || "No Selection";
+                    const lastRefreshTimestamp = data.lastRefreshTimestamp || new Date().toISOString();
+                    updateHarmonicsChart(data.harmonics, currentMetric);
+                    updateHarmonicValues(data.harmonics, currentMetric);
+
+                    if (currentMetric === "No Selection") {
+                        chartTitle.textContent = "Harmonics Chart (No Selection)";
+                    } else {
+                        const range = getRange(currentMetric).replace('_to_', '-');
+                        chartTitle.textContent = `${currentMetric} (${range})`;
+                    }
+
+                    document.getElementById('last-updated').textContent = `Last updated: ${new Date(lastRefreshTimestamp).toLocaleTimeString()}`;
+                    statusDot.classList.remove('good', 'warn', 'error');
+                    statusDot.classList.add('good');
+
+                    if (!harmonicsInterval) {
+                        harmonicsInterval = setInterval(() => fetchHarmonicsData(), 3000);
+                    }
+                })
+                .catch(error => {
+                    if (retryCount < maxRetries) {
+                        setTimeout(() => fetchHarmonicsData(retryCount + 1), retryDelay);
+                    } else {
+                        statusDot.classList.remove('good', 'warn');
+                        statusDot.classList.add('error');
+                        document.getElementById('last-updated').textContent = `Last updated: Failed to load data`;
+                        harmonicValuesDiv.innerHTML = '<div>No data available.</div>';
+                        harmonicsChart.clear();
+                    }
+                });
+        }
+
+        function updateHarmonicValues(harmonicsData, selectedMetric) {
+            if (selectedMetric === "No Selection") {
+                harmonicValuesDiv.innerHTML = '<div>No metric selected.</div>';
+                return;
+            }
+
+            let harmonicRange = [];
+            let prefix = '';
+            if (selectedMetric.includes('H1')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i);
+                prefix = selectedMetric.replace('_H1_RMS_DC_to_31', '');
+            } else if (selectedMetric.includes('H2')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i + 32);
+                prefix = selectedMetric.replace('_H2_RMS_32_to_63', '');
+            } else if (selectedMetric.includes('H3')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i + 64);
+                prefix = selectedMetric.replace('_H3_RMS_64_to_95', '');
+            } else if (selectedMetric.includes('H4')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i + 96);
+                prefix = selectedMetric.replace('_H4_RMS_96_to_127', '');
+            }
+
+            let htmlContent = '';
+            harmonicRange.forEach(num => {
+                const order = getOrdinalSuffix(num);
+                const key = num === 0 ? `${prefix}_DC` : `${prefix}_${order}`;
+                const value = harmonicsData[key] || '0';
+                htmlContent += `<div><span class="label">${order}</span><span class="value">${value}</span></div>`;
+            });
+            harmonicValuesDiv.innerHTML = htmlContent;
+        }
+
+        function updateHarmonicsChart(harmonicsData, selectedMetric) {
+            if (selectedMetric === "No Selection") {
+                harmonicsChart.clear();
+                return;
+            }
+
+            let harmonicRange = [];
+            let prefix = '';
+            if (selectedMetric.includes('H1')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i);
+                prefix = selectedMetric.replace('_H1_RMS_DC_to_31', '');
+            } else if (selectedMetric.includes('H2')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i + 32);
+                prefix = selectedMetric.replace('_H2_RMS_32_to_63', '');
+            } else if (selectedMetric.includes('H3')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i + 64);
+                prefix = selectedMetric.replace('_H3_RMS_64_to_95', '');
+            } else if (selectedMetric.includes('H4')) {
+                harmonicRange = Array.from({ length: 32 }, (_, i) => i + 96);
+                prefix = selectedMetric.replace('_H4_RMS_96_to_127', '');
+            }
+
+            let harmonicValues = harmonicRange.map((num) => {
+                const order = getOrdinalSuffix(num);
+                const key = num === 0 ? `${prefix}_DC` : `${prefix}_${order}`;
+                return parseFloat(harmonicsData[key]) || 0;
+            });
+
+            if (hideFirstHarmonic) {
+                const firstHarmonicIndex = selectedMetric.includes('H1') ? 1 : 0;
+                harmonicRange = harmonicRange.filter((_, index) => index !== firstHarmonicIndex);
+                harmonicValues = harmonicValues.filter((_, index) => index !== firstHarmonicIndex);
+            }
+
+            const displayRange = harmonicRange.map(num => getOrdinalSuffix(num));
+
+            const chartOption = {
+                grid: { left: '5%', right: '5%', bottom: '10%', top: '10%', containLabel: true },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: (params) => `${params[0].name} Harmonic: <strong>${params[0].value.toFixed(3)}</strong>`
+                },
+                dataZoom: [
+                    { type: 'inside', xAxisIndex: 0, zoomOnMouseWheel: true, start: 0, end: 100 }
+                ],
+                xAxis: {
+                    type: 'category',
+                    data: displayRange,
+                    axisLine: { lineStyle: { color: '#D8D8D8' } },
+                    axisLabel: { rotate: 45, interval: 2, color: '#3F3F3F' }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: { formatter: '{value}', color: '#3F3F3F' },
+                    axisLine: { lineStyle: { color: '#D8D8D8' } },
+                    splitLine: { lineStyle: { color: '#D8D8D8' } }
+                },
+                series: [{
+                    data: harmonicValues,
+                    type: currentChartType,
+                    name: prefix,
+                    itemStyle: { color: '#475CA7' },
+                    areaStyle: currentChartType === 'line' ? {
+                        color: {
+                            type: 'linear',
+                            x: 0, y: 0, x2: 0, y2: 1,
+                            colorStops: [
+                                { offset: 0, color: 'rgba(71, 92, 167, 0.5)' },
+                                { offset: 1, color: 'rgba(71, 92, 167, 0.05)' }
+                            ]
+                        }
+                    } : undefined,
+                    smooth: currentChartType === 'line' ? 0.2 : undefined,
+                    lineStyle: currentChartType === 'line' ? { width: 3 } : undefined
+                }]
+            };
+
+            harmonicsChart.setOption(chartOption);
+        }
+
+        window.addEventListener('resize', () => harmonicsChart.resize());
+        setTimeout(() => fetchHarmonicsData(), 1000);
+    </script>
+    </html>

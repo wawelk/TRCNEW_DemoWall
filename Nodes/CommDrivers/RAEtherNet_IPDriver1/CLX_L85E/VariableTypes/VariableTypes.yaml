@@ -3151,6 +3151,126 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "AlarmDeadband"
+    - Name: AlarmDisable
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "AlarmDisable"
+    - Name: ProcessAlarmLatch
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "ProcessAlarmLatch"
+    - Name: RateAlarmLatch
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RateAlarmLatch"
+    - Name: Range
+      Type: RAEtherNetIPTag
+      DataType: Int16
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Range"
+    - Name: DigitalFilter
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "DigitalFilter"
+    - Name: RateAlarmLimit
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RateAlarmLimit"
+    - Name: LowSignal
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LowSignal"
+    - Name: HighSignal
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HighSignal"
+    - Name: LowEngineering
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LowEngineering"
+    - Name: HighEngineering
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HighEngineering"
+    - Name: LAlarmLimit
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LAlarmLimit"
+    - Name: HAlarmLimit
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HAlarmLimit"
+    - Name: LLAlarmLimit
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LLAlarmLimit"
+    - Name: HHAlarmLimit
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HHAlarmLimit"
+    - Name: AlarmDeadband
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "AlarmDeadband"
   - Name: Out
     Type: 'AB:1756_IF4FXOF2F_Struct_Out:C:0'
     DataType: 'AB:1756_IF4FXOF2F_Struct_Out:C:0'
@@ -3469,6 +3589,158 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "HighLimit"
+    - Name: HoldForInit
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HoldForInit"
+    - Name: AlarmDisable
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "AlarmDisable"
+    - Name: RampAlarmLatch
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RampAlarmLatch"
+    - Name: LimitAlarmLatch
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LimitAlarmLatch"
+    - Name: FaultMode
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "FaultMode"
+    - Name: ProgMode
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "ProgMode"
+    - Name: RampToRun
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RampToRun"
+    - Name: RampToProg
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RampToProg"
+    - Name: RampToFault
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RampToFault"
+    - Name: Range
+      Type: RAEtherNetIPTag
+      DataType: Int16
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Range"
+    - Name: MaxRampRate
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "MaxRampRate"
+    - Name: FaultValue
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "FaultValue"
+    - Name: ProgValue
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "ProgValue"
+    - Name: LowSignal
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LowSignal"
+    - Name: HighSignal
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HighSignal"
+    - Name: LowEngineering
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LowEngineering"
+    - Name: HighEngineering
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HighEngineering"
+    - Name: LowLimit
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LowLimit"
+    - Name: HighLimit
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HighLimit"
 - Name: 'AB:E300_Analog_Struct:I:1'
   Id: g=f1e41cce7fc4122fb15c26c55151fe21
   Supertype: TagStructure
@@ -4009,6 +4281,30 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "rEvent_Timestamp"
+    - Name: iEvent_Code
+      Type: RAEtherNetIPTag
+      DataType: SByte
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "iEvent_Code"
+    - Name: bEvent_Start_Stop
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "bEvent_Start_Stop"
+    - Name: rEvent_Timestamp
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "rEvent_Timestamp"
 - Name: 'AB:E300_History_Struct:C:3'
   Id: g=45fb84b51eca835f446ab92c779d4260
   Supertype: TagStructure
@@ -5241,6 +5537,30 @@ Children:
             Type: BaseDataVariableType
             DataType: String
             Value: "rEvent_Timestamp"
+      - Name: iEvent_Code
+        Type: RAEtherNetIPTag
+        DataType: SByte
+        Children:
+        - Name: SymbolName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "iEvent_Code"
+      - Name: bEvent_Start_Stop
+        Type: RAEtherNetIPTag
+        DataType: Boolean
+        Children:
+        - Name: SymbolName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "bEvent_Start_Stop"
+      - Name: rEvent_Timestamp
+        Type: RAEtherNetIPTag
+        DataType: Float
+        Children:
+        - Name: SymbolName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "rEvent_Timestamp"
   - Name: PS2
     Type: UDT_Emerson_PS
     DataType: UDT_Emerson_PS
@@ -5543,6 +5863,30 @@ Children:
             Type: BaseDataVariableType
             DataType: String
             Value: "rEvent_Timestamp"
+      - Name: iEvent_Code
+        Type: RAEtherNetIPTag
+        DataType: SByte
+        Children:
+        - Name: SymbolName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "iEvent_Code"
+      - Name: bEvent_Start_Stop
+        Type: RAEtherNetIPTag
+        DataType: Boolean
+        Children:
+        - Name: SymbolName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "bEvent_Start_Stop"
+      - Name: rEvent_Timestamp
+        Type: RAEtherNetIPTag
+        DataType: Float
+        Children:
+        - Name: SymbolName
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "rEvent_Timestamp"
   - Name: Alarms
     Type: UDT_Emerson_SCM_Alarms
     DataType: UDT_Emerson_SCM_Alarms
@@ -6273,6 +6617,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Data"
+    - Name: Fault
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Fault"
+    - Name: Data
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Data"
 - Name: 'AB:E300_Analog_Struct:C:1'
   Id: g=63fcd77e72c3e18b85e26bcc5436edf1
   Supertype: TagStructure
@@ -7933,6 +8293,14 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Data"
+    - Name: Data
+      Type: RAEtherNetIPTag
+      DataType: Int32
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Data"
 - Name: 'AB:1756_IF4FXOF2F:O:0'
   Id: g=ad4022e59143504c176a7c51376dcfb7
   Supertype: TagStructure
@@ -10451,6 +10819,94 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Data"
+    - Name: Status
+      Type: RAEtherNetIPTag
+      DataType: Int16
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Status"
+    - Name: ChanFault
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "ChanFault"
+    - Name: CalFault
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "CalFault"
+    - Name: Underrange
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Underrange"
+    - Name: Overrange
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Overrange"
+    - Name: RateAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RateAlarm"
+    - Name: LAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LAlarm"
+    - Name: HAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HAlarm"
+    - Name: LLAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LLAlarm"
+    - Name: HHAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HHAlarm"
+    - Name: Data
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Data"
   - Name: Out
     Type: 'AB:1756_IF4FXOF2F_Struct_Out:I:0'
     DataType: 'AB:1756_IF4FXOF2F_Struct_Out:I:0'
@@ -10625,6 +11081,86 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Data"
+    - Name: Status
+      Type: RAEtherNetIPTag
+      DataType: Int16
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Status"
+    - Name: ChanFault
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "ChanFault"
+    - Name: CalFault
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "CalFault"
+    - Name: WireOff
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "WireOff"
+    - Name: NotANumber
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "NotANumber"
+    - Name: InHold
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "InHold"
+    - Name: RampAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "RampAlarm"
+    - Name: LLimitAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "LLimitAlarm"
+    - Name: HLimitAlarm
+      Type: RAEtherNetIPTag
+      DataType: Boolean
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "HLimitAlarm"
+    - Name: Data
+      Type: RAEtherNetIPTag
+      DataType: Float
+      Children:
+      - Name: SymbolName
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "Data"
   - Name: CSTTimestamp
     Type: RAEtherNetIPTag
     DataType: Int32

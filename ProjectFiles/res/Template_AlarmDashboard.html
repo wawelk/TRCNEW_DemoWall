@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alarm Dashboard</title>
+    <link rel="stylesheet" href="ISA_style.css"> <!-- Link to ISA_style.css -->
+    <script src="echarts.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+
+        .tiles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tile {
+            background: var(--card-bg);
+            border: 1px solid var(--equipment-border);
+            border-radius: 8px;
+            padding: 15px;
+            flex: 1 1 calc(20% - 20px);
+            text-align: center;
+        }
+
+        .tile h3 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--title-fg);
+        }
+
+        .tile p {
+            margin: 5px 0 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--data-fg);
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+            background: var(--grouping-box);
+            border-radius: 8px;
+            border: 1px solid var(--equipment-border);
+            padding: 20px;
+        }
+
+        .data-table-container {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 8px;
+            border: 1px solid var(--equipment-border);
+            text-align: left;
+            color: var(--label-fg);
+        }
+
+        .data-table th {
+            background: var(--grouping-box);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--card-bg-hover); /* Assuming ISA_style.css has this, or use #f1f5f9 */
+        }
+    </style>
+</head>
+<body>
+    <div id="tilesContainer" class="tiles-container"></div>
+    <div id="barChart" class="chart-container"></div>
+    <div id="scatterPlot" class="chart-container"></div>
+    <div class="data-table-container">
+        <table class="data-table" id="alarmTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Alarm Type</th>
+                    <th>Alarm Code</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var alarmData = {
+            "alarms": []
+        };
+
+        // Function to calculate top 5 alarm types
+        function getTop5AlarmTypes(alarms) {
+            const alarmTypeCounts = {};
+            alarms.forEach(alarm => {
+                alarmTypeCounts[alarm.alarmTypeDescription] = (alarmTypeCounts[alarm.alarmTypeDescription] || 0) + 1;
+            });
+
+            // Sort alarm types by count in descending order
+            const sortedAlarmTypes = Object.entries(alarmTypeCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5); // Get top 5
+
+            return sortedAlarmTypes;
+        }
+
+        // Function to create tiles for top 5 alarm types
+        function createTiles(top5AlarmTypes) {
+            const tilesContainer = document.getElementById('tilesContainer');
+            tilesContainer.innerHTML = top5AlarmTypes.map(([alarmType, count]) => `
+                <div class="tile">
+                    <h3>${alarmType}</h3>
+                    <p>${count}</p>
+                </div>
+            `).join('');
+        }
+
+        // Bar Chart: Alarm Type Frequencies
+        var barChart = echarts.init(document.getElementById('barChart'));
+        var barChartOption = {
+            title: { 
+                text: 'Alarm Type Count',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            tooltip: {
+                trigger: 'axis',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#D8D8D8', // --separator-line
+                borderWidth: 1,
+                padding: [5, 10],
+                textStyle: { color: '#3F3F3F', fontSize: 12 }, // --label-fg
+                confine: true,
+                formatter: function (params) {
+                    let tooltipContent = params[0].axisValueLabel + '<br/>';
+                    params.forEach(param => {
+                        tooltipContent += `${param.marker} ${param.seriesName}: <strong>${param.value}</strong><br/>`;
+                    });
+                    return tooltipContent;
+                }
+            },
+            xAxis: { 
+                type: 'category', 
+                data: [],
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                axisLabel: { color: '#3F3F3F' } // --label-fg
+            },
+            yAxis: { 
+                type: 'value',
+                name: 'Count',
+                nameTextStyle: { color: '#3F3F3F' }, // --label-fg
+                axisLabel: { color: '#3F3F3F' }, // --label-fg
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+            },
+            series: [
+                {
+                    name: 'Alarm Count',
+                    type: 'bar',
+                    data: [],
+                    label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}',
+                        color: '#3F3F3F' // --label-fg
+                    },
+                    itemStyle: {
+                        color: '#475CA7' // --data-fg
+                    }
+                }
+            ]
+        };
+
+        // Scatter Plot: Timestamp vs Alarm Type Code
+        var scatterPlot = echarts.init(document.getElementById('scatterPlot'));
+        var scatterPlotOption = {
+            title: { 
+                text: 'Timestamp vs Alarm Type Code',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            tooltip: {
+                trigger: 'item',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#D8D8D8', // --separator-line
+                borderWidth: 1,
+                padding: [5, 10],
+                textStyle: { color: '#3F3F3F', fontSize: 12 }, // --label-fg
+                confine: true,
+                formatter: function (params) {
+                    const alarm = alarmData.alarms[params.dataIndex];
+                    return `
+                        <strong>Timestamp:</strong> ${alarm.timestamp}<br/>
+                        <strong>Alarm Type:</strong> ${alarm.alarmTypeDescription}<br/>
+                        <strong>Alarm Code:</strong> ${alarm.alarmCode}<br/>
+                        <strong>Description:</strong> ${alarm.alarmCodeDescription}
+                    `;
+                }
+            },
+            xAxis: { 
+                type: 'time',
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                axisLabel: { color: '#3F3F3F' } // --label-fg
+            },
+            yAxis: { 
+                type: 'value', 
+                name: 'Alarm Type Code',
+                nameTextStyle: { color: '#3F3F3F' }, // --label-fg
+                axisLabel: { color: '#3F3F3F' }, // --label-fg
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+            },
+            dataZoom: [
+                { type: 'inside', start: 0, end: 100 },
+                { type: 'slider', start: 0, end: 100 }
+            ],
+            series: [
+                {
+                    type: 'scatter',
+                    data: [],
+                    itemStyle: {
+                        color: function (params) {
+                            const alarmTypeCode = alarmData.alarms[params.dataIndex].alarmTypeCode;
+                            const colorMap = {
+                                1: '#ef4444', // --urgent-alarm for Metering_Status
+                                2: '#475CA7', // --data-fg for Over_Range_Information
+                                4: '#6A9C78'  // Custom green for Power/Quality_Status
+                            };
+                            return colorMap[alarmTypeCode] || '#475CA7'; // Default to --data-fg
+                        }
+                    }
+                }
+            ]
+        };
+
+        // Update Charts, Tiles, and Table
+        function updateDashboard() {
+            // Calculate top 5 alarm types
+            const top5AlarmTypes = getTop5AlarmTypes(alarmData.alarms);
+            createTiles(top5AlarmTypes);
+
+            // Bar Chart Data
+            var alarmTypeCounts = {};
+            alarmData.alarms.forEach(alarm => {
+                alarmTypeCounts[alarm.alarmTypeDescription] = (alarmTypeCounts[alarm.alarmTypeDescription] || 0) + 1;
+            });
+            barChartOption.xAxis.data = Object.keys(alarmTypeCounts);
+            barChartOption.series[0].data = Object.values(alarmTypeCounts);
+            barChart.setOption(barChartOption);
+
+            // Scatter Plot Data
+            scatterPlotOption.series[0].data = alarmData.alarms.map(alarm => [
+                new Date(alarm.timestamp), alarm.alarmTypeCode
+            ]);
+            scatterPlot.setOption(scatterPlotOption);
+
+            // Table Data
+            var tableBody = document.querySelector('#alarmTable tbody');
+            tableBody.innerHTML = alarmData.alarms.map(alarm => `
+                <tr>
+                    <td>${alarm.id}</td>
+                    <td>${alarm.timestamp}</td>
+                    <td>${alarm.alarmTypeDescription}</td>
+                    <td>${alarm.alarmCode}</td>
+                    <td>${alarm.alarmCodeDescription}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Initial Update
+        updateDashboard();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            barChart.resize();
+            scatterPlot.resize();
+        });
+    </script>
+</body>
+</html>

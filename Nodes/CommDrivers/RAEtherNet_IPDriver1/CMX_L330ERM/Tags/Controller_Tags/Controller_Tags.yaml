@@ -7002,6 +7002,30 @@ Children:
               Type: BaseDataVariableType
               DataType: String
               Value: "_InstanceName.HMI_Parameters.Home.Ports[29].SelectPort"
+        - Name: PortIndicator
+          Type: RAEtherNetIPTag
+          DataType: SByte
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "PortIndicator"
+        - Name: SFPIndicator
+          Type: RAEtherNetIPTag
+          DataType: SByte
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "SFPIndicator"
+        - Name: SelectPort
+          Type: RAEtherNetIPTag
+          DataType: Boolean
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "SelectPort"
       - Name: Port_Layout
         Type: RAEtherNetIPTag
         DataType: Int32
@@ -9851,6 +9875,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "_InstanceName_FaultLookup[31].Desc.@Description"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: _InstanceName_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE
@@ -12749,6 +12789,30 @@ Children:
               Type: BaseDataVariableType
               DataType: String
               Value: "Stratix101.HMI_Parameters.Home.Ports[29].SelectPort"
+        - Name: PortIndicator
+          Type: RAEtherNetIPTag
+          DataType: SByte
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "PortIndicator"
+        - Name: SFPIndicator
+          Type: RAEtherNetIPTag
+          DataType: SByte
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "SFPIndicator"
+        - Name: SelectPort
+          Type: RAEtherNetIPTag
+          DataType: Boolean
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "SelectPort"
       - Name: Port_Layout
         Type: RAEtherNetIPTag
         DataType: Int32
@@ -15607,6 +15671,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Stratix101_FaultLookup[31].Desc.@Description"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: Stratix101_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE
@@ -17772,6 +17852,30 @@ Children:
               Type: BaseDataVariableType
               DataType: String
               Value: "Stratix102.HMI_Parameters.Home.Ports[29].SelectPort"
+        - Name: PortIndicator
+          Type: RAEtherNetIPTag
+          DataType: SByte
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "PortIndicator"
+        - Name: SFPIndicator
+          Type: RAEtherNetIPTag
+          DataType: SByte
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "SFPIndicator"
+        - Name: SelectPort
+          Type: RAEtherNetIPTag
+          DataType: Boolean
+          Children:
+          - Name: SymbolName
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "SelectPort"
       - Name: Port_Layout
         Type: RAEtherNetIPTag
         DataType: Int32
@@ -20630,6 +20734,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Stratix102_FaultLookup[31].Desc.@Description"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: Stratix102_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE
@@ -23099,6 +23219,22 @@ Children:
           Type: BaseDataVariableType
           DataType: String
           Value: "Stratix103_FaultLookup[31].Desc.@Description"
+  - Name: Code
+    Type: RAEtherNetIPTag
+    DataType: Int32
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Code"
+  - Name: Desc
+    Type: RAEtherNetIPTag
+    DataType: String
+    Children:
+    - Name: SymbolName
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "Desc"
 - Name: Stratix103_GetMsgAll
   Type: MESSAGE
   DataType: MESSAGE

@@ -206,6 +206,7 @@ Children:
           DataType: Color
           Value: "#afafaf"
         - Name: MoveTarget
+          Id: g=6c71a660028ecdf2ae08d863d707cf1d
           Type: NodePointer
           DataType: NodeId
           Children:
@@ -344,6 +345,7 @@ Children:
     Target: ns=3;i=519
     Direction: Forward
   - Name: MoveTarget
+    Id: g=0969780a8bf517a4af0b673e1db9a9cb
     Type: NodePointer
     DataType: NodeId
   - Name: Cfg_HelpPanel
@@ -462,6 +464,7 @@ Children:
           DataType: Color
           Value: "#afafaf"
         - Name: MoveTarget
+          Id: g=b28e960adf2683c5a003be1315ff3877
           Type: NodePointer
           DataType: NodeId
           Children:

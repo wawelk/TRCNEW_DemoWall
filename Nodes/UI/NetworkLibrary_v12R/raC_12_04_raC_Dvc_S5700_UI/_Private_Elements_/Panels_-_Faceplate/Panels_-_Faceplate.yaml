@@ -39363,7 +39363,6 @@ Children:
                     DataType: NodePath
                     Value: "{DD_Tag}/Selected_Port_Name"
               - Name: MoveTarget
-                Id: g=414d63b4f2ab060e71018f40a3b1e9e8
                 Type: NodePointer
                 DataType: NodeId
             - Name: Content

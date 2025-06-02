@@ -15,10 +15,10 @@
   <PropertyGroup>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
-  <Import Project="TRCNEW_DemoWall.references"/>
-<ItemGroup>
+  <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-         <HintPath>Newtonsoft.Json.dll</HintPath>
+      <HintPath>Newtonsoft.Json.dll</HintPath>
     </Reference>
-</ItemGroup>
+  </ItemGroup>
+  <Import Project="TRCNEW_DemoWall.references"/>
 </Project>

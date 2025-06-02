@@ -2859,11 +2859,6 @@ Children:
   - Name: Rectangle3
     Type: Rectangle
     Children:
-    - Name: BorderThickness
-      Type: BaseDataVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 1.0
     - Name: Width
       Type: BaseVariableType
       DataType: Size
@@ -2896,11 +2891,6 @@ Children:
   - Name: Rectangle2
     Type: Rectangle
     Children:
-    - Name: BorderThickness
-      Type: BaseDataVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 1.0
     - Name: Width
       Type: BaseVariableType
       DataType: Size
@@ -3025,11 +3015,6 @@ Children:
   - Name: Rectangle1
     Type: Rectangle
     Children:
-    - Name: BorderThickness
-      Type: BaseDataVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 1.0
     - Name: Width
       Type: BaseVariableType
       DataType: Size
@@ -3367,11 +3352,6 @@ Children:
   - Name: Rectangle4
     Type: Rectangle
     Children:
-    - Name: BorderThickness
-      Type: BaseDataVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 1.0
     - Name: Width
       Type: BaseVariableType
       DataType: Size
@@ -3404,11 +3384,6 @@ Children:
   - Name: Rectangle5
     Type: Rectangle
     Children:
-    - Name: BorderThickness
-      Type: BaseDataVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 1.0
     - Name: Width
       Type: BaseVariableType
       DataType: Size
@@ -3533,11 +3508,6 @@ Children:
   - Name: Rectangle6
     Type: Rectangle
     Children:
-    - Name: BorderThickness
-      Type: BaseDataVariableType
-      DataType: Size
-      ModellingRule: Optional
-      Value: 1.0
     - Name: Width
       Type: BaseVariableType
       DataType: Size
@@ -4548,7 +4518,6 @@ Children:
     - Name: SortOrder
       Type: BaseDataVariableType
       DataType: SortOrderEnum
-      ModellingRule: Optional
       Value: 1
   - Name: DateAndTime1
     Type: DateTimePicker

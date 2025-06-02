@@ -171,6 +171,21 @@ Children:
     Children:
     - Name: Default
       Type: CheckBoxStyle
+  - Name: RectangleStyles
+    Type: BaseObjectType
+    Children:
+    - Name: Default
+      Type: RectangleStyle
+      Children:
+      - Name: BorderThickness
+        Type: BaseDataVariableType
+        DataType: Size
+        Value: 1.0
+  - Name: ScreenStyles
+    Type: BaseObjectType
+    Children:
+    - Name: Default
+      Type: ScreenStyle
 - Name: ISAStyleSheet1
   Id: g=9a493401fa1ca98018e45b6ad0ea99be
   Type: StyleSheet
@@ -839,14 +854,29 @@ Children:
        "highestIgnoredVersion": 0
       }
      }
+  - Name: RectangleStyles
+    Type: BaseObjectType
+    Children:
+    - Name: Default
+      Type: RectangleStyle
+      Children:
+      - Name: BorderThickness
+        Type: BaseDataVariableType
+        DataType: Size
+        Value: 1.0
+  - Name: ScreenStyles
+    Type: BaseObjectType
+    Children:
+    - Name: Default
+      Type: ScreenStyle
 - Name: NativePresentationEngine
   Type: NativePresentationEngine
   ReferenceType: HasOrderedComponent
   Children:
-  - Name: EnableVirtualKeyboard
+  - Name: VirtualKeyboard
     Type: BaseDataVariableType
-    DataType: Boolean
-    Value: true
+    DataType: VirtualKeyboardEngineTypeEnum
+    Value: 1
   - Name: StartWindow
     Type: NodePointer
     DataType: NodeId
@@ -1007,6 +1037,9 @@ Children:
     Type: BaseDataVariableType
     DataType: UInt32
     Value: 3
+  - Name: VirtualKeyboard
+    Type: BaseDataVariableType
+    DataType: VirtualKeyboardEngineTypeEnum
 - Name: MainWindow
   Id: g=01a7e8933afd7c95fe894b0859308138
   Supertype: Window
@@ -1258,3 +1291,4 @@ Children:
 - File: NetworkLibrary_v12R/NetworkLibrary_v12R.yaml
 - File: raSDK/raSDK.yaml
 - File: RockwellAutomationLibraries/RockwellAutomationLibraries.yaml
+- File: Keyboards/Keyboards.yaml

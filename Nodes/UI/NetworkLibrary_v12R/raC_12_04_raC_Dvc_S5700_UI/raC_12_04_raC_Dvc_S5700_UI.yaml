@@ -231,7 +231,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Home"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements&>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Home"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -251,7 +251,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Switch"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements&>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Switch"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -271,7 +271,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Port"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements&>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Port"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -291,7 +291,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Fault"
+                Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements&>/Panels - Faceplate/raC_12_04_raC_Dvc_S5700_Fault"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -806,7 +806,7 @@ Children:
   - Name: Cfg_HelpPanel
     Type: BaseDataVariableType
     DataType: NodeId
-    Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements>/raC_12_04_raC_Dvc_S5700_Help"
+    Value: "/Objects/TRCNEW_DemoWall/UI/NetworkLibrary v12R/raC_12_04_raC_Dvc_S5700_UI/<Private Elements&>/raC_12_04_raC_Dvc_S5700_Help"
   - Name: HelpScreen
     Type: Screen
     Children:

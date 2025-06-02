@@ -2290,6 +2290,31 @@ Children:
                 DataType: Size
                 ModellingRule: Optional
                 Value: 8.0
+      - Name: ContentWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentX
+        Type: BaseDataVariableType
+        DataType: Size
+      - Name: ContentY
+        Type: BaseDataVariableType
+        DataType: Size
+      - Class: Reference
+        Target: ns=3;i=1394
+        Direction: Forward
   - Name: LeftMargin
     Type: BaseVariableType
     DataType: Size
@@ -3787,6 +3812,31 @@ Children:
               DataType: Boolean
               ReferenceType: HasParameter
               ModellingRule: Optional
+      - Name: ContentWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentX
+        Type: BaseDataVariableType
+        DataType: Size
+      - Name: ContentY
+        Type: BaseDataVariableType
+        DataType: Size
+      - Class: Reference
+        Target: ns=3;i=1394
+        Direction: Forward
 - Name: raC_3_03_raC_Dvc_837T_Trend
   Id: g=f84a7b67a52440571ac4245edbd19d38
   Supertype: Panel
@@ -5775,6 +5825,31 @@ Children:
         DataType: Size
         ModellingRule: Optional
         Value: 8.0
+      - Name: ContentWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentX
+        Type: BaseDataVariableType
+        DataType: Size
+      - Name: ContentY
+        Type: BaseDataVariableType
+        DataType: Size
+      - Class: Reference
+        Target: ns=3;i=1394
+        Direction: Forward
 - Name: raC_3_03_raC_Dvc_837T_Config
   Id: g=27bba607fd78811479187564959151cc
   Supertype: Panel
@@ -18893,6 +18968,31 @@ Children:
         DataType: Size
         ModellingRule: Optional
         Value: 4.0
+      - Name: ContentWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentX
+        Type: BaseDataVariableType
+        DataType: Size
+      - Name: ContentY
+        Type: BaseDataVariableType
+        DataType: Size
+      - Class: Reference
+        Target: ns=3;i=1394
+        Direction: Forward
     - Name: Enabled
       Type: BaseDataVariableType
       DataType: Boolean
@@ -20043,11 +20143,6 @@ Children:
             DataType: Size
             ModellingRule: Optional
             Value: 30.0
-          - Name: BorderThickness
-            Type: BaseDataVariableType
-            DataType: Size
-            ModellingRule: Optional
-            Value: 1.0
           - Name: HorizontalAlignment
             Type: BaseVariableType
             DataType: HorizontalAlignment
@@ -21344,11 +21439,6 @@ Children:
                 DataType: Size
                 ModellingRule: Optional
                 Value: 200.0
-              - Name: BorderThickness
-                Type: BaseDataVariableType
-                DataType: Size
-                ModellingRule: Optional
-                Value: 1.0
               - Name: HorizontalAlignment
                 Type: BaseVariableType
                 DataType: HorizontalAlignment
@@ -22415,11 +22505,6 @@ Children:
                 DataType: Size
                 ModellingRule: Optional
                 Value: 200.0
-              - Name: BorderThickness
-                Type: BaseDataVariableType
-                DataType: Size
-                ModellingRule: Optional
-                Value: 1.0
               - Name: HorizontalAlignment
                 Type: BaseVariableType
                 DataType: HorizontalAlignment
@@ -23371,11 +23456,6 @@ Children:
                 DataType: Size
                 ModellingRule: Optional
                 Value: 200.0
-              - Name: BorderThickness
-                Type: BaseDataVariableType
-                DataType: Size
-                ModellingRule: Optional
-                Value: 1.0
               - Name: HorizontalAlignment
                 Type: BaseVariableType
                 DataType: HorizontalAlignment
@@ -24327,11 +24407,6 @@ Children:
                 DataType: Size
                 ModellingRule: Optional
                 Value: 200.0
-              - Name: BorderThickness
-                Type: BaseDataVariableType
-                DataType: Size
-                ModellingRule: Optional
-                Value: 1.0
               - Name: HorizontalAlignment
                 Type: BaseVariableType
                 DataType: HorizontalAlignment
@@ -24564,3 +24639,28 @@ Children:
         DataType: Size
         ModellingRule: Optional
         Value: 8.0
+      - Name: ContentWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewWidth
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ViewHeight
+        Type: BaseDataVariableType
+        DataType: Size
+        AccessLevel: Read
+      - Name: ContentX
+        Type: BaseDataVariableType
+        DataType: Size
+      - Name: ContentY
+        Type: BaseDataVariableType
+        DataType: Size
+      - Class: Reference
+        Target: ns=3;i=1394
+        Direction: Forward

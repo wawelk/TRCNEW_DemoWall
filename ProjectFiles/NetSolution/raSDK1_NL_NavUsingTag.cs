@@ -20,6 +20,8 @@ using System.Reflection;
 using System.IO;
 using FTOptix.InfluxDBStoreRemote;
 using FTOptix.MicroController;
+using FTOptix.SQLiteStore;
+using FTOptix.SerialPort;
 #endregion
 
 /*

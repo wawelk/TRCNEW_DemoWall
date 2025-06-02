@@ -131,3 +131,6 @@ Children:
   - Class: Reference
     Target: ns=11;i=59
     Direction: Forward
+  - Name: SFBufferOverwrite
+    Type: BaseDataVariableType
+    DataType: Boolean

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electrical Parameters Min/Max Dashboard</title>
+    <link rel="stylesheet" href="ISA_style.css"> <!-- Link to ISA_style.css -->
+    <script src="echarts.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .control-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background: var(--card-bg);
+            color: var(--label-fg);
+            font-weight: 500;
+        }
+
+        .control-btn.active {
+            background: var(--data-fg);
+            color: white;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .chart-container {
+            background: var(--grouping-box);
+            border-radius: 8px;
+            border: 1px solid var(--equipment-border);
+            padding: 20px;
+        }
+
+        .chart {
+            height: 400px;
+            width: 100%;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 8px;
+            border: 1px solid var(--equipment-border);
+            text-align: left;
+            color: var(--label-fg);
+        }
+
+        .data-table th {
+            background: var(--grouping-box);
+            font-weight: 600;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--card-bg);
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="control-btn active" data-type="voltage">Voltage</button>
+        <button class="control-btn" data-type="current">Current</button>
+        <button class="control-btn" data-type="power">Power</button>
+        <button class="control-btn" data-type="lines">L1, L2, L3</button>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="chart-container">
+            <div id="minMaxChart" class="chart"></div>
+        </div>
+        <div class="chart-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Min Value</th>
+                        <th>Min Timestamp</th>
+                        <th>Max Value</th>
+                        <th>Max Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody id="parameterTable">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Initialize dashboard data with empty parameters array
+        var dashboardData = {"parameters": []};
+
+        // Add data validation
+        function validateDashboardData() {
+            console.log('Current dashboardData:', dashboardData);
+            if (!dashboardData || !Array.isArray(dashboardData.parameters)) {
+                console.error('Invalid dashboard data structure:', dashboardData);
+                return false;
+            }
+            return true;
+        }
+
+        // Initialize chart
+        const minMaxChart = echarts.init(document.getElementById('minMaxChart'));
+        let currentType = 'voltage';
+
+        function filterParameters(type) {
+            const typeFilters = {
+                'voltage': param => param.name.toLowerCase().includes('volt'),
+                'current': param => param.name.toLowerCase().includes('amp'),
+                'power': param => param.name.toLowerCase().includes('kw') || 
+                               param.name.toLowerCase().includes('kvar') || 
+                               param.name.toLowerCase().includes('kva'),
+                'lines': param => ['L1_kW', 'L1_kVAR', 'L1_kVA', 'L2_kW', 'L2_kVAR', 'L2_kVA', 'L3_kW', 'L3_kVAR', 'L3_kVA']
+                    .includes(param.name)
+            };
+
+            return dashboardData.parameters.filter(typeFilters[type] || (() => true));
+        }
+
+        function updateChart(type, resetZoom = true) {
+            const filteredData = filterParameters(type);
+            
+            const option = {
+                title: {
+                    text: `${type === 'lines' ? 'L1, L2, L3 Power Ranges' : type.charAt(0).toUpperCase() + type.slice(1)} Parameters Ranges`,
+                    left: 'center',
+                    textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+                },
+                legend: {
+                    data: ['Range'],
+                    top: 30,
+                    textStyle: { color: '#3F3F3F' } // --label-fg
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: '#D8D8D8', // --separator-line
+                    borderWidth: 1,
+                    padding: [5, 10],
+                    textStyle: { color: '#3F3F3F', fontSize: 12 }, // --label-fg
+                    confine: true,
+                    formatter: function(params) {
+                        const dataIndex = params[0].dataIndex;
+                        const param = filteredData[dataIndex];
+                        return `${param.name}<br/>` +
+                               `Min: ${param.minValue.toFixed(2)}<br/>` +
+                               `Max: ${param.maxValue.toFixed(2)}`;
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    boundaryGap: [0, 0.01],
+                    zoomable: true,
+                    axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                    axisLabel: { color: '#3F3F3F' }, // --label-fg
+                    splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+                },
+                yAxis: {
+                    type: 'category',
+                    data: filteredData.map(param => param.name),
+                    axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                    axisLabel: { color: '#3F3F3F' } // --label-fg
+                },
+                dataZoom: [{
+                    type: 'inside',
+                    xAxisIndex: 0,
+                    filterMode: 'none',
+                    zoomOnMouseWheel: true,
+                    moveOnMouseWheel: false
+                }],
+                series: [{
+                    name: 'Range',
+                    type: 'custom',
+                    renderItem: function(params, api) {
+                        const start = api.value(0);
+                        const end = api.value(1);
+                        const height = api.size([0, 1])[1] * 0.6;  // 60% of category height
+                        
+                        const x0 = api.coord([start, params.dataIndex])[0];
+                        const y = api.coord([start, params.dataIndex])[1];
+                        const x1 = api.coord([end, params.dataIndex])[0];
+                        
+                        return {
+                            type: 'group',
+                            children: [{
+                                type: 'rect',
+                                shape: {
+                                    x: x0,
+                                    y: y - height / 2,
+                                    width: x1 - x0,
+                                    height: height
+                                },
+                                style: {
+                                    fill: '#475CA7' // --data-fg
+                                }
+                            }]
+                        };
+                    },
+                    encode: {
+                        x: [0, 1],
+                        y: 2
+                    },
+                    data: filteredData.map((param, index) => [
+                        param.minValue,
+                        param.maxValue,
+                        index
+                    ])
+                }]
+            };
+
+            if (resetZoom) {
+                // Clear any existing zoom state
+                option.dataZoom[0].start = 0;
+                option.dataZoom[0].end = 100;
+            }
+
+            minMaxChart.setOption(option, resetZoom);
+        }
+
+        function updateTable(type) {
+            const filteredData = filterParameters(type);
+            const tableBody = document.getElementById('parameterTable');
+            
+            tableBody.innerHTML = filteredData.map(param => `
+                <tr>
+                    <td>${param.name}</td>
+                    <td>${param.minValue.toFixed(2)}</td>
+                    <td>${param.minTimestamp}</td>
+                    <td>${param.maxValue.toFixed(2)}</td>
+                    <td>${param.maxTimestamp}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Event listeners for control buttons
+        document.querySelectorAll('.control-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentType = button.dataset.type;
+                updateChart(currentType, true);  // true forces zoom reset
+                updateTable(currentType);
+            });
+        });
+
+        // Initial update
+        updateChart('voltage', true);
+        updateTable('voltage');
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            minMaxChart.resize();
+        });
+    </script>
+</body>
+</html>

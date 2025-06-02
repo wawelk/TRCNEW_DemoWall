@@ -231,7 +231,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Home"
+                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Home"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -251,7 +251,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Health"
+                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Health"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -271,7 +271,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Trend"
+                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Trend"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -291,7 +291,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Config"
+                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Config"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -311,7 +311,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Fault"
+                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Fault"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -349,7 +349,7 @@ Children:
   - Name: Cfg_HelpPanel
     Type: BaseDataVariableType
     DataType: NodeId
-    Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements>/raC_3_03_raC_Dvc_837T_Help"
+    Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/raC_3_03_raC_Dvc_837T_Help"
   - Name: HelpScreen
     Type: Screen
     Children:

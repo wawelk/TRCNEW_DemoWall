@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Quality Dashboard</title>
+    <!-- Include ECharts from local res folder -->
+    <script src="echarts.min.js"></script>
+    <!-- Include Font Awesome locally -->
+    <script src="all.min.js"></script>
+    <style>
+      :root {
+        --primary-blue: #475CA7;
+        --secondary-blue: #475CA7;
+        --warning-orange: #ff6600;
+        --background-gray: #E0E0E0;
+        --white: #E8E8E8;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0px;
+        background-color: var(--background-gray);
+      }
+
+      /* Loading Message */
+      #loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        color: var(--primary-blue);
+        text-align: center;
+        background: var(--white);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        z-index: 1000;
+      }
+
+      /* Summary Table Styles */
+      .summary-table {
+        width: 100%;
+        background: var(--white);
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+        border-collapse: collapse;
+        display: none; /* Hidden until loaded */
+      }
+
+      .summary-table th,
+      .summary-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .summary-table th {
+        background-color: var(--primary-blue);
+        color: var(--white);
+      }
+
+      .summary-table tbody tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      /* Trend Chart Container */
+      .trend-chart {
+        width: 150px;
+        height: 40px;
+        display: inline-block;
+      }
+
+      /* View Button */
+      .view-btn {
+        padding: 6px 12px;
+        background-color: var(--secondary-blue);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .view-btn:hover {
+        background-color: var(--primary-blue);
+      }
+
+      /* Waveform Icon */
+      .waveform-icon {
+        color: var(--warning-orange);
+        margin-left: 5px;
+      }
+
+      /* Main Dashboard Layout */
+      .dashboard {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+        display: none; /* Hidden until loaded */
+      }
+
+      .chart-container {
+        background: var(--white);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      /* Events Table Container */
+      .table-container {
+        grid-column: 1 / -1;
+        background: var(--white);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        margin-top: 20px;
+      }
+
+      #eventTable {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      #eventTable th,
+      #eventTable td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #eventTable th {
+        background-color: var(--primary-blue);
+        color: var(--white);
+      }
+
+      #eventTable tbody tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      /* Waveform Message */
+      .waveform-message {
+        color: #666;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Message -->
+    <div id="loading">Loading...</div>
+
+    <!-- Summary Table -->
+    <table class="summary-table" id="summaryTable">
+      <thead>
+        <tr>
+          <th>Event Type Category</th>
+          <th>Total Occurrences</th>
+          <th>Latest Occurrence</th>
+          <th>Trend</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Populated dynamically -->
+      </tbody>
+    </table>
+    <!-- Main Dashboard -->
+    <div class="dashboard">
+      <!-- Charts -->
+      <div class="chart-container">
+        <div id="eventFrequencyChart" style="width: 100%; height: 350px;"></div>
+      </div>
+      <div class="chart-container">
+        <div id="eventDurationChart" style="width: 100%; height: 350px;"></div>
+      </div>
+      <div class="chart-container">
+        <div id="voltageLevelsChart" style="width: 100%; height: 350px;"></div>
+      </div>
+      <div class="chart-container">
+        <div id="eventTypesChart" style="width: 100%; height: 350px;"></div>
+      </div>
+      <!-- Events Table -->
+      <div class="table-container">
+        <table id="eventTable">
+          <thead>
+            <tr>
+              <th>Record ID</th>
+              <th>Event Type</th>
+              <th>Sub Event</th>
+              <th>Timestamp</th>
+              <th>Duration (ms)</th>
+              <th>Trip Point</th>
+              <th>Min/Max</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      // Default rawData structure
+      var rawData = {
+        events: []
+      };
+
+      // Ensure rawData.events is defined before processing
+      if (!rawData.events) {
+        rawData.events = [];
+        console.warn("rawData.events is undefined, initializing as empty array.");
+      }
+
+      // Helper function to get the date range from events
+      function getDateRangeFromEvents(events) {
+        if (events.length === 0) {
+          // Default to a small range if no events
+          const now = new Date();
+          return { start: new Date(now.getTime() - 24 * 60 * 60 * 1000), end: now };
+        }
+
+        const timestamps = events.map(event => new Date(event.Local_Timestamp).getTime());
+        const minTimestamp = Math.min(...timestamps);
+        const maxTimestamp = Math.max(...timestamps);
+        return { start: new Date(minTimestamp), end: new Date(maxTimestamp) };
+      }
+
+      // Helper function to generate a complete date range
+      function generateDateRange(start, end) {
+        const dates = [];
+        let currentDate = new Date(start);
+        currentDate.setHours(0, 0, 0, 0); // Start at beginning of the day
+        end.setHours(23, 59, 59, 999); // End at end of the day
+        while (currentDate <= end) {
+          dates.push(new Date(currentDate).toISOString().split('T')[0]);
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return dates;
+      }
+
+      // Helper function to group events by date
+      function groupEventsByDate(events, startTime, endTime) {
+        const grouped = {};
+        const dateRange = generateDateRange(startTime, endTime);
+        dateRange.forEach(date => {
+          grouped[date] = 0;
+        });
+        events.forEach(event => {
+          const date = new Date(event.Local_Timestamp).toISOString().split('T')[0];
+          if (grouped[date] !== undefined) {
+            grouped[date]++;
+          }
+        });
+        return grouped;
+      }
+
+      // Process summary data and check for waveforms
+      function processSummaryData(data) {
+        const summary = {};
+        data.forEach(event => {
+          if (!summary[event.Event_Type]) {
+            summary[event.Event_Type] = {
+              count: 0,
+              latestTimestamp: null,
+              events: [],
+              hasWaveform: false
+            };
+          }
+          summary[event.Event_Type].count++;
+          summary[event.Event_Type].events.push(event);
+          if (event.Association_Timestamp && event.Association_Timestamp !== "0-00-00 00:00:00.000000") {
+            summary[event.Event_Type].hasWaveform = true;
+          }
+          const timestamp = new Date(event.Local_Timestamp);
+          if (!summary[event.Event_Type].latestTimestamp || timestamp > new Date(summary[event.Event_Type].latestTimestamp)) {
+            summary[event.Event_Type].latestTimestamp = event.Local_Timestamp;
+          }
+        });
+
+        // Get the date range for trends
+        const { start: startTime, end: endTime } = getDateRangeFromEvents(data);
+
+        Object.keys(summary).forEach(type => {
+          const eventsByDate = groupEventsByDate(summary[type].events, startTime, endTime);
+          summary[type].trendData = Object.entries(eventsByDate).map(([date, count]) => [new Date(date).getTime(), count]).sort((a, b) => a[0] - b[0]);
+        });
+
+        return Object.entries(summary).map(([type, data]) => ({
+          type,
+          ...data
+        })).sort((a, b) => new Date(b.latestTimestamp) - new Date(a.latestTimestamp));
+      }
+
+      // Populate summary table with trend charts and waveform icon
+      function populateSummaryTable(summaryData) {
+        const tbody = document.querySelector('#summaryTable tbody');
+        tbody.innerHTML = '';
+        summaryData.forEach(event => {
+          const trendChartId = `trend-${event.type.replace(/\s+/g, '-')}`;
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${event.type}${event.hasWaveform ? ' <i class="fas fa-wave-square waveform-icon" title="Has associated waveform"></i>' : ''}</td>
+            <td>${event.count}</td>
+            <td>${new Date(event.latestTimestamp).toLocaleString()}</td>
+            <td><div id="${trendChartId}" class="trend-chart"></div></td>
+            <td><button class="view-btn" onclick="filterTable('${event.type}')">View</button></td>
+          `;
+          tbody.appendChild(row);
+          const trendChart = echarts.init(document.getElementById(trendChartId));
+          const trendOption = {
+            animation: false,
+            grid: { top: 2, right: 5, bottom: 2, left: 5 },
+            xAxis: { type: 'time', show: false },
+            yAxis: { type: 'value', show: false, min: 0 },
+            series: [{
+              data: event.trendData,
+              type: 'line',
+              symbol: 'circle',
+              symbolSize: 4,
+              lineStyle: { color: '#4fa3d0', width: 2 },
+              itemStyle: { color: '#4fa3d0' },
+              areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: 'rgba(79,163,208,0.3)' },
+                  { offset: 1, color: 'rgba(79,163,208,0.1)' }
+                ])
+              }
+            }],
+            dataZoom: [
+              { type: 'inside', start: 0, end: 100, zoomOnMouseWheel: true }
+            ]
+          };
+          trendChart.setOption(trendOption);
+        });
+      }
+
+      // Filter main events table by event type
+      function filterTable(eventType) {
+        const tbody = document.querySelector('#eventTable tbody');
+        tbody.innerHTML = '';
+        const filteredData = eventType ? rawData.events.filter(event => event.Event_Type === eventType) : rawData.events;
+        filteredData.forEach(event => {
+          const row = document.createElement('tr');
+          const hasWaveform = event.Association_Timestamp && event.Association_Timestamp !== "0-00-00 00:00:00.000000";
+          row.innerHTML = `
+            <td>${event.Record_Identifier}</td>
+            <td>${event.Event_Type}</td>
+            <td>${event.Sub_Event}</td>
+            <td>${event.Local_Timestamp}</td>
+            <td>${event.Event_Duration_mS}</td>
+            <td>${event.Trip_Point}</td>
+            <td>${event.Min_or_Max}</td>
+            <td>${hasWaveform ? '<span class="waveform-message">View in Waveform Viewer tab</span>' : ''}</td>
+          `;
+          tbody.appendChild(row);
+        });
+        if (eventType) {
+          document.querySelector('.table-container').scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      // Initialize main charts
+      function initializeCharts(summaryData) {
+        const charts = {
+          frequency: echarts.init(document.getElementById('eventFrequencyChart')),
+          duration: echarts.init(document.getElementById('eventDurationChart')),
+          voltage: echarts.init(document.getElementById('voltageLevelsChart')),
+          types: echarts.init(document.getElementById('eventTypesChart'))
+        };
+        const options = {
+          frequency: {
+            title: { text: 'Event Frequency Over Time' },
+            tooltip: { trigger: 'axis' },
+            xAxis: { type: 'time' },
+            yAxis: { type: 'value' },
+            series: [{
+              name: 'Events',
+              type: 'line',
+              data: rawData.events.map(event => [new Date(event.Local_Timestamp).getTime(), 1])
+            }],
+            dataZoom: [
+              { type: 'inside', start: 0, end: 100, zoomOnMouseWheel: true }
+            ]
+          },
+          duration: {
+            title: { text: 'Event Duration Analysis' },
+            tooltip: { trigger: 'axis' },
+            xAxis: { type: 'category', data: rawData.events.map(event => event.Event_Type) },
+            yAxis: { type: 'value' },
+            series: [{ name: 'Duration', type: 'bar', data: rawData.events.map(event => event.Event_Duration_mS) }],
+            dataZoom: [
+              { type: 'inside', start: 0, end: 100, zoomOnMouseWheel: true }
+            ]
+          },
+          voltage: {
+            title: { text: 'Voltage Levels' },
+            tooltip: { trigger: 'axis' },
+            xAxis: { type: 'category', data: rawData.events.map(event => event.Event_Type) },
+            yAxis: { type: 'value' },
+            series: [{ name: 'Min/Max Value', type: 'scatter', data: rawData.events.map(event => event.Min_or_Max) }],
+            dataZoom: [
+              { type: 'inside', start: 0, end: 100, zoomOnMouseWheel: true }
+            ]
+          },
+          types: {
+            title: { text: 'Event Types Distribution' },
+            tooltip: { trigger: 'item' },
+            series: [{
+              name: 'Event Types',
+              type: 'pie',
+              radius: '60%',
+              data: summaryData.map(data => ({ name: data.type, value: data.count }))
+            }]
+          }
+        };
+        Object.keys(charts).forEach(key => charts[key].setOption(options[key]));
+      }
+
+      // Initialize dashboard
+      function initializeDashboard() {
+        const loadingDiv = document.getElementById('loading');
+        
+        if (!rawData.events || rawData.events.length === 0) {
+          console.warn("rawData.events is empty or undefined, displaying no data message.");
+          loadingDiv.textContent = 'No Power Quality Events Found';
+          loadingDiv.style.fontSize = '28px';
+          loadingDiv.innerHTML += '<p style="font-size: 16px; margin-top: 10px; color: #666;">There are no events available for the selected time period. Please try adjusting your filter criteria.</p>';
+          return;
+        }
+
+        // Hide loading and show content
+        loadingDiv.style.display = 'none';
+        document.querySelector('.summary-table').style.display = 'table';
+        document.querySelector('.dashboard').style.display = 'grid';
+
+        const summaryData = processSummaryData(rawData.events);
+        populateSummaryTable(summaryData);
+        initializeCharts(summaryData);
+        filterTable(''); // Populate table but don’t scroll on initial load
+
+        // Ensure the page starts at the top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Start the dashboard when the DOM is fully loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        // Small delay to ensure rawData is set by NetLogic
+        setTimeout(initializeDashboard, 100);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Energy and Demand Dashboard</title>
+    <link rel="stylesheet" href="ISA_style.css">
+    <script src="echarts.min.js"></script>
+    <style>
+      .card-content {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .charts-container {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 24px;
+        width: 100%;
+        align-items: flex-start;
+      }
+
+      #bar-chart {
+        width: 60%;
+        height: 300px;
+        min-width: 300px;
+      }
+
+      #pf-gauge {
+        width: 40%;
+        height: 300px;
+        min-width: 200px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+      }
+
+      .grid-value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--data-fg);
+        text-align: center;
+      }
+
+      .grid-label {
+        font-size: 0.875rem;
+        color: var(--label-fg);
+        text-align: center;
+      }
+
+      .secondary-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 16px;
+      }
+
+      .column {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .group-box {
+        background: var(--grouping-box);
+        border: 1px solid var(--equipment-border);
+        border-radius: 8px;
+        padding: 16px;
+      }
+
+      .group-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--title-fg);
+        margin-bottom: 12px;
+      }
+
+      .secondary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
+      }
+
+      .secondary-item {
+        background: var(--grouping-box);
+        border: 1px solid var(--equipment-border);
+        border-radius: 6px;
+        padding: 12px;
+        text-align: center;
+      }
+
+      .secondary-value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--data-fg);
+      }
+
+      .secondary-label {
+        font-size: 0.75rem;
+        color: var(--label-fg);
+      }
+
+      .status {
+        font-size: 0.75rem;
+        color: var(--label-fg);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 6px;
+        background: #475CA7;
+      }
+
+      .status-dot.pulse {
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        50% {
+          transform: scale(1.2);
+          opacity: 0.7;
+        }
+
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .grid-item:hover,
+      .secondary-item:hover {
+        box-shadow: none;
+      }
+
+      @media (max-width: 800px) {
+        .charts-container {
+          flex-wrap: wrap;
+        }
+
+        #bar-chart,
+        #pf-gauge {
+          width: 100%;
+        }
+
+        .secondary-section {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Live Energy and Demand Dashboard</div>
+          <div class="card-subtitle">Monitoring Power Flow & Efficiency</div>
+        </div>
+        <div class="status">
+          <span id="status-dot" class="status-dot"></span>
+          <span id="last-updated">Last updated: --</span>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="charts-container">
+          <div id="bar-chart"></div>
+          <div id="pf-gauge"></div>
+        </div>
+        <!-- Main Data -->
+        <div class="grid" id="main-data">
+          <div class="grid-item">
+            <div class="grid-value" id="forward">0</div>
+            <div class="grid-label">Fwd Energy (kWh)</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-value" id="reverse">0</div>
+            <div class="grid-label">Rev Energy (kWh)</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-value" id="net">0</div>
+            <div class="grid-label">Net Energy (kWh)</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-value" id="kvarh-fwd">0</div>
+            <div class="grid-label">Fwd Reactive (kVARh)</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-value" id="kvarh-rev">0</div>
+            <div class="grid-label">Rev Reactive (kVARh)</div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-value" id="kvarh-net">0</div>
+            <div class="grid-label">Net Reactive (kVARh)</div>
+          </div>
+        </div>
+        <!-- Secondary Section: Demand and Projection Columns -->
+        <div class="secondary-section">
+          <!-- Demand Column -->
+          <div class="column">
+            <div class="group-box">
+              <div class="group-title">Demand</div>
+              <div class="secondary-grid" id="demand-group">
+                <div class="secondary-item">
+                  <div class="secondary-value" id="kva-demand">0</div>
+                  <div class="secondary-label">Apparent Demand (kVA)</div>
+                </div>
+                <div class="secondary-item">
+                  <div class="secondary-value" id="kw-demand">0</div>
+                  <div class="secondary-label">Power Demand (kW)</div>
+                </div>
+                <div class="secondary-item">
+                  <div class="secondary-value" id="kvar-demand">0</div>
+                  <div class="secondary-label">Reactive Demand (kVAR)</div>
+                </div>
+                <div class="secondary-item">
+                  <div class="secondary-value" id="demand-amps">0</div>
+                  <div class="secondary-label">Current Demand (A)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Projection Column -->
+          <div class="column">
+            <div class="group-box">
+              <div class="group-title">Projected Demand</div>
+              <div class="secondary-grid" id="projection-group">
+                <div class="secondary-item">
+                  <div class="secondary-value" id="proj-kva-demand">0</div>
+                  <div class="secondary-label">Apparent Projection (kVA)</div>
+                </div>
+                <div class="secondary-item">
+                  <div class="secondary-value" id="proj-kw-demand">0</div>
+                  <div class="secondary-label">Power Projection (kW)</div>
+                </div>
+                <div class="secondary-item">
+                  <div class="secondary-value" id="proj-kvar-demand">0</div>
+                  <div class="secondary-label">Reactive Projection (kVAR)</div>
+                </div>
+                <div class="secondary-item">
+                  <div class="secondary-value" id="proj-amps">0</div>
+                  <div class="secondary-label">Current Projection (A)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Apparent Energy & Amp Hours Group -->
+        <div class="group-box">
+          <div class="group-title">Apparent Energy & Amp Hours</div>
+          <div class="secondary-grid" id="energy-amp-group">
+            <div class="secondary-item">
+              <div class="secondary-value" id="kvah">0</div>
+              <div class="secondary-label">Apparent Energy (kVAh)</div>
+            </div>
+            <div class="secondary-item">
+              <div class="secondary-value" id="kah">0</div>
+              <div class="secondary-label">Amp Hours (kAh)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var deviceName = "{{deviceName}}";
+      var jsonFile = `${deviceName}_EnergyData.json`;
+      var barChart = echarts.init(document.getElementById('bar-chart'));
+      var pfGauge = echarts.init(document.getElementById('pf-gauge'));
+      var statusDot = document.getElementById('status-dot');
+      // Initial chart configurations
+      var barOption = {
+        tooltip: {
+          trigger: 'axis',
+          formatter: (params) => `${params[0].name}: ${params[0].value} ${params[0].dataIndex < 3 ? 'kWh' : params[0].dataIndex === 3 ? 'kW' : 'kVA'}`
+        },
+        xAxis: {
+          type: 'category',
+          data: ['Forward (kWh)', 'Reverse (kWh)', 'Net (kWh)', 'kW Demand (kW)', 'kVA Demand (kVA)'],
+          axisLine: {
+            lineStyle: {
+              color: '#A0A0A4'
+            }
+          },
+          axisLabel: {
+            rotate: 45,
+            color: '#3F3F3F'
+          }
+        },
+        yAxis: {
+          type: 'value',
+          axisLabel: {
+            formatter: '{value}',
+            color: '#3F3F3F'
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#A0A0A4'
+            }
+          }
+        },
+        series: [{
+          data: [0, 0, 0, 0, 0],
+          type: 'bar',
+          itemStyle: {
+            color: (params) => ['#475CA7', '#475CA7', '#475CA7', '#475CA7', '#475CA7'][params.dataIndex]
+          }
+        }]
+      };
+      var gaugeOption = {
+        series: [{
+          type: 'gauge',
+          center: ['50%', '60%'],
+          radius: '70%',
+          startAngle: 180,
+          endAngle: 0,
+          min: -100,
+          max: 100,
+          splitNumber: 4,
+          axisLine: {
+            lineStyle: {
+              width: 20,
+              color: [
+                [1, '#475CA7']
+              ]
+            }
+          },
+          pointer: {
+            width: 5,
+            length: '70%',
+            itemStyle: {
+              color: '#3F3F3F'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            distance: -50,
+            fontSize: 12,
+            color: '#3F3F3F',
+            formatter: function(value) {
+              return [100, 50, 0, -50, -100].includes(value) ? `${value}%` : '';
+            }
+          },
+          title: {
+            offsetCenter: [0, '40%'],
+            fontSize: 14,
+            color: '#3F3F3F',
+            formatter: 'Demand Power Factor'
+          },
+          detail: {
+            valueAnimation: true,
+            offsetCenter: [0, '70%'],
+            fontSize: 20,
+            color: '#475CA7',
+            formatter: function (value) {
+              return value.toFixed(2) + '%';
+            }
+          },
+          data: [{
+            value: 0,
+            name: 'Demand Power Factor'
+          }]
+        }]
+      };
+      barChart.setOption(barOption);
+      pfGauge.setOption(gaugeOption);
+
+      function fetchEnergyData() {
+        statusDot.classList.add('pulse'); // Start pulsing when fetch begins
+        fetch(jsonFile).then(response => {
+          if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+          return response.json();
+        }).then(data => {
+          updateDashboard(data);
+          statusDot.classList.add('pulse'); // Keep pulsing if data is read successfully
+        }).catch(error => {
+          statusDot.classList.remove('pulse'); // Stop pulsing on error
+        });
+      }
+
+      function combineGigaKilo(giga, kilo) {
+        const totalKilo = (giga * 1000000) + kilo;
+        return totalKilo.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+      }
+
+      function updateDashboard(data) {
+        var energyData = data.EnergyData || {};
+        var lastRefreshTimestamp = data.LastRefreshTimestamp || 'N/A';
+        var parsedData = {
+          kWh_Fwd: combineGigaKilo(energyData.GWh_Fwd || 0, energyData.kWh_Fwd || 0),
+          kWh_Rev: combineGigaKilo(energyData.GWh_Rev || 0, energyData.kWh_Rev || 0),
+          kWh_Net: combineGigaKilo(energyData.GWh_Net || 0, energyData.kWh_Net || 0),
+          kW_Demand: energyData.kW_Demand || 0,
+          kVA_Demand: energyData.kVA_Demand || 0,
+          Demand_PF: energyData.Demand_PF || 0,
+          kVARh_Fwd: combineGigaKilo(energyData.GVARh_Fwd || 0, energyData.kVARh_Fwd || 0),
+          kVARh_Rev: combineGigaKilo(energyData.GVARh_Rev || 0, energyData.kVARh_Rev || 0),
+          kVARh_Net: combineGigaKilo(energyData.GVARh_Net || 0, energyData.kVARh_Net || 0),
+          kVAh: combineGigaKilo(energyData.GVAh || 0, energyData.kVAh || 0),
+          kAh: combineGigaKilo(energyData.GAh || 0, energyData.kAh || 0),
+          kVAR_Demand: energyData.kVAR_Demand || 0,
+          Demand_Amps: energyData.Demand_Amps || 0,
+          Projected_kW_Demand: energyData.Projected_kW_Demand || 0,
+          Projected_kVAR_Demand: energyData.Projected_kVAR_Demand || 0,
+          Projected_kVA_Demand: energyData.Projected_kVA_Demand || 0,
+          Projected_Ampere_Demand: energyData.Projected_Ampere_Demand || 0
+        };
+        // Update charts
+        barChart.setOption({
+          series: [{
+            data: [
+              parseFloat(parsedData.kWh_Fwd.replace(/,/g, '')),
+              parseFloat(parsedData.kWh_Rev.replace(/,/g, '')),
+              parseFloat(parsedData.kWh_Net.replace(/,/g, '')),
+              parsedData.kW_Demand,
+              parsedData.kVA_Demand
+            ]
+          }]
+        });
+        pfGauge.setOption({
+          series: [{
+            data: [{
+              value: parsedData.Demand_PF,
+              name: 'Demand Power Factor'
+            }]
+          }]
+        });
+        // Update Main Data
+        document.getElementById('forward').textContent = parsedData.kWh_Fwd;
+        document.getElementById('reverse').textContent = parsedData.kWh_Rev;
+        document.getElementById('net').textContent = parsedData.kWh_Net;
+        document.getElementById('kvarh-fwd').textContent = parsedData.kVARh_Fwd;
+        document.getElementById('kvarh-rev').textContent = parsedData.kVARh_Rev;
+        document.getElementById('kvarh-net').textContent = parsedData.kVARh_Net;
+        // Update Demand Group
+        document.getElementById('demand-amps').textContent = parsedData.Demand_Amps.toFixed(3);
+        document.getElementById('kw-demand').textContent = parsedData.kW_Demand.toFixed(3);
+        document.getElementById('kvar-demand').textContent = parsedData.kVAR_Demand.toFixed(3);
+        document.getElementById('kva-demand').textContent = parsedData.kVA_Demand.toFixed(3);
+        // Update Projection Group
+        document.getElementById('proj-amps').textContent = parsedData.Projected_Ampere_Demand.toFixed(3);
+        document.getElementById('proj-kw-demand').textContent = parsedData.Projected_kW_Demand.toFixed(3);
+        document.getElementById('proj-kvar-demand').textContent = parsedData.Projected_kVAR_Demand.toFixed(3);
+        document.getElementById('proj-kva-demand').textContent = parsedData.Projected_kVA_Demand.toFixed(3);
+        // Update Apparent Energy & Amp Hours Group
+        document.getElementById('kvah').textContent = parsedData.kVAh;
+        document.getElementById('kah').textContent = parsedData.kAh;
+        // Update Status Bar
+        document.getElementById('last-updated').textContent = `Last updated: ${new Date(lastRefreshTimestamp).toLocaleTimeString()}`;
+      }
+
+      fetchEnergyData();
+      setInterval(() => {
+        fetchEnergyData();
+      }, 1000);
+    </script>
+</html>

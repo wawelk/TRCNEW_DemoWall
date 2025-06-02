@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #E0E0E0;
+            font-size: 12px;  /* Reduced base font size */
+        }
+        .container {
+            background-color: #E8E8E8;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 100%;
+            overflow-x: auto;  /* Horizontal scroll if needed */
+        }
+        .controls {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+			table-layout: auto;
+        }
+        th, td {
+            padding: 6px 8px;  /* Reduced padding */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            max-width: 200px;  /* Maximum column width */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #919191;
+            cursor: pointer;
+            position: sticky;
+            top: 50px;  /* Below search box */
+            z-index: 900;
+        }
+        th:hover {
+            background-color: #e9ecef;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        tr:hover td {
+            white-space: normal;  /* Show full content on hover */
+            word-break: break-word;
+        }
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .pagination button:hover {
+            background-color: #f8f9fa;
+        }
+        .pagination button:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search...">
+        </div>
+        <div id="tableContainer"></div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <script>
+        // Data will be replaced by C# code
+        var tableData = [];
+        
+        let currentPage = 1;
+        const rowsPerPage = 15;
+        let sortColumn = null;
+        let sortDirection = 'asc';
+        
+        function renderTable(data) {
+            const container = document.getElementById('tableContainer');
+            if (data.length === 0) {
+                container.innerHTML = '<p>No data found</p>';
+                return;
+            }
+
+            const columns = Object.keys(data[0]);
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const pageData = data.slice(startIndex, startIndex + rowsPerPage);
+
+            let html = '<table><thead><tr>';
+            columns.forEach(column => {
+                html += `<th onclick="sortBy('${column}')">${column} ${getSortIndicator(column)}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+
+            pageData.forEach(row => {
+                html += '<tr>';
+                columns.forEach(column => {
+                    html += `<td>${row[column]}</td>`;
+                });
+                html += '</tr>';
+            });
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+            
+            renderPagination(data.length);
+        }
+
+        function getSortIndicator(column) {
+            if (sortColumn !== column) return '';
+            return sortDirection === 'asc' ? '↑' : '↓';
+        }
+
+        function sortBy(column) {
+            if (sortColumn === column) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortColumn = column;
+                sortDirection = 'asc';
+            }
+
+            const sortedData = [...filteredData].sort((a, b) => {
+                const aVal = a[column];
+                const bVal = b[column];
+                
+                if (typeof aVal === 'number' && typeof bVal === 'number') {
+                    return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+                }
+                
+                return sortDirection === 'asc' 
+                    ? String(aVal).localeCompare(String(bVal))
+                    : String(bVal).localeCompare(String(aVal));
+            });
+
+            renderTable(sortedData);
+        }
+
+        function renderPagination(totalRows) {
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+            const pagination = document.getElementById('pagination');
+            
+            let html = `
+                <button onclick="changePage(1)" ${currentPage === 1 ? 'disabled' : ''}>First</button>
+                <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>Previous</button>
+                <span>Page ${currentPage} of ${totalPages}</span>
+                <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>
+                <button onclick="changePage(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}>Last</button>
+            `;
+            
+            pagination.innerHTML = html;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderTable(filteredData);
+        }
+
+        let filteredData = [...tableData];
+        
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            filteredData = tableData.filter(row => 
+                Object.values(row).some(value => 
+                    String(value).toLowerCase().includes(searchTerm)
+                )
+            );
+            
+            currentPage = 1;
+            renderTable(filteredData);
+        });
+
+        // Initial render
+        renderTable(tableData);
+    </script>
+</body>
+</html>

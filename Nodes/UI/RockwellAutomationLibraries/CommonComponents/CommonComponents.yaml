@@ -2,3 +2,4 @@ Name: CommonComponents
 Type: FolderType
 Children:
 - File: raSDK/raSDK.yaml
+- File: raSDK1/raSDK1.yaml

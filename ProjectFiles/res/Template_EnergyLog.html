@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Log Details</title>
+    <script src="echarts.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #E0E0E0;
+            color: #4A4A4A;
+        }
+        h2 {
+            color: #3F3F3F;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .charts-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .chart-container {
+            width: 48%;
+            height: 100px;
+            background-color: #E8E8E8;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        .table-container {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            background-color: #E8E8E8;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75em;
+            min-width: 600px; /* Ensure table has a minimum width for readability */
+        }
+        th, td {
+            padding: 4px 6px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #475CA7;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e6f0fa;
+        }
+        /* Scrollbar styling for better appearance */
+        .table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="title">Energy Log Details</h2>
+    <div class="charts-row">
+        <div id="kWChart" class="chart-container"></div>
+        <div id="GWhChart" class="chart-container"></div>
+    </div>
+    <div class="table-container">
+        <table id="dataTable">
+            <thead id="tableHeader"></thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Placeholder for injected data -->
+    <!-- DATA_PLACEHOLDER -->
+
+    <script>
+        function initializeChartsAndTable() {
+            // Initialize empty charts
+            const kWChart = echarts.init(document.getElementById('kWChart'));
+            kWChart.setOption({
+                title: { 
+                    text: 'kW Demand', 
+                    textStyle: { color: '#005A9C', fontSize: 12 },
+                    left: 'center',
+                    top: 0
+                },
+                grid: { 
+                    left: '2%', 
+                    right: '2%', 
+                    top: '20%', 
+                    bottom: '2%'
+                }
+            });
+
+            const GWhChart = echarts.init(document.getElementById('GWhChart'));
+            GWhChart.setOption({
+                title: { 
+                    text: 'GWh Net', 
+                    textStyle: { color: '#005A9C', fontSize: 12 },
+                    left: 'center',
+                    top: 0
+                },
+                grid: { 
+                    left: '2%', 
+                    right: '2%', 
+                    top: '20%', 
+                    bottom: '2%'
+                }
+            });
+
+            // Check if energyData is defined
+            if (typeof energyData !== 'undefined' && energyData) {
+                // Update title with deviceName and fileName
+                document.getElementById('title').innerText = `${energyData.deviceName} - ${energyData.fileName}`;
+
+                // Prepare timestamps for charts
+                const timestamps = energyData.rows.map(row => {
+                    const year = row[1];
+                    const monthDay = row[2];
+                    const hourMinute = row[3];
+                    const month = monthDay.substring(0, 2);
+                    const day = monthDay.substring(2, 4);
+                    const hour = hourMinute.substring(0, 2);
+                    const minute = hourMinute.substring(2, 4);
+                    return `${year}-${month}-${day} ${hour}:${minute}`;
+                });
+
+                // Extract kW_Demand and GWh_Net for charts
+                const kWData = energyData.rows.map(row => parseFloat(row[27]));
+                const GWhData = energyData.rows.map(row => parseFloat(row[17]));
+
+                // Update kW_Demand Chart
+                kWChart.setOption({
+                    tooltip: { trigger: 'axis' },
+                    xAxis: {
+                        type: 'category',
+                        data: timestamps,
+                        show: false
+                    },
+                    yAxis: {
+                        type: 'value',
+                        show: false
+                    },
+                    series: [{
+                        name: 'kW Demand',
+                        type: 'line',
+                        data: kWData,
+                        lineStyle: { color: '#28a745', width: 1 },
+                        itemStyle: { color: '#28a745' },
+                        showSymbol: false,
+                        areaStyle: { 
+                            color: 'rgba(40, 167, 69, 0.1)'
+                        }
+                    }]
+                });
+
+                // Update GWh_Net Chart
+                GWhChart.setOption({
+                    tooltip: { trigger: 'axis' },
+                    xAxis: {
+                        type: 'category',
+                        data: timestamps,
+                        show: false
+                    },
+                    yAxis: {
+                        type: 'value',
+                        show: false
+                    },
+                    series: [{
+                        name: 'GWh Net',
+                        type: 'line',
+                        data: GWhData,
+                        lineStyle: { color: '#005A9C', width: 1 },
+                        itemStyle: { color: '#005A9C' },
+                        showSymbol: false,
+                        areaStyle: { 
+                            color: 'rgba(0, 90, 156, 0.1)'
+                        }
+                    }]
+                });
+
+                // Populate table headers
+                const tableHeader = document.getElementById('tableHeader');
+                const headerRow = document.createElement('tr');
+                energyData.headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.innerText = header.replace('_', ' ');
+                    headerRow.appendChild(th);
+                });
+                tableHeader.appendChild(headerRow);
+
+                // Populate table body
+                const tableBody = document.getElementById('tableBody');
+                energyData.rows.forEach(row => {
+                    const tr = document.createElement('tr');
+                    row.forEach(cell => {
+                        const td = document.createElement('td');
+                        td.innerText = cell;
+                        tr.appendChild(td);
+                    });
+                    tableBody.appendChild(tr);
+                });
+            }
+        }
+
+        // Run initialization
+        initializeChartsAndTable();
+    </script>
+</body>
+</html>

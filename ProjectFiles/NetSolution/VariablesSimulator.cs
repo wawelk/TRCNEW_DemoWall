@@ -4,6 +4,8 @@ using UAManagedCore;
 using FTOptix.NetLogic;
 using FTOptix.InfluxDBStoreRemote;
 using FTOptix.MicroController;
+using FTOptix.SQLiteStore;
+using FTOptix.SerialPort;
 #endregion
 
 public class VariablesSimulator : BaseNetLogic

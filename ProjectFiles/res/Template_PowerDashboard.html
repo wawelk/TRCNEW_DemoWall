@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Monitoring Dashboard</title>
+    <link rel="stylesheet" href="ISA_style.css"> <!-- Link to ISA_style.css -->
+    <script src="echarts.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Filter Styles */
+        .filter-container {
+            background: var(--grouping-box);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--equipment-border);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-container label {
+            font-weight: 500;
+            color: var(--label-fg);
+        }
+
+        .filter-container select,
+        .filter-container input[type="date"] {
+            min-width: 120px;
+            height: 38px;
+            border: 1px solid var(--equipment-border);
+            border-radius: 4px;
+            padding: 0 10px;
+            background: var(--card-bg);
+            color: var(--label-fg);
+            cursor: pointer;
+        }
+
+        .filter-container select:hover,
+        .filter-container input[type="date"]:hover {
+            border-color: var(--data-fg);
+        }
+
+        .filter-container button {
+            background: var(--data-fg);
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            height: 38px;
+            font-weight: 500;
+        }
+
+        #customDateRange {
+            display: none;
+            gap: 10px;
+        }
+
+        /* Chart Styles */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+            margin-bottom: 0;
+        }
+
+        .chart-container {
+            background: var(--grouping-box);
+            border-radius: 8px;
+            border: 1px solid var(--equipment-border);
+            padding: 20px;
+        }
+
+        .chart-container div {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Filter Controls -->
+        <div class="filter-container">
+            <label for="timeFilter">Filter by:</label>
+            <select id="timeFilter">
+                <option value="all" selected>All Data</option>
+                <option value="4hr">4 Hours</option>
+                <option value="day">Day</option>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+                <option value="year">Year</option>
+                <option value="custom">Custom</option>
+            </select>
+            <div id="customDateRange">
+                <input type="date" id="startDate">
+                <input type="date" id="endDate">
+            </div>
+            <button onclick="applyFilter()">Apply Filter</button>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div id="chart1"></div>
+            </div>
+            <div class="chart-container">
+                <div id="chart2"></div>
+            </div>
+            <div class="chart-container">
+                <div id="chart3"></div>
+            </div>
+            <div class="chart-container">
+                <div id="chart4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder for JSON data -->
+    <script id="jsonData" type="application/json"></script>
+
+    <script>
+        // Initialize ECharts instances
+        var chart1 = echarts.init(document.getElementById('chart1'));
+        var chart2 = echarts.init(document.getElementById('chart2'));
+        var chart3 = echarts.init(document.getElementById('chart3'));
+        var chart4 = echarts.init(document.getElementById('chart4'));
+
+        // Common chart configurations
+        const commonOptions = {
+            tooltip: {
+                // trigger: 'axis', // Remove this line
+                trigger: 'item', // Add this line
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#D8D8D8', // --separator-line
+                borderWidth: 1,
+                padding: [5, 10],
+                textStyle: {
+                    color: '#3F3F3F', // --label-fg
+                    fontSize: 12
+                },
+                confine: true,
+                // formatter: function (params) {
+                //     let tooltipContent = params[0].axisValueLabel + '<br/>'; // Timestamp
+                //     params.forEach(param => {
+                //         tooltipContent += `${param.marker} ${param.seriesName}: <strong>${param.value.toFixed(2)}</strong><br/>`;
+                //     });
+                //     return tooltipContent;
+                // }
+            },
+            grid: {
+                top: 100,
+                bottom: 80,
+                left: '5%',
+                right: '5%',
+                containLabel: true
+            },
+            dataZoom: [
+                { type: 'inside', start: 0, end: 100 },
+                { type: 'slider', start: 0, end: 100, bottom: 30, height: 20 }
+            ]
+        };
+
+        // Default options for each chart
+        var option1 = {
+            ...commonOptions,
+            title: { 
+                text: 'Voltage and Current', 
+                left: 'center', 
+                padding: [10, 0],
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: { 
+                data: ['Voltage', 'Current'], 
+                left: 'center', 
+                top: 40, 
+                padding: [10, 0],
+                textStyle: { color: '#3F3F3F' } // --label-fg
+            },
+            xAxis: { 
+                type: 'category', 
+                data: [], 
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                axisLabel: { color: '#3F3F3F' } // --label-fg
+            },
+            yAxis: [
+                { 
+                    type: 'value', 
+                    name: 'Voltage', 
+                    position: 'left', 
+                    axisLabel: { formatter: '{value} V', color: '#3F3F3F' }, // --label-fg
+                    axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                    splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+                },
+                { 
+                    type: 'value', 
+                    name: 'Current', 
+                    position: 'right', 
+                    axisLabel: { formatter: '{value} A', color: '#3F3F3F' }, // --label-fg
+                    axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                    splitLine: { show: false }
+                }
+            ],
+            series: [
+                { 
+                    name: 'Voltage', 
+                    type: 'line', 
+                    data: [], 
+                    yAxisIndex: 0,
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                { 
+                    name: 'Current', 
+                    type: 'line', 
+                    data: [], 
+                    yAxisIndex: 1,
+                    lineStyle: { width: 2, color: '#FF6F61' }, // Custom color for contrast
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var option2 = {
+            ...commonOptions,
+            title: { 
+                text: 'Power Metrics', 
+                left: 'center', 
+                padding: [10, 0],
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: { 
+                data: ['Total_kW', 'Total_kVAR', 'Total_kVA'], 
+                left: 'center', 
+                top: 40, 
+                padding: [10, 0],
+                textStyle: { color: '#3F3F3F' } // --label-fg
+            },
+            xAxis: { 
+                type: 'category', 
+                data: [], 
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                axisLabel: { color: '#3F3F3F' } // --label-fg
+            },
+            yAxis: { 
+                type: 'value',
+                axisLabel: { color: '#3F3F3F' }, // --label-fg
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+            },
+            series: [
+                { 
+                    name: 'Total_kW', 
+                    type: 'line', 
+                    data: [],
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                { 
+                    name: 'Total_kVAR', 
+                    type: 'line', 
+                    data: [],
+                    lineStyle: { width: 2, color: '#6A9C78' }, // Custom color for contrast
+                    emphasis: { focus: 'series' }
+                },
+                { 
+                    name: 'Total_kVA', 
+                    type: 'line', 
+                    data: [],
+                    lineStyle: { width: 2, color: '#FFB347' }, // Custom color for contrast
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var option3 = {
+            ...commonOptions,
+            title: { 
+                text: 'Frequency', 
+                left: 'center', 
+                padding: [10, 0],
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: { 
+                data: ['Frequency'], 
+                left: 'center', 
+                top: 40, 
+                padding: [10, 0],
+                textStyle: { color: '#3F3F3F' } // --label-fg
+            },
+            xAxis: { 
+                type: 'category', 
+                data: [], 
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                axisLabel: { color: '#3F3F3F' } // --label-fg
+            },
+            yAxis: { 
+                type: 'value',
+                name: 'Hz',
+                nameLocation: 'middle',
+                nameGap: 30,
+                axisLabel: { color: '#3F3F3F' }, // --label-fg
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+            },
+            series: [
+                { 
+                    name: 'Frequency', 
+                    type: 'line', 
+                    data: [],
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var option4 = {
+            ...commonOptions,
+            title: { 
+                text: 'Voltage Unbalance (%) vs Current Unbalance (%)', 
+                left: 'center', 
+                padding: [10, 0],
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: { 
+                data: ['Voltage Unbalance (%)', 'Current Unbalance (%)'], 
+                left: 'center', 
+                top: 40, 
+                padding: [10, 0],
+                textStyle: { color: '#3F3F3F' } // --label-fg
+            },
+            xAxis: { 
+                type: 'category', 
+                data: [], 
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                axisLabel: { color: '#3F3F3F' } // --label-fg
+            },
+            yAxis: [
+                { 
+                    type: 'value', 
+                    name: 'Voltage Unbalance (%)', 
+                    position: 'left', 
+                    axisLabel: { formatter: '{value} %', color: '#3F3F3F' }, // --label-fg
+                    axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                    splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+                },
+                { 
+                    type: 'value', 
+                    name: 'Current Unbalance (%)', 
+                    position: 'right', 
+                    axisLabel: { formatter: '{value} %', color: '#3F3F3F' }, // --label-fg
+                    axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                    splitLine: { show: false }
+                }
+            ],
+            series: [
+                { 
+                    name: 'Voltage Unbalance (%)', 
+                    type: 'line', 
+                    data: [], 
+                    yAxisIndex: 0,
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                { 
+                    name: 'Current Unbalance (%)', 
+                    type: 'line', 
+                    data: [], 
+                    yAxisIndex: 1,
+                    lineStyle: { width: 2, color: '#FF6F61' }, // Custom color for contrast
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        // Set initial options
+        chart1.setOption(option1);
+        chart2.setOption(option2);
+        chart3.setOption(option3);
+        chart4.setOption(option4);
+
+        // Function to update chart data
+        function updateChartData(filteredData) {
+            chart1.setOption({
+                xAxis: { data: filteredData.xAxis },
+                series: [
+                    { name: 'Voltage', data: filteredData.voltage },
+                    { name: 'Current', data: filteredData.current }
+                ]
+            });
+            chart2.setOption({
+                xAxis: { data: filteredData.xAxis },
+                series: [
+                    { name: 'Total_kW', data: filteredData.total_kW },
+                    { name: 'Total_kVAR', data: filteredData.total_kVAR },
+                    { name: 'Total_kVA', data: filteredData.total_kVA }
+                ]
+            });
+            chart3.setOption({
+                xAxis: { data: filteredData.xAxis },
+                series: [
+                    { name: 'Frequency', data: filteredData.frequency }
+                ]
+            });
+            chart4.setOption({
+                xAxis: { data: filteredData.xAxis },
+                series: [
+                    { name: 'Voltage Unbalance (%)', data: filteredData.voltageUnbalance },
+                    { name: 'Current Unbalance (%)', data: filteredData.currentUnbalance }
+                ]
+            });
+        }
+
+        // Function to filter data based on selected time range
+        function filterData(data, filterType, startDate, endDate) {
+            if (filterType === 'all' || !filterType) return data;
+            
+            const now = new Date();
+            let filteredData = { ...data };
+
+            if (filterType === '4hr') {
+                const fourHoursAgo = new Date(now.getTime() - 4 * 60 * 60 * 1000);
+                filteredData.xAxis = data.xAxis.filter((timestamp) => new Date(timestamp) >= fourHoursAgo);
+                filteredData.voltage = data.voltage.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+                filteredData.current = data.current.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+                filteredData.total_kW = data.total_kW.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+                filteredData.total_kVAR = data.total_kVAR.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+                filteredData.total_kVA = data.total_kVA.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+                filteredData.frequency = data.frequency.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+                filteredData.voltageUnbalance = data.voltageUnbalance.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+                filteredData.currentUnbalance = data.currentUnbalance.filter((_, index) => new Date(data.xAxis[index]) >= fourHoursAgo);
+            } else if (filterType === 'custom') {
+                filteredData.xAxis = data.xAxis.filter((timestamp) => {
+                    const date = new Date(timestamp);
+                    return date >= startDate && date <= endDate;
+                });
+                filteredData.voltage = data.voltage.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+                filteredData.current = data.current.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+                filteredData.total_kW = data.total_kW.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+                filteredData.total_kVAR = data.total_kVAR.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+                filteredData.total_kVA = data.total_kVA.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+                filteredData.frequency = data.frequency.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+                filteredData.voltageUnbalance = data.voltageUnbalance.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+                filteredData.currentUnbalance = data.currentUnbalance.filter((_, index) => new Date(data.xAxis[index]) >= startDate && new Date(data.xAxis[index]) <= endDate);
+            }
+            return filteredData;
+        }
+
+        // Function to apply the selected filter
+        function applyFilter() {
+            const filterType = document.getElementById('timeFilter').value;
+            const startDate = document.getElementById('startDate').value ? new Date(document.getElementById('startDate').value) : null;
+            const endDate = document.getElementById('endDate').value ? new Date(document.getElementById('endDate').value) : null;
+            var jsonData = document.getElementById("jsonData").textContent;
+            var data = JSON.parse(jsonData);
+            const filteredData = filterData(data, filterType, startDate, endDate);
+            updateChartData(filteredData);
+        }
+
+        // Show/hide custom date inputs
+        document.getElementById('timeFilter').addEventListener('change', function() {
+            document.getElementById('customDateRange').style.display = this.value === 'custom' ? 'flex' : 'none';
+        });
+
+        // Initial load
+        window.onload = function() {
+            try {
+                var jsonData = document.getElementById("jsonData").textContent;
+                if (jsonData) {
+                    var data = JSON.parse(jsonData);
+                    updateChartData(data);
+                }
+            } catch (error) {
+                console.error("Error loading initial data:", error);
+            }
+        };
+
+        // Resize charts on window resize
+        window.addEventListener('resize', () => {
+            chart1.resize();
+            chart2.resize();
+            chart3.resize();
+            chart4.resize();
+        });
+    </script>
+</body>
+</html>

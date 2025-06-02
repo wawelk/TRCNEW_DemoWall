@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time of Use Dashboard</title>
+    <link rel="stylesheet" href="ISA_style.css"> <!-- Link to ISA_style.css -->
+    <script src="echarts.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Ensure responsiveness on smaller screens */
+        }
+
+        .chart-container {
+            background: var(--grouping-box);
+            border-radius: 8px;
+            border: 1px solid var(--equipment-border);
+            padding: 20px;
+            flex: 1;
+            min-width: 0; /* Ensures charts don't overflow */
+        }
+
+        .chart-container div {
+            width: 100%;
+            height: 350px;
+        }
+
+        .table-container {
+            background: var(--grouping-box);
+            border-radius: 8px;
+            border: 1px solid var(--equipment-border);
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        #eventTable {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        #eventTable th, #eventTable td {
+            border: 1px solid var(--equipment-border);
+            padding: 12px;
+            text-align: center;
+            color: var(--label-fg);
+        }
+
+        #eventTable th {
+            background: var(--data-fg);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        #eventTable tr:nth-child(even) {
+            background: var(--card-bg);
+        }
+
+        #eventTable tr:hover {
+            background: var(--card-bg-hover); /* Assuming ISA_style.css has this, or use #f1f5f9 */
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="chart-container">
+            <div id="lineChart1"></div>
+        </div>
+        <div class="chart-container">
+            <div id="lineChart2"></div>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="chart-container">
+            <div id="lineChart3"></div>
+        </div>
+        <div class="chart-container">
+            <div id="lineChart4"></div>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="chart-container">
+            <div id="lineChart5"></div>
+        </div>
+        <div class="chart-container">
+            <div id="lineChart6"></div>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="chart-container">
+            <div id="lineChart7"></div>
+        </div>
+        <div class="chart-container">
+            <div id="lineChart8"></div>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="chart-container">
+            <div id="lineChart9"></div>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table id="eventTable">
+            <thead>
+                <tr>
+                    <th>Record Number</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Off Peak GWh Net</th>
+                    <th>Off Peak kWh Net</th>
+                    <th>Off Peak kW Demand</th>                    
+                    <th>Mid Peak GWh Net</th>
+                    <th>Mid Peak kWh Net</th>
+                    <th>Mid Peak kW Demand</th>
+                    <th>On Peak GWh Net</th>
+                    <th>On Peak kWh Net</th>
+                    <th>On Peak kW Demand</th>
+                    <th>Off Peak GVARh Net</th>
+                    <th>Off Peak kVARh Net</th>
+                    <th>Off Peak kVAR Demand</th>
+                    <th>Mid Peak GVARh Net</th>
+                    <th>Mid Peak kVARh Net</th>
+                    <th>Mid Peak kVAR Demand</th>
+                    <th>On Peak GVARh Net</th>
+                    <th>On Peak kVARh Net</th>
+                    <th>On Peak kVAR Demand</th>
+                    <th>Off Peak GVAh Net</th>
+                    <th>Off Peak kVAh Net</th>
+                    <th>Off Peak kVA Demand</th>
+                    <th>Mid Peak GVAh Net</th>
+                    <th>Mid Peak kVAh Net</th>
+                    <th>Mid Peak kVA Demand</th>
+                    <th>On Peak GVAh Net</th>
+                    <th>On Peak kVAh Net</th>
+                    <th>On Peak kVA Demand</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically populated -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Raw JSON data 
+        var rawData = [
+            {"Record_Number":1,"Start_Date":"2025-01-01","End_Date":"2025-01-29","Off_Peak_GWh_Net":0.0,"Off_Peak_kWh_Net":17219.105,"Off_Peak_kW_Demand":37.434875},
+            {"Record_Number":2,"Start_Date":"2024-12-01","End_Date":"2024-12-31","Off_Peak_GWh_Net":0.0,"Off_Peak_kWh_Net":18791.27,"Off_Peak_kW_Demand":37.434784},
+            // Add more data as needed
+        ];
+
+        // Populate Table
+        const tableBody = document.querySelector('#eventTable tbody');
+        rawData.forEach(event => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${event.Record_Number}</td>
+                <td>${event.Start_Date}</td>
+                <td>${event.End_Date}</td>
+                <td>${event.Off_Peak_GWh_Net || ''}</td>
+                <td>${event.Off_Peak_kWh_Net || ''}</td>
+                <td>${event.Off_Peak_kW_Demand || ''}</td>
+                <td>${event.Mid_Peak_GWh_Net || ''}</td>
+                <td>${event.Mid_Peak_kWh_Net || ''}</td>
+                <td>${event.Mid_Peak_kW_Demand || ''}</td>
+                <td>${event.On_Peak_GWh_Net || ''}</td>
+                <td>${event.On_Peak_kWh_Net || ''}</td>
+                <td>${event.On_Peak_kW_Demand || ''}</td>
+                <td>${event.Off_Peak_GVARh_Net || ''}</td>
+                <td>${event.Off_Peak_kVARh_Net || ''}</td>
+                <td>${event.Off_Peak_kVAR_Demand || ''}</td>
+                <td>${event.Mid_Peak_GVARh_Net || ''}</td>
+                <td>${event.Mid_Peak_kVARh_Net || ''}</td>
+                <td>${event.Mid_Peak_kVAR_Demand || ''}</td>
+                <td>${event.On_Peak_GVARh_Net || ''}</td>
+                <td>${event.On_Peak_kVARh_Net || ''}</td>
+                <td>${event.On_Peak_kVAR_Demand || ''}</td>
+                <td>${event.Off_Peak_GVAh_Net || ''}</td>
+                <td>${event.Off_Peak_kVAh_Net || ''}</td>
+                <td>${event.Off_Peak_kVA_Demand || ''}</td>
+                <td>${event.Mid_Peak_GVAh_Net || ''}</td>
+                <td>${event.Mid_Peak_kVAh_Net || ''}</td>
+                <td>${event.Mid_Peak_kVA_Demand || ''}</td>
+                <td>${event.On_Peak_GVAh_Net || ''}</td>
+                <td>${event.On_Peak_kVAh_Net || ''}</td>
+                <td>${event.On_Peak_kVA_Demand || ''}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // Initialize ECharts instances
+        var lineChart1 = echarts.init(document.getElementById('lineChart1'));
+        var lineChart2 = echarts.init(document.getElementById('lineChart2'));
+        var lineChart3 = echarts.init(document.getElementById('lineChart3'));
+        var lineChart4 = echarts.init(document.getElementById('lineChart4'));
+        var lineChart5 = echarts.init(document.getElementById('lineChart5'));
+        var lineChart6 = echarts.init(document.getElementById('lineChart6'));
+        var lineChart7 = echarts.init(document.getElementById('lineChart7'));
+        var lineChart8 = echarts.init(document.getElementById('lineChart8'));
+        var lineChart9 = echarts.init(document.getElementById('lineChart9'));
+
+        // Common chart configurations
+        const commonOptions = {
+            tooltip: {
+                trigger: 'axis',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#D8D8D8', // --separator-line
+                borderWidth: 1,
+                padding: [5, 10],
+                textStyle: { color: '#3F3F3F', fontSize: 12 }, // --label-fg
+                confine: true,
+                formatter: function (params) {
+                    let tooltipContent = params[0].axisValueLabel + '<br/>';
+                    params.forEach(param => {
+                        tooltipContent += `${param.marker} ${param.seriesName}: <strong>${param.value || '-'}</strong><br/>`;
+                    });
+                    return tooltipContent;
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: rawData.map(event => event.Start_Date),
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                axisLabel: { color: '#3F3F3F' } // --label-fg
+            },
+            yAxis: {
+                type: 'value',
+                splitNumber: 10,
+                axisLabel: { color: '#3F3F3F' }, // --label-fg
+                axisLine: { lineStyle: { color: '#D8D8D8' } }, // --separator-line
+                splitLine: { lineStyle: { color: '#D8D8D8' } } // --separator-line
+            },
+            dataZoom: [
+                { type: 'inside', start: 0, end: 100 }
+            ],
+            legend: {
+                top: 'bottom',
+                textStyle: { color: '#3F3F3F' } // --label-fg
+            }
+        };
+
+        // Line Chart Configurations
+        var lineChartOption1 = {
+            ...commonOptions,
+            title: { 
+                text: 'kW Demand',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak kW Demand', 'Mid Peak kW Demand', 'On Peak kW Demand']
+            },
+            series: [
+                {
+                    name: 'Off Peak kW Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_kW_Demand),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak kW Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_kW_Demand),
+                    lineStyle: { width: 2, color: '#6A9C78' }, // Custom color for contrast
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak kW Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_kW_Demand),
+                    lineStyle: { width: 2, color: '#FF6F61' }, // Custom color for contrast
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption2 = {
+            ...commonOptions,
+            title: { 
+                text: 'kVAR Demand',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak kVAR Demand', 'Mid Peak kVAR Demand', 'On Peak kVAR Demand']
+            },
+            series: [
+                {
+                    name: 'Off Peak kVAR Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_kVAR_Demand),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak kVAR Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_kVAR_Demand),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak kVAR Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_kVAR_Demand),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption3 = {
+            ...commonOptions,
+            title: { 
+                text: 'kVA Demand',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak kVA Demand', 'Mid Peak kVA Demand', 'On Peak kVA Demand']
+            },
+            series: [
+                {
+                    name: 'Off Peak kVA Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_kVA_Demand),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak kVA Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_kVA_Demand),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak kVA Demand',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_kVA_Demand),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption4 = {
+            ...commonOptions,
+            title: { 
+                text: 'kWh Net',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak kWh Net', 'Mid Peak kWh Net', 'On Peak kWh Net']
+            },
+            series: [
+                {
+                    name: 'Off Peak kWh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_kWh_Net),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak kWh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_kWh_Net),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak kWh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_kWh_Net),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption5 = {
+            ...commonOptions,
+            title: { 
+                text: 'kVARh Net',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak kVARh Net', 'Mid Peak kVARh Net', 'On Peak kVARh Net']
+            },
+            series: [
+                {
+                    name: 'Off Peak kVARh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_kVARh_Net),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak kVARh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_kVARh_Net),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak kVARh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_kVARh_Net),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption6 = {
+            ...commonOptions,
+            title: { 
+                text: 'kVAh Net',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak kVAh Net', 'Mid Peak kVAh Net', 'On Peak kVAh Net']
+            },
+            series: [
+                {
+                    name: 'Off Peak kVAh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_kVAh_Net),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak kVAh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_kVAh_Net),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak kVAh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_kVAh_Net),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption7 = {
+            ...commonOptions,
+            title: { 
+                text: 'GWh Net',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak GWh Net', 'Mid Peak GWh Net', 'On Peak GWh Net']
+            },
+            series: [
+                {
+                    name: 'Off Peak GWh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_GWh_Net),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak GWh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_GWh_Net),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak GWh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_GWh_Net),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption8 = {
+            ...commonOptions,
+            title: { 
+                text: 'GVARh Net',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak GVARh Net', 'Mid Peak GVARh Net', 'On Peak GVARh Net']
+            },
+            series: [
+                {
+                    name: 'Off Peak GVARh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_GVARh_Net),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak GVARh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_GVARh_Net),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak GVARh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_GVARh_Net),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        var lineChartOption9 = {
+            ...commonOptions,
+            title: { 
+                text: 'GVAh Net',
+                left: 'center',
+                textStyle: { fontSize: 18, fontWeight: 'normal', color: '#3F3F3F' } // --title-fg
+            },
+            legend: {
+                ...commonOptions.legend,
+                data: ['Off Peak GVAh Net', 'Mid Peak GVAh Net', 'On Peak GVAh Net']
+            },
+            series: [
+                {
+                    name: 'Off Peak GVAh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Off_Peak_GVAh_Net),
+                    lineStyle: { width: 2, color: '#475CA7' }, // --data-fg
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'Mid Peak GVAh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.Mid_Peak_GVAh_Net),
+                    lineStyle: { width: 2, color: '#6A9C78' },
+                    emphasis: { focus: 'series' }
+                },
+                {
+                    name: 'On Peak GVAh Net',
+                    type: 'line',
+                    smooth: true,
+                    data: rawData.map(event => event.On_Peak_GVAh_Net),
+                    lineStyle: { width: 2, color: '#FF6F61' },
+                    emphasis: { focus: 'series' }
+                }
+            ]
+        };
+
+        // Render Line Charts
+        lineChart1.setOption(lineChartOption1);
+        lineChart2.setOption(lineChartOption2);
+        lineChart3.setOption(lineChartOption3);
+        lineChart4.setOption(lineChartOption4);
+        lineChart5.setOption(lineChartOption5);
+        lineChart6.setOption(lineChartOption6);
+        lineChart7.setOption(lineChartOption7);
+        lineChart8.setOption(lineChartOption8);
+        lineChart9.setOption(lineChartOption9);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            lineChart1.resize();
+            lineChart2.resize();
+            lineChart3.resize();
+            lineChart4.resize();
+            lineChart5.resize();
+            lineChart6.resize();
+            lineChart7.resize();
+            lineChart8.resize();
+            lineChart9.resize();
+        });
+    </script>
+</body>
+</html>

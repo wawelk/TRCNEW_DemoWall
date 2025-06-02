@@ -1,0 +1,4 @@
+Name: Control
+Type: FolderType
+Children:
+- File: Switches/Switches.yaml

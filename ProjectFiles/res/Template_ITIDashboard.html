@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="ISA_style.css"> <!-- Link to ISA_style.css -->
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+  <script type="text/javascript" src="echarts.min.js"></script>
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+
+    var option = {
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          var result = 'Cycles: ' + params[0].value[0].toFixed(2) + '<br/>';
+          params.forEach(function (item) {
+            result += item.seriesName + ': ' + item.value[1].toFixed(2) + '%<br/>';
+          });
+          return result;
+        },
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        textStyle: {
+          color: '#3F3F3F' // --label-fg
+        }
+      },
+      grid: {
+        borderColor: '#D8D8D8', // --separator-line
+        containLabel: true
+      },
+      xAxis: {
+        name: 'Cycles',
+        type: 'log',
+        min: 0.01,
+        nameTextStyle: {
+          color: '#3F3F3F' // --title-fg
+        },
+        axisLabel: {
+          color: '#3F3F3F', // --label-fg
+          formatter: function (value) {
+            return value.toFixed(2);
+          }
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#919191' // --separator-line
+          }
+        },
+        axisTick: {
+          show: true,
+          alignWithLabel: true,
+          interval: 0,
+          lineStyle: {
+            color: '#D8D8D8' // --separator-line
+          }
+        }
+      },
+      yAxis: {
+        name: '% Nominal Voltage Deviation',
+        type: 'value',
+        interval: 20,
+        min: 0,
+        max: 500,
+        nameTextStyle: {
+          color: '#3F3F3F' // --title-fg
+        },
+        axisLabel: {
+          color: '#3F3F3F' // --label-fg
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#919191' // --separator-line
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: '#D8D8D8', // --separator-line
+            type: 'dashed'
+          }
+        }
+      },
+      series: [
+        {
+          data: [[0.01, 500], [0.06, 200], [0.11, 140], [0.11, 120], [1.00, 120], [30.00, 120], [30.00, 110], [600.00, 110], [4000.00, 110], [10000000, 110]],
+          type: 'line',
+          smooth: false,
+          lineStyle: {
+            color: '#475CA7', // --data-fg
+            width: 1.5
+          }
+        },
+        {
+          data: [[0.01, 100], [10000000, 100]],
+          type: 'line',
+          smooth: false,
+          lineStyle: {
+            color: '#6A9C78', // Consistent with Power Quality Dashboard colors
+            width: 1,
+            type: 'dashed'
+          }
+        },
+        {
+          data: [[3, 0], [3, 60], [15, 60], [15, 70]],
+          type: 'line',
+          smooth: false,
+          lineStyle: {
+            color: '#FF6F61', // Consistent with Power Quality Dashboard colors
+            width: 1.5
+          }
+        },
+        {
+          data: [[0.01, 80], [30, 80], [600, 80], [600, 90], [4000, 90], [10000000, 90]],
+          type: 'line',
+          smooth: false,
+          lineStyle: {
+            color: '#EF4444', // Consistent with Power Quality Dashboard colors
+            width: 1.5
+          }
+        },
+        {
+          data: [[1, 0], [1, 40], [1, 70], [20, 70], [20, 80]],
+          type: 'line',
+          smooth: false,
+          lineStyle: {
+            color: '#EAB308', // Consistent with Power Quality Dashboard colors
+            width: 1.5
+          }
+        },
+        {
+          symbolSize: 12,
+          name: 'Power Quality Events',
+          data: [],
+          type: 'scatter',
+          symbol: 'triangle',
+          itemStyle: {
+            color: '#475CA7', // --data-fg
+            borderWidth: 1,
+            borderColor: '#fff'
+          }
+        }
+      ],
+      graphic: [
+        {
+          type: 'text',
+          left: '50%',
+          top: '50%',
+          z: 100,
+          style: {
+            text: 'Prohibited Region',
+            fill: '#3F3F3F', // --title-fg
+            fontSize: 16,
+            textAlign: 'center'
+          }
+        },
+        {
+          type: 'text',
+          left: '45%',
+          bottom: '20%',
+          z: 100,
+          style: {
+            text: 'No Damage Region',
+            fill: '#3F3F3F', // --title-fg
+            fontSize: 14,
+            textAlign: 'center'
+          }
+        },
+        {
+          type: 'text',
+          left: '13%',
+          bottom: '35%',
+          z: 100,
+          style: {
+            text: 'No Interruption In Function Region',
+            fill: '#3F3F3F', // --title-fg
+            fontSize: 14,
+            textAlign: 'center'
+          }
+        }
+      ]
+    };
+
+    // Dynamic scatter points
+    var scatterData = [];
+
+    // Filter out 0.0 cycles to avoid log scale issues
+    var filteredScatterData = scatterData.filter(point => point[0] > 0);
+    option.series[5].data = filteredScatterData;
+
+    // Handle no-data case: hide chart and show message
+    if (filteredScatterData.length === 0) {
+      option.xAxis.show = false;
+      option.yAxis.show = false;
+      option.grid.show = false;
+      option.series.forEach(series => series.data = []);
+      option.graphic = [
+        {
+          type: 'text',
+          left: 'center',
+          top: 'middle',
+          z: 100,
+          style: {
+            text: 'No power quality events found for the selected period',
+            fill: '#3F3F3F', // --title-fg
+            fontSize: 16,
+            textAlign: 'center'
+          }
+        }
+      ];
+    }
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9342f18c7a6b7bba',t:'MTc0NTMwMjA3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

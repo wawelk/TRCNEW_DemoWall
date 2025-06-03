@@ -1,0 +1,236 @@
+Name: raC_4_00_raC_Dvc_PM5000_PQEM_Model
+Type: FolderType
+Children:
+- Name: raC_4_00_raC_Dvc_PM5000_PQEM
+  Id: g=25655bf8a494cf9336c62103c93e6fc5
+  Supertype: BaseObjectType
+  Description: {"LocaleId":"en-US","Text":"Power Quality and Energy Monitoring Advanced Faceplates"}
+  Children:
+  - Name: Val_IPAddress
+    Type: BaseDataVariableType
+    DataType: String
+    Description: {"LocaleId":"en-US","Text":"Power monitor device IP address"}
+    Value: "0.0.0.0"
+  - Name: Cfg_PQEventsUpdatePeriod
+    Type: BaseDataVariableType
+    DataType: Duration
+    Description: {"LocaleId":"en-US","Text":"Update rate for new power quality events check."}
+    Value: "0:00:01:00.0000000"
+  - Name: Cfg_LiveDataUpdateRate
+    Type: BaseDataVariableType
+    DataType: Int32
+    Description: {"LocaleId":"en-US","Text":"Live CIP data update rate (ms)"}
+    Value: 5000
+  - Name: Set_EnablePQEventsCheck
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"Enable power quality events check."}
+    Value: true
+  - Name: Set_EnableLiveData
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"Enable live CIP data updates"}
+    Value: true
+  - Name: db_PQLogger
+    Type: NetLogic
+    Children:
+    - Name: logLabel
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+    - Class: Method
+      Name: DownloadPowerQualityLogAsync
+      Id: g=6a2e4029c2e038e0bf70c9fc1ba6e1c8
+    - Class: Method
+      Name: DropDatabase
+      Id: g=cedd805ae16d3a3c42bfa16095135d6b
+      Children:
+      - Name: ns=0;InputArguments
+        Type: BaseVariableType
+        DataType: Argument
+        ReferenceType: HasProperty
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"databaseName","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+    - Class: Method
+      Name: DropTable
+      Id: g=937ed95ac43d1396209017a82097cdf9
+    - Class: Method
+      Name: ProcessPowerQualityLogAsync
+      Id: g=a853cfa3bb9552c10bd228c4c42b8ac3
+      Children:
+      - Name: ns=0;InputArguments
+        Type: BaseVariableType
+        DataType: Argument
+        ReferenceType: HasProperty
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"deviceNameOverride","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+    - Name: NewEventTrigger
+      Type: BaseDataVariableType
+      DataType: Boolean
+  - Name: Device_status
+    Type: NetLogic
+    Children:
+    - Class: Method
+      Name: ExportDeviceStatus
+      Id: g=43bc30b20aea27bac9ada6d03252ee74
+  - Name: Username
+    Type: BaseDataVariableType
+    DataType: String
+    Description: {"LocaleId":"en-US","Text":"Power monitor device username"}
+    Value: "admin"
+  - Name: Password
+    Type: BaseDataVariableType
+    DataType: String
+    Description: {"LocaleId":"en-US","Text":"Power monitor device password"}
+    Value: "admin"
+  - Name: Emailsender
+    Type: NetLogic
+    Children:
+    - Name: Attachment
+      Type: BaseDataVariableType
+      DataType: ResourceUri
+      Value: "0"
+    - Name: MaxRetriesOnFailure
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Name: DelayBeforeRetry
+      Type: BaseDataVariableType
+      DataType: Duration
+    - Name: EmailSendingStatus
+      Type: BaseDataVariableType
+      DataType: Boolean
+    - Name: EmailNotificationsEnabled
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../Cfg_DeviceEmailNotifications"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Name: NewEventTrigger
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../db_PQLogger/NewEventTrigger"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Class: Method
+      Name: SendEmail
+      Id: g=a6fd22ea607da219e5b943708f5bb52f
+      Children:
+      - Name: ns=0;InputArguments
+        Type: BaseVariableType
+        DataType: Argument
+        ReferenceType: HasProperty
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"mailToAddress","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"mailSubject","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}},{"TypeId":{"Id":296},"Body":{"Name":"mailBody","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+      - Name: ns=0;OutputArguments
+        Type: BaseVariableType
+        DataType: Argument
+        ReferenceType: HasProperty
+        ValueRank: OneDimension
+        ArrayDimensions: [0]
+        Value: [{"TypeId":{"Id":296},"Body":{"Name":"status","DataType":{"Id":12},"ValueRank":-1,"ArrayDimensions":[],"Description":{"NamespaceIndex":-1,"LocaleId":"","Text":""}}}]
+    - Name: DeviceSettings
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Name: EmailServiceTest
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Class: Method
+      Name: CheckEmailService
+      Id: g=c0236b25710b2eb5ef8e9be7c59064fa
+  - Name: Cfg_DeviceEmailNotifications
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Description: {"LocaleId":"en-US","Text":"Enable Email Notifications (To configure the e-mail settings: Find and select Model > raC_4_00_raC_Dvc_PM5000_PQEM_Model >\nraC_4_00_raC_Dvc_PM5000_PQEM_Email_GeneralSettings) "}
+- File: raC_4_00_raC_Dvc_PM5000_PQEM_DataStores/raC_4_00_raC_Dvc_PM5000_PQEM_DataStores.yaml
+- File: raC_4_00_raC_Dvc_PM5000_PQEM_Users/raC_4_00_raC_Dvc_PM5000_PQEM_Users.yaml
+- File: raC_4_00_raC_Dvc_PM5000_PQEM_Harmonics/raC_4_00_raC_Dvc_PM5000_PQEM_Harmonics.yaml
+- Name: raC_4_00_raC_Dvc_PM5000_PQEM_Email_GeneralSettings
+  Type: BaseObjectType
+  Children:
+  - Name: SenderEmailAddress
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: SenderEmailPassword
+    Type: BaseDataVariableType
+    DataType: Password
+  - Name: SMTPHostname
+    Type: BaseDataVariableType
+    DataType: String
+  - Name: SMPTPort
+    Type: BaseDataVariableType
+    DataType: Int32
+  - Name: EnableSSL
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+  - Name: Status
+    Type: BaseDataVariableType
+    DataType: Int32
+- Name: raC_4_00_raC_Dvc_PM5000_PQEM_Resources
+  Type: BaseObjectType
+  Children:
+  - Name: loginscript
+    Type: BaseDataVariableType
+    DataType: ResourceUri
+    Value: "ns=7;%PROJECTDIR%/NetSolution/DeviceLoginManager.cs"
+  - Name: css
+    Type: BaseDataVariableType
+    DataType: ResourceUri
+    Value: "ns=7;%PROJECTDIR%/res/ISA_style.css"
+  - Name: echart.js
+    Type: BaseDataVariableType
+    DataType: ResourceUri
+    Value: "ns=7;%PROJECTDIR%/res/echarts.min.js"
+  - Name: all_icon.js
+    Type: BaseDataVariableType
+    DataType: ResourceUri
+    Value: "ns=7;%PROJECTDIR%/res/all.min.js"
+  - Name: Newtonsoft.Json
+    Type: BaseDataVariableType
+    DataType: ResourceUri
+    Value: "ns=7;%PROJECTDIR%/NetSolution/Newtonsoft.Json.dll"
+- Name: raC_4_00_raC_Dvc_PM5000_PQEM_Setup
+  Type: NetLogic
+  Children:
+  - Name: BehaviourStartPriority
+    Type: BehaviourStartPriorityVariableType
+    DataType: Byte
+    Value: 180
+  - Class: Method
+    Name: SetupInitialConfiguration
+- Name: ns=4;LibraryReference
+  Type: ObjectLibraryReference
+  DataType: ObjectLibraryReferenceDataType
+  Value: 
+   {
+    "TypeId": {
+     "Id": 72,
+     "Namespace": 4
+    },
+    "Body": {
+     "libraryGuid": "a536697715b066188eeb7b40a2ba37f5",
+     "objectGuid": "fffe77062eb97cfcbdac02c2af6a9e8e",
+     "objectVersion": 1,
+     "highestIgnoredVersion": 0
+    }
+   }

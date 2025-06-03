@@ -1,9 +1,9 @@
-Name: raC_3_03_raC_Dvc_837T_UI
+Name: raC_4_00_raC_Dvc_PM5000_PQEM_UI
 Type: FolderType
-DisplayName: {"LocaleId":"en-US","Text":"raC_Dvc_837T"}
+DisplayName: {"LocaleId":"en-US","Text":"PM5000 PQEM"}
 Children:
-- Name: raC_3_03_raC_Dvc_837T_Faceplate
-  Id: g=136fa7345fc7ece259d3f6d16a802a56
+- Name: raC_4_00_raC_Dvc_PM5000_PQEM_Faceplate
+  Id: g=b62c4318b7d7157f5c8ba9d2951c3a70
   Supertype: raSDK1_DialogBoxFPBase
   ReferenceType: HasComponent
   Children:
@@ -53,7 +53,7 @@ Children:
                   - Name: DynamicLink
                     Type: DynamicLink
                     DataType: NodePath
-                    Value: "{raSDK1_DialogBox}/Ref_Tag/Description"
+                    Value: "{raSDK1_DialogBox}/Ref_Tag@Description"
           - Name: MoveTarget
             Type: NodePointer
             DataType: NodeId
@@ -222,7 +222,7 @@ Children:
           - Name: Panels
             Type: BaseObjectType
             Children:
-            - Name: Panel1
+            - Name: 'Real-Time Power Quality '
               Type: NavigationPanelItem
               Children:
               - Name: Title
@@ -231,7 +231,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Home"
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_RealTimePowerQuality"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -242,7 +242,12 @@ Children:
                 DataType: ResourceUri
                 ModellingRule: Optional
                 Value: "ns=7;%PROJECTDIR%/res/Nav_Oper.svg"
-            - Name: Panel2
+              - Name: Visible
+                Type: BaseDataVariableType
+                DataType: Boolean
+                ModellingRule: Optional
+                Value: true
+            - Name: Live energy dashboard
               Type: NavigationPanelItem
               Children:
               - Name: Title
@@ -251,7 +256,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Health"
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_LiveEnergyDashboard_"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -261,8 +266,13 @@ Children:
                 Type: BaseDataVariableType
                 DataType: ResourceUri
                 ModellingRule: Optional
-                Value: "ns=7;%PROJECTDIR%/res/Nav_Heartbeat.svg"
-            - Name: Panel3
+                Value: "ns=7;%PROJECTDIR%/res/Nav_VIF.svg"
+              - Name: Visible
+                Type: BaseDataVariableType
+                DataType: Boolean
+                ModellingRule: Optional
+                Value: true
+            - Name: 'Harmonics '
               Type: NavigationPanelItem
               Children:
               - Name: Title
@@ -271,7 +281,47 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Trend"
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_Harmonics"
+                Children:
+                - Name: Kind
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container"
+              - Name: ImagePath
+                Type: BaseDataVariableType
+                DataType: ResourceUri
+                ModellingRule: Optional
+                Value: "ns=7;%PROJECTDIR%/res/Nav_BarG.svg"
+            - Name: Wiring Diagnostics
+              Type: NavigationPanelItem
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+              - Name: Panel
+                Type: NodePointer
+                DataType: NodeId
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_WiringDiagnostics"
+                Children:
+                - Name: Kind
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container"
+              - Name: ImagePath
+                Type: BaseDataVariableType
+                DataType: ResourceUri
+                ModellingRule: Optional
+                Value: "ns=7;%PROJECTDIR%/res/Nav_Diag.svg"
+            - Name: 'ITI and SEMI F47 Chart '
+              Type: NavigationPanelItem
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+              - Name: Panel
+                Type: NodePointer
+                DataType: NodeId
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_ITIAndSEMIF47Chart"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -282,7 +332,7 @@ Children:
                 DataType: ResourceUri
                 ModellingRule: Optional
                 Value: "ns=7;%PROJECTDIR%/res/Nav_Trend.svg"
-            - Name: Panel4
+            - Name: Power Quality Logs
               Type: NavigationPanelItem
               Children:
               - Name: Title
@@ -291,7 +341,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Config"
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_PowerQualityLogs"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -301,8 +351,8 @@ Children:
                 Type: BaseDataVariableType
                 DataType: ResourceUri
                 ModellingRule: Optional
-                Value: "ns=7;%PROJECTDIR%/res/Nav_Maint.svg"
-            - Name: Panel5
+                Value: "ns=7;%PROJECTDIR%/res/Nav_Report.svg"
+            - Name: Other Logs
               Type: NavigationPanelItem
               Children:
               - Name: Title
@@ -311,7 +361,7 @@ Children:
               - Name: Panel
                 Type: NodePointer
                 DataType: NodeId
-                Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/Panels - Faceplate/raC_3_03_raC_Dvc_837T_Fault"
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_OtherLogs"
                 Children:
                 - Name: Kind
                   Type: PropertyType
@@ -321,7 +371,67 @@ Children:
                 Type: BaseDataVariableType
                 DataType: ResourceUri
                 ModellingRule: Optional
-                Value: "ns=7;%PROJECTDIR%/res/Nav_Faults_16.svg"
+                Value: "ns=7;%PROJECTDIR%/res/Nav_Event.svg"
+            - Name: Config email
+              Type: NavigationPanelItem
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+              - Name: Panel
+                Type: NodePointer
+                DataType: NodeId
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_ConfigEmail"
+                Children:
+                - Name: Kind
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container"
+              - Name: ImagePath
+                Type: BaseDataVariableType
+                DataType: ResourceUri
+                ModellingRule: Optional
+                Value: "ns=7;%PROJECTDIR%/res/Nav_Eng.svg"
+            - Name: Waveforms
+              Type: NavigationPanelItem
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+              - Name: Panel
+                Type: NodePointer
+                DataType: NodeId
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_WaveformViewer"
+                Children:
+                - Name: Kind
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container"
+              - Name: ImagePath
+                Type: BaseDataVariableType
+                DataType: ResourceUri
+                ModellingRule: Optional
+                Value: "ns=7;%PROJECTDIR%/res/Nav_Sine.svg"
+            - Name: Alarms
+              Type: NavigationPanelItem
+              Children:
+              - Name: Title
+                Type: BaseDataVariableType
+                DataType: LocalizedText
+              - Name: Panel
+                Type: NodePointer
+                DataType: NodeId
+                Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_Alarms"
+                Children:
+                - Name: Kind
+                  Type: PropertyType
+                  DataType: NodeId
+                  Value: "/Types/ObjectTypes/BaseObjectType/BaseUIObject/Item/Container"
+              - Name: ImagePath
+                Type: BaseDataVariableType
+                DataType: ResourceUri
+                ModellingRule: Optional
+                Value: "ns=7;%PROJECTDIR%/res/Bell_16.svg"
           - Name: CurrentPanel
             Type: NodePointer
             DataType: NodeId
@@ -340,6 +450,18 @@ Children:
           - Class: Reference
             Target: ns=3;i=1181
             Direction: Forward
+          - Name: Style
+            Type: BaseDataVariableType
+            DataType: String
+            ModellingRule: Optional
+            Value: "Default"
+          - Name: CurrentTabIndexChanged
+            Type: VariableChangedEventDispatcher
+            Children:
+            - Name: VariableNodePath
+              Type: BaseVariableType
+              DataType: NodePath
+              Value: "../CurrentTabIndex"
   - Class: Reference
     Target: ns=3;i=519
     Direction: Forward
@@ -349,7 +471,7 @@ Children:
   - Name: Cfg_HelpPanel
     Type: BaseDataVariableType
     DataType: NodeId
-    Value: "/Objects/TRCNEW_DemoWall/UI/IOLinkLibrary v3R/raC_3_03_raC_Dvc_837T_UI/<Private Elements&>/raC_3_03_raC_Dvc_837T_Help"
+    Value: "/Objects/TRCNEW_DemoWall/UI/PowerLibrary v4R/raC_4_00_raC_Dvc_PM5000_PQEM_UI/<Private Elements&>/Panels/raC_4_00_raC_Dvc_PM5000_PQEM_Help"
   - Name: HelpScreen
     Type: Screen
     Children:
@@ -571,20 +693,37 @@ Children:
   - Name: Cfg_ObjectVersion
     Type: BaseDataVariableType
     DataType: String
-    Value: "3.03"
+    Value: "4.00"
   - Name: Cfg_Description
     Type: BaseDataVariableType
     DataType: LocalizedText
-    Value: {"LocaleId":"en-US","Text":"Solid-State Temperature Sensor (837T)"}
+    Value: {"LocaleId":"en-US","Text":"PowerMonitor™ 5000 Power Quality and Energy Monitoring Advanced Faceplates"}
   - Name: Width
     Type: BaseVariableType
     DataType: Size
     ModellingRule: Optional
-    Value: 620.0
+    Value: 1280.0
   - Name: Height
     Type: BaseVariableType
     DataType: Size
     ModellingRule: Optional
-    Value: 373.0
+    Value: 800.0
 - File: Graphic_Symbols/Graphic_Symbols.yaml
 - File: _Private_Elements_/_Private_Elements_.yaml
+- File: Widgets/Widgets.yaml
+- Name: ns=4;LibraryReference
+  Type: ObjectLibraryReference
+  DataType: ObjectLibraryReferenceDataType
+  Value: 
+   {
+    "TypeId": {
+     "Id": 72,
+     "Namespace": 4
+    },
+    "Body": {
+     "libraryGuid": "a536697715b066188eeb7b40a2ba37f5",
+     "objectGuid": "23d6d73100e3da4c5095ac189d7630d1",
+     "objectVersion": 1,
+     "highestIgnoredVersion": 0
+    }
+   }

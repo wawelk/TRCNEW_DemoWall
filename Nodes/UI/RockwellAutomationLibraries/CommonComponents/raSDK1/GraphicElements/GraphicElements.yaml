@@ -1,0 +1,6 @@
+Name: GraphicElements
+Type: FolderType
+Children:
+- File: Navigate/Navigate.yaml
+- File: DataDisplay/DataDisplay.yaml
+- File: Control/Control.yaml

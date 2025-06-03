@@ -1,0 +1,679 @@
+Name: raC_4_00_raC_Dvc_PM5000_PQEM_Harmonics
+Type: FolderType
+Children:
+- Name: raC_4_00_raC_Dvc_PM5000_PQEM_Harmonics_Main
+  Type: BaseObjectType
+  DisplayName: {"LocaleId":"en-US","Text":""}
+  Children:
+  - Name: No Selection
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"No Selection"}
+    Value: 500
+  - Name: Total_kW
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"Total_kW"}
+    Value: 14
+  - Name: Total_kVAR
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"Total_kVAR"}
+    Value: 18
+  - Name: Total_kVA_
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"Total_kVA"}
+    Value: 22
+  - Name: V1_N_Volts
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"V1_N_Volts"}
+    Value: 26
+  - Name: V2_N_Volts
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"V2_N_Volts"}
+    Value: 30
+  - Name: V3_N_Volts
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"V3_N_Volts"}
+    Value: 34
+  - Name: VN_G_Volts
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"VN_G_Volts"}
+    Value: 38
+  - Name: V1_V2_Volts
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"V1_V2_Volts"}
+    Value: 42
+  - Name: V2_V3_Volts
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"V2_V3_Volts"}
+    Value: 46
+  - Name: V3_V1_Volts
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"V3_V1_Volts"}
+    Value: 50
+  - Name: I1_Amps
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"I1_Amps"}
+    Value: 54
+  - Name: I2_Amps
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"I2_Amps"}
+    Value: 58
+  - Name: I3_Amps
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"I3_Amps"}
+    Value: 62
+  - Name: I4_Amps
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"I4_Amps"}
+    Value: 66
+  - Name: L1_kW
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L1_kW"}
+    Value: 70
+  - Name: L2_kW
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L2_kW"}
+    Value: 74
+  - Name: L3_kW
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L3_kW"}
+    Value: 78
+  - Name: L1_kVAR
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L1_kVAR"}
+    Value: 82
+  - Name: L1_kVA_
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L1_kVA"}
+    Value: 94
+  - Name: L2_kVA_
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L2_kVA"}
+    Value: 98
+  - Name: L3_kVA_
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L3_kVA"}
+    Value: 102
+  - Name: L3_kVAR
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L3_kVAR"}
+    Value: 90
+  - Name: L2_kVAR
+    Type: BaseDataVariableType
+    DataType: Int32
+    DisplayName: {"LocaleId":"en-US","Text":"L2_kVAR"}
+    Value: 86
+- Name: raC_4_00_raC_Dvc_PM5000_PQEM_Harmonics_Main_Sub
+  Type: BaseObjectType
+  DisplayName: {"LocaleId":"en-US","Text":""}
+  Children:
+  - Name: No Selection
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 500
+  - Name: Total_kW_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 14
+  - Name: Total_kW_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 15
+  - Name: Total_kW_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 16
+  - Name: Total_kW_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 17
+  - Name: Total_kVAR_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 18
+  - Name: Total_kVAR_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 19
+  - Name: Total_kVAR_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 20
+  - Name: Total_kVAR_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 21
+  - Name: Total_kVA_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 22
+  - Name: Total_kVA_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 23
+  - Name: Total_kVA_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 24
+  - Name: Total_kVA_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 25
+  - Name: V1_N_Volts_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 26
+  - Name: V1_N_Volts_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 27
+  - Name: V1_N_Volts_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 28
+  - Name: V1_N_Volts_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 29
+  - Name: V2_N_Volts_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 30
+  - Name: V2_N_Volts_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 31
+  - Name: V2_N_Volts_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 32
+  - Name: V2_N_Volts_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 33
+  - Name: V3_N_Volts_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 34
+  - Name: V3_N_Volts_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 35
+  - Name: V3_N_Volts_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 36
+  - Name: V3_N_Volts_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 37
+  - Name: VN_G_Volts_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 38
+  - Name: VN_G_Volts_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 39
+  - Name: VN_G_Volts_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 40
+  - Name: VN_G_Volts_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 41
+  - Name: V1_V2_Volts_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 42
+  - Name: V1_V2_Volts_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 43
+  - Name: V1_V2_Volts_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 44
+  - Name: V1_V2_Volts_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 45
+  - Name: V2_V3_Volts_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 46
+  - Name: V2_V3_Volts_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 47
+  - Name: V2_V3_Volts_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 48
+  - Name: V2_V3_Volts_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 49
+  - Name: V3_V1_Volts_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 50
+  - Name: V3_V1_Volts_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 51
+  - Name: V3_V1_Volts_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 52
+  - Name: V3_V1_Volts_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 53
+  - Name: I1_Amps_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 54
+  - Name: I1_Amps_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 55
+  - Name: I1_Amps_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 56
+  - Name: I1_Amps_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 57
+  - Name: I2_Amps_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 58
+  - Name: I2_Amps_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 59
+  - Name: I2_Amps_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 60
+  - Name: I2_Amps_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 61
+  - Name: I3_Amps_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 62
+  - Name: I3_Amps_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 63
+  - Name: I3_Amps_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 64
+  - Name: I3_Amps_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 65
+  - Name: I4_Amps_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 66
+  - Name: I4_Amps_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 67
+  - Name: I4_Amps_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 68
+  - Name: I4_Amps_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 69
+  - Name: L1_kW_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 70
+  - Name: L1_kW_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 71
+  - Name: L1_kW_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 72
+  - Name: L1_kW_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 73
+  - Name: L2_kW_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 74
+  - Name: L2_kW_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 75
+  - Name: L2_kW_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 76
+  - Name: L2_kW_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 77
+  - Name: L3_kW_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 78
+  - Name: L3_kW_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 79
+  - Name: L3_kW_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 80
+  - Name: L3_kW_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 81
+  - Name: L1_kVAR_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 82
+  - Name: L1_kVAR_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 83
+  - Name: L1_kVAR_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 84
+  - Name: L1_kVAR_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 85
+  - Name: L2_kVAR_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 86
+  - Name: L2_kVAR_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 87
+  - Name: L2_kVAR_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 88
+  - Name: L2_kVAR_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 89
+  - Name: L3_kVAR_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 90
+  - Name: L3_kVAR_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 91
+  - Name: L3_kVAR_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 92
+  - Name: L3_kVAR_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 93
+  - Name: L1_kVA_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 94
+  - Name: L1_kVA_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 95
+  - Name: L1_kVA_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 96
+  - Name: L1_kVA_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 97
+  - Name: L2_kVA_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 98
+  - Name: L2_kVA_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 99
+  - Name: L2_kVA_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 100
+  - Name: L2_kVA_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 101
+  - Name: L3_kVA_H1_RMS_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 102
+  - Name: L3_kVA_H2_RMS_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 103
+  - Name: L3_kVA_H3_RMS_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 104
+  - Name: L3_kVA_H4_RMS_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 105
+  - Name: V1_N_Volts_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 106
+  - Name: V1_N_Volts_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 107
+  - Name: V1_N_Volts_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 108
+  - Name: V1_N_Volts_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 109
+  - Name: V2_N_Volts_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 110
+  - Name: V2_N_Volts_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 111
+  - Name: V2_N_Volts_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 112
+  - Name: V2_N_Volts_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 113
+  - Name: V3_N_Volts_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 114
+  - Name: V3_N_Volts_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 115
+  - Name: V3_N_Volts_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 116
+  - Name: V3_N_Volts_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 117
+  - Name: VN_G_Volts_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 118
+  - Name: VN_G_Volts_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 119
+  - Name: VN_G_Volts_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 120
+  - Name: VN_G_Volts_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 121
+  - Name: V1_V2_Volts_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 122
+  - Name: V1_V2_Volts_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 123
+  - Name: V1_V2_Volts_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 124
+  - Name: V1_V2_Volts_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 125
+  - Name: V2_V3_Volts_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 126
+  - Name: V2_V3_Volts_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 127
+  - Name: V2_V3_Volts_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 128
+  - Name: V2_V3_Volts_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 129
+  - Name: V3_V1_Volts_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 130
+  - Name: V3_V1_Volts_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 131
+  - Name: V3_V1_Volts_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 132
+  - Name: V3_V1_Volts_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 133
+  - Name: I1_Amps_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 134
+  - Name: I1_Amps_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 135
+  - Name: I1_Amps_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 136
+  - Name: I1_Amps_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 137
+  - Name: I2_Amps_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 138
+  - Name: I2_Amps_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 139
+  - Name: I2_Amps_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 140
+  - Name: I2_Amps_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 141
+  - Name: I3_Amps_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 142
+  - Name: I3_Amps_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 143
+  - Name: I3_Amps_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 144
+  - Name: I3_Amps_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 145
+  - Name: I4_Amps_H1_Ang_DC_to_31
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 146
+  - Name: I4_Amps_H2_Ang_32_to_63
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 147
+  - Name: I4_Amps_H3_Ang_64_to_95
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 148
+  - Name: I4_Amps_H4_Ang_96_to_127
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 149

@@ -1,9 +1,118 @@
 Name: Model
 Type: ModelCategoryFolder
 Children:
+- File: raC_4_00_raC_Dvc_PM5000_PQEM_Model/raC_4_00_raC_Dvc_PM5000_PQEM_Model.yaml
 - Name: ExportStartDate
   Type: BaseDataVariableType
   DataType: DateTime
 - Name: ExportStopDate
   Type: BaseDataVariableType
   DataType: DateTime
+- Name: PM5000_DemoWall
+  Id: g=9aa329f739adb788af55b34a1864fa6b
+  Type: raC_4_00_raC_Dvc_PM5000_PQEM
+  Children:
+  - Name: Val_IPAddress
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "10.0.0.52"
+  - Name: Cfg_PQEventsUpdatePeriod
+    Type: BaseDataVariableType
+    DataType: Duration
+    Value: "0:00:01:00.0000000"
+  - Name: Cfg_LiveDataUpdateRate
+    Type: BaseDataVariableType
+    DataType: Int32
+    Value: 5000
+  - Name: Set_EnablePQEventsCheck
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+  - Name: Set_EnableLiveData
+    Type: BaseDataVariableType
+    DataType: Boolean
+    Value: true
+  - Name: db_PQLogger
+    Type: NetLogic
+    Children:
+    - Name: logLabel
+      Type: BaseDataVariableType
+      DataType: String
+      Value: "0"
+    - Class: Reference
+      Target: g=6a2e4029c2e038e0bf70c9fc1ba6e1c8
+      Direction: Forward
+    - Class: Reference
+      Target: g=cedd805ae16d3a3c42bfa16095135d6b
+      Direction: Forward
+    - Class: Reference
+      Target: g=937ed95ac43d1396209017a82097cdf9
+      Direction: Forward
+    - Class: Reference
+      Target: g=a853cfa3bb9552c10bd228c4c42b8ac3
+      Direction: Forward
+    - Name: NewEventTrigger
+      Type: BaseDataVariableType
+      DataType: Boolean
+  - Name: Device_status
+    Type: NetLogic
+    Children:
+    - Class: Reference
+      Target: g=43bc30b20aea27bac9ada6d03252ee74
+      Direction: Forward
+  - Name: Username
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "admin"
+  - Name: Password
+    Type: BaseDataVariableType
+    DataType: String
+    Value: "admin"
+  - Name: Emailsender
+    Type: NetLogic
+    Children:
+    - Name: Attachment
+      Type: BaseDataVariableType
+      DataType: ResourceUri
+      Value: "0"
+    - Name: MaxRetriesOnFailure
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Name: DelayBeforeRetry
+      Type: BaseDataVariableType
+      DataType: Duration
+    - Name: EmailSendingStatus
+      Type: BaseDataVariableType
+      DataType: Boolean
+    - Name: EmailNotificationsEnabled
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../Cfg_DeviceEmailNotifications"
+    - Name: NewEventTrigger
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Children:
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../db_PQLogger/NewEventTrigger"
+    - Class: Reference
+      Target: g=a6fd22ea607da219e5b943708f5bb52f
+      Direction: Forward
+    - Name: DeviceSettings
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Name: EmailServiceTest
+      Type: BaseDataVariableType
+      DataType: Int32
+    - Class: Reference
+      Target: g=c0236b25710b2eb5ef8e9be7c59064fa
+      Direction: Forward
+  - Name: Cfg_DeviceEmailNotifications
+    Type: BaseDataVariableType
+    DataType: Boolean

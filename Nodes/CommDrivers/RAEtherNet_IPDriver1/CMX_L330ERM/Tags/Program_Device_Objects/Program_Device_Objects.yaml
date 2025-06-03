@@ -1207,30 +1207,6 @@ Children:
               Type: BaseDataVariableType
               DataType: String
               Value: "Program:Device_Objects.Stratix103.HMI_Parameters.Home.Ports[29].SelectPort"
-        - Name: PortIndicator
-          Type: RAEtherNetIPTag
-          DataType: SByte
-          Children:
-          - Name: SymbolName
-            Type: BaseDataVariableType
-            DataType: String
-            Value: "PortIndicator"
-        - Name: SFPIndicator
-          Type: RAEtherNetIPTag
-          DataType: SByte
-          Children:
-          - Name: SymbolName
-            Type: BaseDataVariableType
-            DataType: String
-            Value: "SFPIndicator"
-        - Name: SelectPort
-          Type: RAEtherNetIPTag
-          DataType: Boolean
-          Children:
-          - Name: SymbolName
-            Type: BaseDataVariableType
-            DataType: String
-            Value: "SelectPort"
       - Name: Port_Layout
         Type: RAEtherNetIPTag
         DataType: Int32

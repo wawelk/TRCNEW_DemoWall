@@ -1289,6 +1289,7 @@ Children:
 - File: Screens/Screens.yaml
 - File: IOLinkLibrary_v3R/IOLinkLibrary_v3R.yaml
 - File: NetworkLibrary_v12R/NetworkLibrary_v12R.yaml
+- File: PowerLibrary_v4R/PowerLibrary_v4R.yaml
 - File: raSDK/raSDK.yaml
 - File: RockwellAutomationLibraries/RockwellAutomationLibraries.yaml
 - File: Keyboards/Keyboards.yaml

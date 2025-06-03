@@ -1,0 +1,4 @@
+Name: Navigate
+Type: FolderType
+Children:
+- File: NAvMethods/NAvMethods.yaml
